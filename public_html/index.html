@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="theme-color" content="#64b5f6">
 		<title>Material Colorize</title>
 		<link rel="stylesheet" href="/lib/bower_components/mdi/css/materialdesignicons.css">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+		<link rel="icon" href="/images/favicon.ico">
 		<link rel="stylesheet" href="/css/styles.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script>
+		function openSideMenu() {
+			var $this = $('#sidebar');
+			if ($this.hasClass('closed')) {
+				$this.animate({
+					left: '0px'
+			}, 500).removeClass('closed');
+			} else {
+				$this.animate({
+					left: -202
+				}, 500).addClass('closed');
+			}
+		}
+		</script>
 	</head>
 	<body>
 	<!-- Header -->
 	<div id="toolbar">
 		<div class="toolbar left">
-            <div class="hamburger-menu material-ripple" onclick="openSidemenu()">
-                <i class="mdi mdi-menu"></i>
+            <div class="hamburger-menu material-ripple" onclick="openSideMenu()">
+                <a href="#" class="aWhite"><i class="mdi mdi-menu"></i></a>
             </div>
         </div>
 
         <h1 class="toolbar label">Material Colorize</h1>
-		<!-- 
-        <div class="toolbar right">
-				<div class="dropdown right from-top">
-                <div class="drop-menu material-ripple">
-                    <i class="mdi mdi-dots-vertical"></i>
-                </div>
+	</div>
 
-				<ul>
-					<li class="dropdown-link"><a>Action</a></li>
-					<li class="dropdown-link"><a>Another action</a></li>
-					<li class="dropdown-link"><a>Something else here</a></li>
-					<li class="dropdown-divider"></li>
-					<li class="dropdown-header"><a>Header</a></li>
-					<li class="dropdown-link"><a>Separated link</a></li>
-				</ul>
-            </div>
-        </div> -->
+
+	<!-- Sidebar -->
+	<div class="sidebar closed" id="sidebar">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a target="_blank" href="http://www.materialui.co/">Color Picker</a></li>
+			<li><a target="_blank" href="http://www.materialpalette.com/">Color Palette Creator</a></li>
+			<li><a href="#">Convert to Material Design Colors</a></li>
+			<li><a href="#">Color Switcher</a></li>
+			<li><a href="#">Color Reference</a></li>
+			<li><a href="#">Community</a></li>
+			<li><a target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></li>
+		</ul>
 	</div>
 
 
@@ -40,65 +56,51 @@
 	<div id="background" class="container">
 		<!-- Card -->
 		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+			<h3 class="card-header">Color Picker</h3>
+			<p class="card-text">View and pick from all of the colors in the Material Design color palette. Copy directly to your clipboard, in the format that best suits your needs.</p>
+			<div class="card-Button"><a target="_blank" href="http://www.materialui.co/">Material UI</a></div>
 		</div>
 
 		<!-- Card -->
-		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+		<div id="color-palette" class="card">
+			<h3 class="card-header">Color Palette Creator</h3>
+			<p class="card-text">Pick a couple of colors and create your application's palatte from the Material Design color palette.</p>
+			<div class="card-Button"><a target="_blank" href="http://www.materialpalette.com/">Material Palette</a></div>
 		</div>
 
 		<!-- Card -->
-		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+		<div id="convert-colors" class="card">
+			<h3 class="card-header">Convert to Material Design Colors</h3>
+			<p class="card-text">Convert a hex, rgb code, or SVG to the colors in the Material Design color palette. Copy directly to your clipboard or download the converted SVG.</p>
+			<div class="card-Button"><a href="#">Coming Soon</a></div>
 		</div>
 
 		<!-- Card -->
-		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+		<div id="color-switch" class="card">
+			<h3 class="card-header">Color Switcher</h3>
+			<p class="card-text">Switch around the colors in your color palette. View all of the Material Design color palettes on your SVG.</p>
+			<div class="card-Button"><a href="#">Coming Soon</a></div>
 		</div>
 
 		<!-- Card -->
-		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+		<div id="color-ref" class="card">
+			<h3 class="card-header">Color Reference</h3>
+			<p class="card-text">Don't know where the colors belong? No problem. View where the colors belong in a simple application.</p>
+			<div class="card-Button"><a href="#">Coming Soon</a></div>
 		</div>
 
 		<!-- Card -->
-		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+		<div id="material-design-community" class="card">
+			<h3 class="card-header">Material Design Community</h3>
+			<p class="card-text">Have a question about Material Design, help out others with their applications, or just browse the apps or reference pages? Feel free to vist MaterialDesignCommunity.com, also by us.</p>
+			<div class="card-Button"><a href="#">Coming Soon</a></div>
 		</div>
 
 		<!-- Card -->
-		<div id="color-picker" class="card">
-			<h3 class="card-header"></h3>
-			<p class="card-text">
-				
-			</p>
-			<div class="card-flatButton"></div>
+		<div id="google-spec-sheet" class="card">
+			<h3 class="card-header">Material Design Spec Sheet</h3>
+			<p class="card-text">You can see Google's original Material Design Spec Sheet here.</p>
+			<div class="card-Button"><a target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></div>
 		</div>
 	</div>
 
