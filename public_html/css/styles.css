@@ -30,3 +30,11 @@ nav .brand-logo {
 .side-nav > li {
 	width: 100%;
 }
+
+
+/* Footer Size Dependant */
+@media only screen and (max-width: 1500px){
+.row .col.s4 {
+	width: 100%;
+}
+}
