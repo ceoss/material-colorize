@@ -1,17 +1,27 @@
 /* NavBar Size Dependant */
-@media only screen and (min-width: 993px)
+@media only screen and (min-width: 993px){
 nav .brand-logo {
 	margin-left: 30px !important;
 }
-@media only screen and (max-width: 459px) and (min-width: 397px)
+}
+@media only screen and (max-width: 459px) and (min-width: 397px){
 nav .brand-logo {
 	font-size: 1.8rem !important;
 }
-@media only screen and (max-width: 396px) and (min-width: 334px)
+}
+@media only screen and (max-width: 396px) and (min-width: 334px){
 nav .brand-logo {
 	font-size: 1.5rem !important;
 }
-@media only screen and (max-width: 333px)
+}
+@media only screen and (max-width: 333px){
 nav .brand-logo {
 	font-size: 1rem !important;
+}
+}
+
+
+/* Side Nav */
+.side-nav > li {
+	width: 100%;
 }
