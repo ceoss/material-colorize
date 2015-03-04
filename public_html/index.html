@@ -3,111 +3,161 @@
 	<head>
 		<meta name="theme-color" content="#64b5f6">
 		<title>Material Colorize</title>
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/lib/bower_components/materialize/dist/css/materialize.min.css"	media="screen,projection"/>
 		<link rel="stylesheet" href="/lib/bower_components/mdi/css/materialdesignicons.css">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 		<link rel="icon" href="/images/favicon.ico">
 		<link rel="stylesheet" href="/css/styles.css">
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script>
-		function openSideMenu() {
-			var $this = $('#sidebar');
-			if ($this.hasClass('closed')) {
-				$this.animate({
-					left: '0px'
-			}, 500).removeClass('closed');
-			} else {
-				$this.animate({
-					left: -202
-				}, 500).addClass('closed');
-			}
-		}
-		</script>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	</head>
 	<body>
-	<!-- Header -->
-	<div id="toolbar">
-		<div class="toolbar left">
-            <div class="hamburger-menu material-ripple" onclick="openSideMenu()">
-                <a href="#" class="aWhite"><i class="mdi mdi-menu"></i></a>
-            </div>
-        </div>
-
-        <h1 class="toolbar label">Material Colorize</h1>
-	</div>
-
-
-	<!-- Sidebar -->
-	<div class="sidebar closed" id="sidebar">
-		<ul>
-			<li><a href="/">Home</a></li>
+	<nav class="blue lighten-2">
+	<div class="nav-wrapper">
+		<a href="/" class="brand-logo" style="margin-left: 30px;">Material Colorize</a>
+		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+		<ul class="right hide-on-med-and-down">
+			<li><a class="waves-effect waves-dark" target="_blank" href="http://www.materialui.co/">Color Picker</a></li>
+			<li><a class="waves-effect waves-dark" target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
+			<li><a class="waves-effect waves-dark" href="#">Convert Colors</a></li>
+			<li><a class="waves-effect waves-dark" href="#">Color Switcher</a></li>
+			<li><a class="waves-effect waves-dark" href="#">Color Reference</a></li>
+			<li><a class="waves-effect waves-dark" href="#">Community</a></li>
+			<li><a class="waves-effect waves-dark" target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></li>
+		</ul>
+		<ul class="side-nav" id="mobile-demo">
 			<li><a target="_blank" href="http://www.materialui.co/">Color Picker</a></li>
-			<li><a target="_blank" href="http://www.materialpalette.com/">Color Palette Creator</a></li>
-			<li><a href="#">Convert to Material Design Colors</a></li>
+			<li><a target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
+			<li><a href="#">Convert Colors</a></li>
 			<li><a href="#">Color Switcher</a></li>
 			<li><a href="#">Color Reference</a></li>
 			<li><a href="#">Community</a></li>
 			<li><a target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></li>
 		</ul>
 	</div>
+	</nav>
 
-
-	<!-- Body -->
+	<!-- Body Content -->
 	<div id="background" class="container">
-		<!-- Card -->
 		<div id="color-picker" class="card">
-			<h3 class="card-header">Color Picker</h3>
-			<p class="card-text">View and pick from all of the colors in the Material Design color palette. Copy directly to your clipboard, in the format that best suits your needs.</p>
-			<div class="card-Button"><a target="_blank" href="http://www.materialui.co/">Material UI</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Color Picker</span>
+				<p>View and pick from all of the colors in the Material Design color palette. Copy directly to your clipboard, in the format that best suits your needs.</p>
+			</div>
+			<div class="card-action">
+				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.materialui.co/">Material UI</a>
+			</div>
 		</div>
 
-		<!-- Card -->
 		<div id="color-palette" class="card">
-			<h3 class="card-header">Color Palette Creator</h3>
-			<p class="card-text">Pick a couple of colors and create your application's palatte from the Material Design color palette.</p>
-			<div class="card-Button"><a target="_blank" href="http://www.materialpalette.com/">Material Palette</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Color Palette Creator</span>
+				<p>Pick a couple of colors and create your application's palatte from the Material Design color palette.</p>
+			</div>
+			<div class="card-action">
+				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.materialpalette.com/">Material Palette</a>
+			</div>
 		</div>
 
-		<!-- Card -->
 		<div id="convert-colors" class="card">
-			<h3 class="card-header">Convert to Material Design Colors</h3>
-			<p class="card-text">Convert a hex, rgb code, or SVG to the colors in the Material Design color palette. Copy directly to your clipboard or download the converted SVG.</p>
-			<div class="card-Button"><a href="#">Coming Soon</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Convert to Material Design Colors</span>
+				<p>Convert a hex, rgb code, or SVG to the colors in the Material Design color palette. Copy directly to your clipboard or download the converted SVG.</p>
+			</div>
+			<div class="card-action">
+				<a class="btn disabled right">Coming Soon</a>
+			</div>
 		</div>
 
-		<!-- Card -->
 		<div id="color-switch" class="card">
-			<h3 class="card-header">Color Switcher</h3>
-			<p class="card-text">Switch around the colors in your color palette. View all of the Material Design color palettes on your SVG.</p>
-			<div class="card-Button"><a href="#">Coming Soon</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Color Switcher</span>
+				<p>Switch around the colors in your color palette. View all of the Material Design color palettes on your SVG.</p>
+			</div>
+			<div class="card-action">
+				<a class="btn disabled right">Coming Soon</a>
+			</div>
 		</div>
 
-		<!-- Card -->
 		<div id="color-ref" class="card">
-			<h3 class="card-header">Color Reference</h3>
-			<p class="card-text">Don't know where the colors belong? No problem. View where the colors belong in a simple application.</p>
-			<div class="card-Button"><a href="#">Coming Soon</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Color Reference</span>
+				<p>Don't know where the colors belong? No problem. View where the colors belong in a simple application.</p>
+			</div>
+			<div class="card-action">
+				<a class="btn disabled right">Coming Soon</a>
+			</div>
 		</div>
 
-		<!-- Card -->
 		<div id="material-design-community" class="card">
-			<h3 class="card-header">Material Design Community</h3>
-			<p class="card-text">Have a question about Material Design, help out others with their applications, or just browse the apps or reference pages? Feel free to vist MaterialDesignCommunity.com, also by us.</p>
-			<div class="card-Button"><a href="#">Coming Soon</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Material Design Community</span>
+				<p>Have a question about Material Design, help out others with their applications, or just browse the apps or reference pages? Feel free to vist MaterialDesignCommunity.com, also by us.</p>
+			</div>
+			<div class="card-action">
+				<a class="btn disabled right">Coming Soon</a>
+			</div>
 		</div>
 
-		<!-- Card -->
 		<div id="google-spec-sheet" class="card">
-			<h3 class="card-header">Material Design Spec Sheet</h3>
-			<p class="card-text">You can see Google's original Material Design Spec Sheet here.</p>
-			<div class="card-Button"><a target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></div>
+			<div class="card-content">
+				<span class="card-title grey-text text-darken-4">Material Design Spec Sheet</span>
+				<p>You can see Google's original Material Design Spec Sheet here.</p>
+			</div>
+			<div class="card-action">
+				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a>
+			</div>
 		</div>
 	</div>
-
 
 	<!-- Footer -->
-	<div id="footer" class="minimal">
-		<p>&#169 XorTech Group | All Rights Reserved</p>
-	</div>
+	<footer id="footer" class="page-footer blue lighten-2">
+		<div class="container">
+			<h5 class="white-text">Meet the Team:</h5>
+			<div class="row grey-text text-lighten-4">
+				<div class="col s4">
+					<div class="row card-panel z-depth-1" style="margin-right: 5%;">
+						<div class="col s2">
+							<img src="/images/.png" alt="" class="circle responsive-img">
+						</div>
+						<div class="col s10">
+							<span class="black-text"><a href="https://plus.google.com/u/0/+/">+ </a> <p>I'm a  at YLHS, software developer, and Android enthusiast. I started working with computers at age 11, and that's when my technical career began. I taught myself to build websites and make the well-known "Hello World" programs and mobile applications.</p><p>I try to help with anything technical whenever and wherever it's needed. I cannot wait to see what the future holds for this amazing thing in our world.</p></span>
+						</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row card-panel z-depth-1" style="margin-right: 5%;">
+						<div class="col s2">
+							<img src="/images/corbin.png" alt="" class="circle responsive-img">
+						</div>
+						<div class="col s10">
+							<span class="black-text"><a href="https://plus.google.com/u/0/+CorbinCrutchley/">+Corbin Crutchley</a> <p>I'm a nut about design, Linux, Android, programming, music, tech.</p><p>I love music, and to play football during free time. I am also very silly! :P I write stories on the side.</p></span>
+						</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row card-panel z-depth-1" style="margin-right: 5%;">
+						<div class="col s2">
+							<img src="/images/evelyn.png" alt="" class="circle responsive-img">
+						</div>
+						<div class="col s10">
+							<span class="black-text"><a href="https://plus.google.com/u/0/+EvelynHathaway/">+Evelyn Hathaway</a> <p>Tech Enthusiast, Web Developer, Graphic Designer</p></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright blue lighten-1">
+			<div class="container">
+			&copy; 2015 XorTech Group | All Rights Reserved
+			<a class="grey-text text-lighten-4 right" href="http://evelynhathaway.com/">More Sites</a>
+			</div>
+		</div>
+	</footer>
+
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="/lib/bower_components/materialize/dist/js/materialize.min.js"></script>
 	</body>
 </html>
