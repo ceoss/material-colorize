@@ -38,3 +38,36 @@ nav .brand-logo {
 	width: 100%;
 }
 }
+
+
+/* Team */
+.team-card {
+	margin-right: 0.5% !important;
+	margin-left: 0.5% !important;
+}
+
+@media only screen and (max-width: 450px){
+.team-img {
+	display: none;
+}
+.team-text {
+	width: 100%;
+}
+.team-text-p, .team-text-a {
+	color: #fff;
+}
+.team-card {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% auto
+}
+.team-card.evelyn {
+	background-image: url('/images/evelyn.png');
+}
+.team-card. {
+	background-image: url('/images/.png');
+}
+.team-card.corbin {
+	background-image: url('/images/corbin.png');
+}
+}
