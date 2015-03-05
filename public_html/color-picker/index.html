@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="theme-color" content="#64b5f6">
-		<title>Material Colorize</title>
+		<title>Color Picker - Material Colorize</title>
 		<link type="text/css" rel="stylesheet" href="/lib/bower_components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
 		<link rel="stylesheet" href="/lib/bower_components/mdi/css/materialdesignicons.css">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -12,17 +12,19 @@
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script>
 			$( document ).ready(function() {
+			$('.modal-trigger-info-popup').leanModal();
 			$(".button-collapse").sideNav();
+			$(".dropdown-button").dropdown();
 			});
 		</script>
 	</head>
 	<body>
-	<nav class="blue lighten-2">
+	<nav class="blue lighten-2" style="position: relative; z-index: 50;">
 	<div class="nav-wrapper">
-		<a href="/" class="brand-logo">Color Picker - Material Colorize</a>
+		<a href="/" class="brand-logo">Material Colorize</a>
 		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 		<ul class="right hide-on-med-and-down">
-			<li><a class="waves-effect" target="_blank" href="http://www.materialui.co/">Color Picker</a></li>
+			<li><a class="waves-effect blue lighten-1" href="/color-picker/#all">Color Picker</a></li>
 			<li><a class="waves-effect" target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
 			<li><a class="waves-effect" href="#">Convert Colors</a></li>
 			<li><a class="waves-effect" href="#">Color Switcher</a></li>
@@ -31,7 +33,7 @@
 			<li><a class="waves-effect" target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></li>
 		</ul>
 		<ul class="side-nav" id="mobile-demo">
-			<li class="waves-effect"><a target="_blank" href="http://www.materialui.co/">Color Picker</a></li>
+			<li class="waves-effect"><a href="/color-picker/#all">Color Picker</a></li>
 			<li class="waves-effect"><a target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
 			<li class="waves-effect"><a href="#">Convert Colors</a></li>
 			<li class="waves-effect"><a href="#">Color Switcher</a></li>
@@ -43,34 +45,81 @@
 	</nav>
 
 	<!-- Body Content -->
-	<div id="background" class="container">
-
-	<div class="row">
-		<div class="col s12">
-			<ul class="tabs">
-				<li class="tab col s3"><a class="active" href="#test1">All</a></li>
-				<li class="tab col s3"><a href="#test2">Red</a></li>
-				<li class="tab col s3"><a href="#test3">Pink</a></li>
-				<li class="tab col s3"><a href="#test4">Purple</a></li>
-			</ul>
+	<!-- Dropdown Data Templates -->
+	<ul id="color-picker-nav" class="dropdown-content">
+		<li><a class="waves-effect" href="#all">All</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="#red">Red</a></li>
+		<li><a class="waves-effect" href="#pink">Pink</a></li>
+		<li><a class="waves-effect" href="#purple">Purple</a></li>
+		<li><a class="waves-effect" href="#deep-purple">Deep Purple</a></li>
+		<li><a class="waves-effect" href="#indigo">Indigo</a></li>
+		<li><a class="waves-effect" href="#blue">Blue</a></li>
+		<li><a class="waves-effect" href="#light-blue">Light Blue</a></li>
+		<li><a class="waves-effect" href="#cyan">Cyan</a></li>
+		<li><a class="waves-effect" href="#teal">Teal</a></li>
+		<li><a class="waves-effect" href="#green">Green</a></li>
+		<li><a class="waves-effect" href="#light-green">Light Green</a></li>
+		<li><a class="waves-effect" href="#lime">Lime</a></li>
+		<li><a class="waves-effect" href="#yellow">Yellow</a></li>
+		<li><a class="waves-effect" href="#amber">Amber</a></li>
+		<li><a class="waves-effect" href="#orange">Orange</a></li>
+		<li><a class="waves-effect" href="#deep-orange">Deep Orange</a></li>
+		<li><a class="waves-effect" href="#brown">Brown</a></li>
+		<li><a class="waves-effect" href="#grey">Grey</a></li>
+		<li><a class="waves-effect" href="#blue-grey">Blue Grey</a></li>
+	</ul>
+	<ul id="color-picker-formats" class="dropdown-content">
+		<li><a class="waves-effect" href="javascript:var format = 'hex-with-pound';">#DACODE</a></li>
+		<li><a class="waves-effect" href="javascript:var format = 'hex-without-pound';">DACODE</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:var format = 'hex-alpha-with-pound';">#DACODEAA</a></li>
+		<li><a class="waves-effect" href="javascript:var format = 'hex-alpha-without-pound';">DACODEAA</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:var format = 'rgb-with-formatting';">rgb(0,0,0)</a></li>
+		<li><a class="waves-effect" href="javascript:var format = 'rgb-without-formatting';">0,0,0</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:var format = 'rgba-with-formatting';">rgba(0,0,0,0)</a></li>
+		<li><a class="waves-effect" href="javascript:var format = 'rgba-without-formatting';">0,0,0,0</a></li>
+	</ul>
+	<!-- Modal Data Template -->
+	<div id="info-popup" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4>Color Picker Info</h4>
+			<p>Remind me to fill in when complete.</p>
 		</div>
-		<div id="test1" class="col s12">Test 1</div>
-		<div id="test2" class="col s12">Test 2</div>
-		<div id="test3" class="col s12">Test 3</div>
-		<div id="test4" class="col s12">Test 4</div>
+		<div class="modal-footer">
+			<a href="#all" class="waves-effect teal-text btn-flat modal-action modal-close">Close</a>
+		</div>
+	</div>
+	
+
+	<nav>
+		<div class="nav-wrapper white">
+			<div class="container">
+				<ul class="left">
+					<li><a class="teal-text waves-effect modal-trigger-info-popup" href="#info-popup">Info</a>
+				</ul>
+				<ul class="right">
+					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-formats">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-nav">Colors<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<div id="all">
+			<div class="card" style="background-color: #f44336;">
+				<div class="card-content">
+					<span class="card-title">Red 500</span>
+					<p class="white-text">#f44336</p> <a class="waves-effect waves-light btn teal white-text right" target="_blank" href="javascript:window.clipboardData.setData("format", text);"><i class="mdi-content-content-copy"></i></a>
+				</div>
+			</div>
+		</div>
 	</div>
 
-
-		<div id="color-picker" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Color Picker</span>
-				<p>View and pick from all of the colors in the Material Design color palette. Copy directly to your clipboard, in the format that best suits your needs.</p>
-			</div>
-			<div class="card-action">
-				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.materialui.co/">Material UI</a>
-			</div>
-		</div>
-	</div>
 
 	<!-- Footer -->
 	<footer id="footer" class="page-footer blue lighten-2">
@@ -79,7 +128,7 @@
 			<div class="row grey-text text-lighten-4">
 				<div class="col s4">
 					<div class="row valign-wrapper card-panel z-depth-1 team-card ">
-						<div class="col s3">
+						<div class="col s3 team-img">
 							<img src="/images/.png" alt="" class="circle responsive-img team-img">
 						</div>
 						<div class="col s9 team-text">
@@ -89,7 +138,7 @@
 				</div>
 				<div class="col s4">
 					<div class="row valign-wrapper card-panel z-depth-1 team-card corbin">
-						<div class="col s3">
+						<div class="col s3 team-img">
 							<img src="/images/corbin.png" alt="" class="circle responsive-img team-img">
 						</div>
 						<div class="col s9 team-text">
@@ -99,7 +148,7 @@
 				</div>
 				<div class="col s4">
 					<div class="row valign-wrapper card-panel z-depth-1 team-card evelyn">
-						<div class="col s3">
+						<div class="col s3 team-img">
 							<img src="/images/evelyn.png" alt="" class="circle responsive-img team-img">
 						</div>
 						<div class="col s9 team-text">

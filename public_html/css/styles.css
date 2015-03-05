@@ -78,9 +78,8 @@ nav .brand-logo {
 }
 }
 
-
-/* Tabs */
-.tabs-top {
-	margin-top: 15px;
-	width: 100%;
+/* Temp Changes */
+/* Modal: Should Change In Update */
+.modal-footer {
+	border-radius: 2px;
 }
