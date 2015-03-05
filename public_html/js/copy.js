@@ -1,19 +1,17 @@
-// main.js
-  var client = new ZeroClipboard( $('.clip_button') );
+ZeroClipboard.config({
+    forceHandCursor: true
+});
 
-      client.on( 'ready', function(event) {
-        // console.log( 'movie is loaded' );
+var client = new ZeroClipboard($(".clip_button[data-clipboard-text]"));
 
-        client.on( 'copy', function(event) {
-          event.clipboardData.setData('text/plain', event.target.innerHTML);
-        } );
+client.on("error", function(e) {
+    console.log("ERROR! [" + e.name + "] " + e.message);
+});
 
-        client.on( 'aftercopy', function(event) {
-          console.log('Copied text to clipboard: ' + event.data['text/plain']);
-        } );
-      } );
+client.on("ready", function(e) {
+    console.log("Ready!");
 
-      client.on( 'error', function(event) {
-        // console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
-        ZeroClipboard.destroy();
-      } );
+    client.on("aftercopy", function(e) {
+        console.log((e.success["text/plain"] ? "Copied" : "FAILED to copy") + ": " + e.data["text/plain"]);
+    });
+});
