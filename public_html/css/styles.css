@@ -37,6 +37,9 @@ nav .brand-logo {
 	margin-right: 0.5% !important;
 	margin-left: 0.5% !important;
 }
+.team-text-a {
+	font-weight: 600;
+}
 
 /* Team Size Dependant */
 @media only screen and (max-width: 1350px){
