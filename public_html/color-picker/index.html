@@ -19,7 +19,7 @@
 	<body>
 	<nav class="blue lighten-2">
 	<div class="nav-wrapper">
-		<a href="/" class="brand-logo">Material Colorize</a>
+		<a href="/" class="brand-logo">Color Picker - Material Colorize</a>
 		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 		<ul class="right hide-on-med-and-down">
 			<li><a class="waves-effect" target="_blank" href="http://www.materialui.co/">Color Picker</a></li>
@@ -43,7 +43,24 @@
 	</nav>
 
 	<!-- Body Content -->
-	<div class="container">
+	<div id="background" class="container">
+
+	<div class="row">
+		<div class="col s12">
+			<ul class="tabs">
+				<li class="tab col s3"><a class="active" href="#test1">All</a></li>
+				<li class="tab col s3"><a href="#test2">Red</a></li>
+				<li class="tab col s3"><a href="#test3">Pink</a></li>
+				<li class="tab col s3"><a href="#test4">Purple</a></li>
+			</ul>
+		</div>
+		<div id="test1" class="col s12">Test 1</div>
+		<div id="test2" class="col s12">Test 2</div>
+		<div id="test3" class="col s12">Test 3</div>
+		<div id="test4" class="col s12">Test 4</div>
+	</div>
+
+
 		<div id="color-picker" class="card">
 			<div class="card-content">
 				<span class="card-title grey-text text-darken-4">Color Picker</span>
@@ -51,66 +68,6 @@
 			</div>
 			<div class="card-action">
 				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.materialui.co/">Material UI</a>
-			</div>
-		</div>
-
-		<div id="color-palette" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Color Palette Creator</span>
-				<p>Pick a couple of colors and create your application's palatte from the Material Design color palette.</p>
-			</div>
-			<div class="card-action">
-				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.materialpalette.com/">Material Palette</a>
-			</div>
-		</div>
-
-		<div id="convert-colors" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Convert to Material Design Colors</span>
-				<p>Convert a hex, rgb code, or SVG to the colors in the Material Design color palette. Copy directly to your clipboard or download the converted SVG.</p>
-			</div>
-			<div class="card-action">
-				<a class="btn disabled right">Coming Soon</a>
-			</div>
-		</div>
-
-		<div id="color-switch" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Color Switcher</span>
-				<p>Switch around the colors in your color palette. View all of the Material Design color palettes on your SVG.</p>
-			</div>
-			<div class="card-action">
-				<a class="btn disabled right">Coming Soon</a>
-			</div>
-		</div>
-
-		<div id="color-ref" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Color Reference</span>
-				<p>Don't know where the colors belong? No problem. View where the colors belong in a simple application.</p>
-			</div>
-			<div class="card-action">
-				<a class="btn disabled right">Coming Soon</a>
-			</div>
-		</div>
-
-		<div id="material-design-community" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Material Design Community</span>
-				<p>Have a question about Material Design, help out others with their applications, or just browse the apps or reference pages? Feel free to vist MaterialDesignCommunity.com, also by us.</p>
-			</div>
-			<div class="card-action">
-				<a class="btn disabled right">Coming Soon</a>
-			</div>
-		</div>
-
-		<div id="google-spec-sheet" class="card">
-			<div class="card-content">
-				<span class="card-title grey-text text-darken-4">Material Design Spec Sheet</span>
-				<p>You can see Google's original Material Design Spec Sheet here.</p>
-			</div>
-			<div class="card-action">
-				<a class="waves-effect waves-light btn white-text right" target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a>
 			</div>
 		</div>
 	</div>
