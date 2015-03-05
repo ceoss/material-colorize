@@ -32,20 +32,18 @@ nav .brand-logo {
 }
 
 
-/* Footer Size Dependant */
-@media only screen and (max-width: 1500px){
-.row .col.s4 {
-	width: 100%;
-}
-}
-
-
 /* Team */
 .team-card {
 	margin-right: 0.5% !important;
 	margin-left: 0.5% !important;
 }
 
+/* Team Size Dependant */
+@media only screen and (max-width: 1350px){
+.row .col.s4 {
+	width: 100%;
+}
+}
 @media only screen and (max-width: 450px){
 .team-img {
 	display: none;
