@@ -12,7 +12,7 @@ red-A100 #ff8a80
 red-A200 #ff5252
 red-A400 #ff1744
 red-A700 #d50000
-pink-500 #d50000
+pink-500 #e91e63
 pink-50 #fce4ec
 pink-100 #f8bbd0
 pink-200 #f48fb1

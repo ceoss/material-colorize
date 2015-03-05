@@ -10,10 +10,17 @@ def create()
 	$colors.each do |color|
 		colorID = $colors.index(color)
 		colorName = $colorNames.fetch(colorID)
+		colorNoPound = color.gsub(/#/,"")
+		colorAlpha = color.gsub(/$/,"ff")
+		colorAlphaWithoutPound = color.gsub(/#/,"").gsub(/$/,"ff")
+		colorRGB = color.gsub(/#(..)(..)(..)/) {|m| "rgb(#{$1.hex},#{$2.hex},#{$3.hex})"}
+		colorRGBNoFormatting = color.gsub(/#(..)(..)(..)/) {|m| "#{$1.hex},#{$2.hex},#{$3.hex}"}
+		colorRGBA = color.gsub(/#(..)(..)(..)/) {|m| "rgb(#{$1.hex},#{$2.hex},#{$3.hex},1)"}
+		colorRGBANoFormatting = color.gsub(/#(..)(..)(..)/) {|m| "#{$1.hex},#{$2.hex},#{$3.hex},1"}
 		correctColorName = colorName.gsub(/-/," ").gsub(/(\w+)/) {|w| w.capitalize}
 		File.open("template.html", "r") do |input|
 			while line = input.gets do
-				$buffer << line.gsub(/#f44336/i,color).gsub(/red-500/,colorName).gsub(/Red 500/,correctColorName)
+				$buffer << line.gsub(/#f44336/i,colorRGBANoFormatting).gsub(/red-500/,colorName).gsub(/Red 500/,correctColorName)
 			end
 		end
 	end
