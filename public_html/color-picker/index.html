@@ -85,6 +85,20 @@
 		<li><a class="waves-effect" href="javascript:formatSwitcher('rgba-with-formatting');">rgba(0,0,0,0)</a></li>
 		<li><a class="waves-effect" href="javascript:formatSwitcher('rgba-without-formatting');">0,0,0,0</a></li>
 	</ul>
+	<!-- 
+	<ul id="color-picker-set" class="dropdown-content">
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-with-pound');">#DACODE</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-without-pound');">DACODE</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-alpha-with-pound');">#DACODEAA</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-alpha-without-pound');">DACODEAA</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgb-with-formatting');">rgb(0,0,0)</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgb-without-formatting');">0,0,0</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgba-with-formatting');">rgba(0,0,0,0)</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgba-without-formatting');">0,0,0,0</a></li>
+	</ul> -->
 	<!-- Modal Data Template -->
 	<div id="info-popup" class="modal modal-fixed-footer">
 		<div class="modal-content">
@@ -105,6 +119,7 @@
 				</ul>
 				<ul class="right">
 					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-formats">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+					<li><a class="dropdown-button teal-text waves-effect" href="javascript:comingSoonDialog()" data-activates="color-picker-set">Set<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
 					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-nav">Colors<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
 				</ul>
 			</div>
@@ -1734,7 +1749,7 @@
 	</div>
 
 	<!-- Floating Action Button (Fixed) -->
-	<div class="fixed-action-btn" style="bottom: 0px; right: 24px;"><a class="btn-floating btn-large waves-effect waves-light teal" href="#"><i class="mdi mdi-arrow-up"></i></a></div>
+	<div class="fixed-action-btn" style="bottom: 0px; right: 24px;"><a class="btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="left" data-delay="25" data-tooltip="Back to Top" href="#"><i class="mdi mdi-arrow-up"></i></a></div>
 
 
 	<!-- Footer -->
