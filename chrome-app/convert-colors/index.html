@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="theme-color" content="#64b5f6">
+		<title>Convert Colors - Material Colorize</title>
+		<link type="text/css" rel="stylesheet" href="/lib/bower_components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
+		<link rel="stylesheet" href="/lib/bower_components/mdi/css/materialdesignicons.css">
+		<link rel="icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<script src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
+		<script>
+			$( document ).ready(function() {
+			$('.modal-trigger-info-popup').leanModal();
+			$(".button-collapse").sideNav();
+			$(".dropdown-button").dropdown();
+			});
+		</script>
+		<script src="/js/formatSwitcher-convertColors.js"></script>
+		<script src="/js/comingSoonDialog.js"></script>
+	</head>
+	<body>
+	<nav class="blue lighten-2">
+	<div class="nav-wrapper">
+		<a href="/" class="brand-logo waves-effect waves-light">Material Colorize</a>
+		<a href="#" data-activates="side-nav-moblie" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+		<ul class="right hide-on-med-and-down">
+			<li><a class="waves-effect" href="/color-picker/">Color Picker</a></li>
+			<li><a class="waves-effect" target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
+			<li><a class="waves-effect blue lighten-1" href="javascript:comingSoonDialog()">Convert Colors</a></li>
+			<li><a class="waves-effect" href="javascript:comingSoonDialog()">Color Switcher</a></li>
+			<li><a class="waves-effect" href="javascript:comingSoonDialog()">Color Reference</a></li>
+			<li><a class="waves-effect" href="javascript:comingSoonDialog()">Community</a></li>
+			<li><a class="waves-effect" target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></li>
+		</ul>
+		<ul class="side-nav" id="side-nav-moblie">
+			<li class="waves-effect"><a href="/color-picker/">Color Picker</a></li>
+			<li class="waves-effect"><a target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
+			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Convert Colors</a></li>
+			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Color Switcher</a></li>
+			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Color Reference</a></li>
+			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Community</a></li>
+			<li class="waves-effect"><a target="_blank" href="http://www.google.com/design/spec/material-design/introduction.html">Spec Sheet</a></li>
+		</ul>
+	</div>
+	</nav>
+
+	<!-- Body Content -->
+	<!-- Dropdown Data Templates -->
+	<ul id="color-picker-formats" class="dropdown-content">
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-with-pound');">#DACODE</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-without-pound');">DACODE</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-alpha-with-pound');">#DACODEAA</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-alpha-without-pound');">DACODEAA</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgb-with-formatting');">rgb(0,0,0)</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgb-without-formatting');">0,0,0</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgba-with-formatting');">rgba(0,0,0,0)</a></li>
+		<li><a class="waves-effect" href="javascript:formatSwitcher('rgba-without-formatting');">0,0,0,0</a></li>
+	</ul>
+	<!-- Modal Data Template -->
+	<div id="info-popup" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4>Convert Colors Info</h4>
+			<p>Remind me to fill in when complete.</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="waves-effect teal-text btn-flat modal-action modal-close">Close</a>
+		</div>
+	</div>
+	
+
+	<nav>
+		<div class="nav-wrapper white">
+			<div class="container nav-container">
+				<ul class="left">
+					<li><a class="teal-text waves-effect modal-trigger-info-popup" href="#info-popup">Info</a>
+				</ul>
+				<ul class="right">
+					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-formats">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		
+	</div>
+		
+
+	<!-- Floating Action Button (Fixed) -->
+	<div class="fixed-action-btn" style="bottom: 0px; right: 24px;"><a class="btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="left" data-delay="25" data-tooltip="Back to Top" href="#"><i class="mdi mdi-arrow-up"></i></a></div>
+
+
+	<!-- Footer -->
+	<footer id="footer" class="page-footer blue lighten-2">
+		<div class="container">
+			<h5 class="white-text">Meet the Team:</h5>
+			<div class="row grey-text text-lighten-4">
+				<div class="col s4">
+					<div class="row valign-wrapper card-panel z-depth-1 team-card ">
+						<div class="col s3 team-img">
+							<img src="/images/.png" alt="" class="circle responsive-img team-img">
+						</div>
+						<div class="col s9 team-text">
+							<span class="black-text team-text-span"><a class="team-text-a" href="https://plus.google.com/u/0/+/">+ </a> <p class="team-text-p">.</p></span>
+						</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row valign-wrapper card-panel z-depth-1 team-card corbin">
+						<div class="col s3 team-img">
+							<img src="/images/corbin.png" alt="" class="circle responsive-img team-img">
+						</div>
+						<div class="col s9 team-text">
+							<span class="black-text team-text-span"><a class="team-text-a" href="https://plus.google.com/u/0/+CorbinCrutchley/">+Corbin Crutchley</a> <p class="team-text-p">I'm a nut about design, Linux, Android, programming, music, and tech.</p></span>
+						</div>
+					</div>
+				</div>
+				<div class="col s4">
+					<div class="row valign-wrapper card-panel z-depth-1 team-card evelyn">
+						<div class="col s3 team-img">
+							<img src="/images/evelyn.png" alt="" class="circle responsive-img team-img">
+						</div>
+						<div class="col s9 team-text">
+							<span class="black-text team-text-span"><a class="team-text-a" href="https://plus.google.com/u/0/+EvelynHathaway/">+Evelyn Hathaway</a> <p class="team-text-p">I'm a Tech Enthusiast, Web Developer, and Graphic Designer.</p></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright blue lighten-1">
+			<div class="container truncate">
+			&copy; 2015 XorTech Group | All Rights Reserved
+			<a class="grey-text text-lighten-4 right" href="javascript:comingSoonDialog()">More Sites</a>
+			</div>
+		</div>
+	</footer>
+	<!-- Scripts -->
+	<script type="text/javascript" src="/lib/bower_components/materialize/dist/js/materialize.min.js"></script>
+	<script src="/lib/bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
+	<script src="/js/copy.js"></script>
+	</body>
+</html>

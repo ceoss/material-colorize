@@ -1,0 +1,123 @@
+body {
+	background-color: #f9f9f9;
+}
+
+
+/* NavBar Size Dependant */
+@media only screen and (min-width: 993px){
+nav .brand-logo {
+	margin-left: 30px;
+}
+}
+@media only screen and (min-width: 993px) and (max-width: 1090px){
+body > nav > div > ul.right.hide-on-med-and-down > li:nth-child(7) {
+	display: none;
+}
+}
+@media only screen and (max-width: 459px) and (min-width: 397px){
+nav .brand-logo {
+	font-size: 1.8rem;
+}
+}
+@media only screen and (max-width: 396px) and (min-width: 334px){
+nav .brand-logo {
+	font-size: 1.5rem;
+}
+}
+@media only screen and (max-width: 333px){
+nav .brand-logo {
+	font-size: 1rem;
+}
+}
+
+
+/* Side Nav */
+.side-nav > li {
+	width: 100%;
+	padding: 0 !important;
+}
+.side-nav > li > a {
+	width: 100%;
+	padding-left: 30px; 
+	padding-right: 30px;
+}
+
+
+/* Team */
+.team-card {
+	margin-right: 0.5% !important;
+	margin-left: 0.5% !important;
+}
+.team-text-a {
+	font-weight: 600;
+}
+
+/* Team Size Dependant */
+@media only screen and (max-width: 1350px){
+.row .col.s4 {
+	width: 100%;
+}
+}
+@media only screen and (max-width: 450px){
+.team-img {
+	display: none;
+}
+.team-text {
+	width: 100%;
+}
+.team-text-p, .team-text-a {
+	color: #fff;
+}
+.team-card {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% auto
+}
+.team-card.evelyn {
+	background-image: url('/images/evelyn.png');
+}
+.team-card. {
+	background-image: url('/images/.png');
+}
+.team-card.corbin {
+	background-image: url('/images/corbin.png');
+}
+}
+
+/* Temp Changes */
+/* Modal: Should Change In Update */
+.modal-footer {
+	border-radius: 2px;
+}
+
+
+/* Color Picker */
+.color-picker-copy {
+	margin-right: 0px !important;
+	margin-bottom: 20px;
+	padding-right: 7px;
+	padding-left: 7px;
+}
+
+
+/* ToolBar Nav */
+@media only screen and (max-width: 492px){
+.container.nav-container {
+	width: 100%;
+	padding: 0;
+}
+}
+@media only screen and (max-width: 403px){
+.container.nav-container > ul > li > a {
+	font-size: small;
+	letter-spacing: -1px;
+}
+}
+@media only screen and (max-width: 370px){
+.container.nav-container > ul > li > a {
+	font-size: small;
+	letter-spacing: -1px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+}
