@@ -1,0 +1,17 @@
+{
+	"name": "Material Colorize",
+	"description": " Color Tools for Material Design.",
+	"version": "1.0",
+	"manifest_version": 2,
+	"app": {
+		"urls": [
+			"http://materialcolorize.com/"
+		],
+		"launch": {
+			"web_url": "http://materialcolorize.com/"
+		}
+	},
+	"icons": { "16": "material-colorize-16.png", "128": "material-colorize-128.png" },
+	"offline_enabled": false,
+	"minimum_chrome_version": "35"
+}
