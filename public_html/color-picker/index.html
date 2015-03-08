@@ -18,6 +18,7 @@
 		</script>
 		<script src="/js/formatSwitcher-colorPicker.js"></script>
 		<script src="/js/colorSwitcher.js"></script>
+		<script src="/js/setSwitcher.js"></script>
 		<script src="/js/comingSoonDialog.js"></script>
 	</head>
 	<body>
@@ -72,6 +73,26 @@
 		<li><a class="waves-effect" href="javascript:colorSwitcher('blue-grey');">Blue Grey</a></li>
 		<li><a class="waves-effect" href="javascript:colorSwitcher('bnw');">Black &amp; White</a></li>
 	</ul>
+	<ul id="color-picker-set" class="dropdown-content">
+		<li><a class="waves-effect" href="javascript:setSwitcher('all');">All</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('500');">500</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('50');">50</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('100');">100</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('200');">200</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('300');">300</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('400');">400</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('600');">600</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('700');">700</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('800');">800</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('900');">900</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('1000');">1000</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('A100');">A100</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('A200');">A200</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('A400');">A400</a></li>
+		<li><a class="waves-effect" href="javascript:setSwitcher('A700');">A700</a></li>
+	</ul>
 	<ul id="color-picker-formats" class="dropdown-content">
 		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-with-pound');">#DACODE</a></li>
 		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-without-pound');">DACODE</a></li>
@@ -105,7 +126,7 @@
 				</ul>
 				<ul class="right">
 					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-formats">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-					<li><a class="dropdown-button teal-text waves-effect" href="javascript:comingSoonDialog()" data-activates="color-picker-set">Set<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-set">Set<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
 					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-nav">Colors<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
 				</ul>
 			</div>
@@ -1295,8 +1316,8 @@
 			</div>
 			<div class="card" id="amber-200" style="background-color: #ffe082;">
 				<div class="card-content">
-					<div class="card-title white-text" id="amber-200-header">Amber 200</div>
-					<p class="white-text" id="amber-200-p">#ffe082</p><p><a class="waves-effect waves-light btn-flat white-text right color-picker-copy clip_button" id="amber-200-a" data-clipboard-text="#ffe082" href="#!"><i class="mdi-content-content-copy"></i></a></p> 
+					<div class="card-title black-text" id="amber-200-header">Amber 200</div>
+					<p class="black-text" id="amber-200-p">#ffe082</p><p><a class="waves-effect waves-light btn-flat black-text right color-picker-copy clip_button" id="amber-200-a" data-clipboard-text="#ffe082" href="#!"><i class="mdi-content-content-copy"></i></a></p> 
 				</div>
 			</div>
 			<div class="card" id="amber-300" style="background-color: #ffd54f;">
@@ -1667,7 +1688,7 @@
 					<p class="white-text" id="grey-900-p">#212121</p><p><a class="waves-effect waves-light btn-flat white-text right color-picker-copy clip_button" id="grey-900-a" data-clipboard-text="#212121" href="#!"><i class="mdi-content-content-copy"></i></a></p> 
 				</div>
 			</div>
-			<div class="divider" style="margin: 50px 0"></div>
+			<div class="divider" id="color-ref-grey-divider" style="margin: 50px 0; display: none;"></div>
 			<div id="color-ref-grey" style="display: none;">
 				<div class="card">
 					<div class="card-content">
@@ -1761,7 +1782,7 @@
 					<p class="black-text" id="white-1000-p">#ffffff</p><p><a class="waves-effect waves-light btn-flat black-text right color-picker-copy clip_button" id="white-1000-a" data-clipboard-text="#ffffff" href="#!"><i class="mdi-content-content-copy"></i></a></p> 
 				</div>
 			</div>
-			<div class="divider" style="margin: 50px 0"></div>
+			<div class="divider" id="color-ref-bnw-divider" style="margin: 50px 0; display: none;"></div>
 			<div id="color-ref-bnw" style="display: none;">
 				<div class="card">
 					<div class="card-content">

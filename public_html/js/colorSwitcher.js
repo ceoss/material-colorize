@@ -438,6 +438,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("orange").style.display = "none";
 		document.getElementById("deep-orange").style.display = "none";
 		document.getElementById("brown").style.display = "none";
+		document.getElementById("color-ref-grey-divider").style.display = "initial";
 		document.getElementById("grey").style.display = "none";
 		document.getElementById("blue-grey").style.display = "initial";
 		document.getElementById("bnw").style.display = "none";
@@ -463,6 +464,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("grey").style.display = "none";
 		document.getElementById("blue-grey").style.display = "none";
 		document.getElementById("bnw").style.display = "initial";
+		document.getElementById("color-ref-bnw-divider").style.display = "initial";
 		document.getElementById("color-ref-bnw").style.display = "initial";
 	};
 }
