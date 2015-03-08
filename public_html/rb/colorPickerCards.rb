@@ -21,7 +21,7 @@ def create()
 		correctColorName = colorName.gsub(/-/," ").gsub(/(\w+)/) {|w| w.capitalize}
 		File.open("template.html", "r") do |input|
 			while line = input.gets do
-				$buffer << line.gsub(/#f44336/i,color).gsub(/red-500/,colorName).gsub(/Red 500/,correctColorName) #change color type in first gsub
+				$buffer << line.gsub(/#f44336/i,colorRGBNoFormatting).gsub(/red-500/,colorName).gsub(/Red 500/,correctColorName) #change color type in first gsub
 			end
 		end
 	end

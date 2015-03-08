@@ -28,7 +28,7 @@
 		<ul class="right hide-on-med-and-down">
 			<li><a class="waves-effect" href="/color-picker/">Color Picker</a></li>
 			<li><a class="waves-effect" target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
-			<li><a class="waves-effect blue lighten-1" href="javascript:comingSoonDialog()">Convert Colors</a></li>
+			<li><a class="waves-effect blue lighten-1" href="/convert-colors/">Convert Colors</a></li>
 			<li><a class="waves-effect" href="javascript:comingSoonDialog()">Color Switcher</a></li>
 			<li><a class="waves-effect" href="javascript:comingSoonDialog()">Color Reference</a></li>
 			<li><a class="waves-effect" href="javascript:comingSoonDialog()">Community</a></li>
@@ -37,7 +37,7 @@
 		<ul class="side-nav" id="side-nav-moblie">
 			<li class="waves-effect"><a href="/color-picker/">Color Picker</a></li>
 			<li class="waves-effect"><a target="_blank" href="http://www.materialpalette.com/">Palette Creator</a></li>
-			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Convert Colors</a></li>
+			<li class="waves-effect"><a href="/convert-colors/">Convert Colors</a></li>
 			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Color Switcher</a></li>
 			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Color Reference</a></li>
 			<li class="waves-effect"><a href="javascript:comingSoonDialog()">Community</a></li>
@@ -89,7 +89,72 @@
 
 	<div class="container">
 		<div class="card">
-			<button onclick="javascript:hexColorToMaterial('#4587ff')">Click Me</button>
+			<div class="row">
+				<div class="container" style="width: 95%;">
+					<div class="col s6">
+						<div class="card" id="start-color-card" style="height: 300px; margin-top: 5%;"></div>
+						<div class="input-field">
+							<input id="start-color" type="text"></input>
+							<label for="start-color">Your Color</label>
+						</div>
+					</div>
+					<div class="col s6">
+						<div class="card" id="end-color-card" style="height: 300px; margin-top: 5%;"></div>
+						<div class="input-field">
+							<input id="end-color" type="text" value="Enter your color first."></input>
+							<label for="end-color">Material Color</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="center-parent" style="margin-bottom: 50px;">
+				<a class="waves-effect waves-light btn white-text center-child" href="javascript:hexColorToMaterial()">Convert</a>
+			</div>
+			<div class="row">
+				<div class="container" style="width: 95%;">
+					<div class="col s6">
+						<div class="card" id="more-info-card" style="height: 300px; margin-top: 5%;">
+							<div class="card-content">
+								<span class="card-title grey-text text-darken-4">Copy Color:</span>
+								<p></p>
+							</div>
+							<div class="card-action">
+								<a class="btn right white-text" id="color-link" style="display: none;"></a>
+							</div>
+						</div>
+					</div>
+					<div class="col s6">
+						<div class="card" id="end-color-data-card" style="height: 300px; margin-top: 5%;">
+							<div class="card-content">
+								<span class="card-title grey-text text-darken-4">Color Data:</span>
+								<table class="hoverable responsive-table">
+									<thead>
+										<tr>
+											<th data-field="type">Type</th>
+											<th data-field="data">Data</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>Name:</td>
+											<td id="name-data"></td>
+										</tr>
+										<tr>
+											<td>By:</td>
+											<td id="by-data"></td>
+										</tr>
+										<tr>
+											<td>rgb():</td>
+											<td id="rgb-data"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 		
