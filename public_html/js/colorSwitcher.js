@@ -9,6 +9,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "initial";
 		document.getElementById("light-blue").style.display = "initial";
 		document.getElementById("cyan").style.display = "initial";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "initial";
 		document.getElementById("light-green").style.display = "initial";
 		document.getElementById("lime").style.display = "initial";
@@ -30,6 +31,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -51,6 +53,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -72,6 +75,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -93,6 +97,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -114,6 +119,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -135,6 +141,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "initial";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -154,8 +161,9 @@ function colorSwitcher(newColor) {
 		document.getElementById("deep-purple").style.display = "none";
 		document.getElementById("indigo").style.display = "none";
 		document.getElementById("blue").style.display = "none";
-		document.getElementById("light-blue").style.display = "none";
+		document.getElementById("light-blue").style.display = "initial";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -177,6 +185,30 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "initial";
+		document.getElementById("teal").style.display = "none";
+		document.getElementById("green").style.display = "none";
+		document.getElementById("light-green").style.display = "none";
+		document.getElementById("lime").style.display = "none";
+		document.getElementById("yellow").style.display = "none";
+		document.getElementById("amber").style.display = "none";
+		document.getElementById("orange").style.display = "none";
+		document.getElementById("deep-orange").style.display = "none";
+		document.getElementById("brown").style.display = "none";
+		document.getElementById("grey").style.display = "none";
+		document.getElementById("blue-grey").style.display = "none";
+		document.getElementById("bnw").style.display = "none";
+	} else if (newColor==="teal"){
+		document.getElementById("all").style.display = "none";
+		document.getElementById("red").style.display = "none";
+		document.getElementById("pink").style.display = "none";
+		document.getElementById("purple").style.display = "none";
+		document.getElementById("deep-purple").style.display = "none";
+		document.getElementById("indigo").style.display = "none";
+		document.getElementById("blue").style.display = "none";
+		document.getElementById("light-blue").style.display = "none";
+		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
+		document.getElementById("teal").style.display = "initial";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -198,6 +230,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "initial";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -219,6 +252,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "initial";
 		document.getElementById("lime").style.display = "none";
@@ -240,6 +274,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "initial";
@@ -261,6 +296,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -282,6 +318,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -303,6 +340,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -324,6 +362,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -345,6 +384,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -366,6 +406,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -377,6 +418,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("grey").style.display = "initial";
 		document.getElementById("blue-grey").style.display = "none";
 		document.getElementById("bnw").style.display = "none";
+		document.getElementById("color-ref-grey").style.display = "initial";
 	} else if (newColor==="blue-grey"){
 		document.getElementById("all").style.display = "none";
 		document.getElementById("red").style.display = "none";
@@ -387,6 +429,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -408,6 +451,7 @@ function colorSwitcher(newColor) {
 		document.getElementById("blue").style.display = "none";
 		document.getElementById("light-blue").style.display = "none";
 		document.getElementById("cyan").style.display = "none";
+		document.getElementById("teal").style.display = "none";
 		document.getElementById("green").style.display = "none";
 		document.getElementById("light-green").style.display = "none";
 		document.getElementById("lime").style.display = "none";
@@ -419,5 +463,6 @@ function colorSwitcher(newColor) {
 		document.getElementById("grey").style.display = "none";
 		document.getElementById("blue-grey").style.display = "none";
 		document.getElementById("bnw").style.display = "initial";
+		document.getElementById("color-ref-bnw").style.display = "initial";
 	};
 }
