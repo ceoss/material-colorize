@@ -17,6 +17,7 @@ def create()
 		colorRGBNoFormatting = color.gsub(/#(..)(..)(..)/) {|m| "#{$1.hex},#{$2.hex},#{$3.hex}"}
 		colorRGBA = color.gsub(/#(..)(..)(..)/) {|m| "rgba(#{$1.hex},#{$2.hex},#{$3.hex},1)"}
 		colorRGBANoFormatting = color.gsub(/#(..)(..)(..)/) {|m| "#{$1.hex},#{$2.hex},#{$3.hex},1"}
+		colorRGBSpace = color.gsub(/#(..)(..)(..)/) {|m| "#{$1.hex} #{$2.hex} #{$3.hex}"}
 		correctColorName = colorName.gsub(/-/," ").gsub(/(\w+)/) {|w| w.capitalize}
 		File.open("template.html", "r") do |input|
 			while line = input.gets do
