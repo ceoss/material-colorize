@@ -48,7 +48,7 @@ function hexColorToMaterial() {
 	document.getElementById("end-color").value = closestMaterialHex;
 	document.getElementById("end-color-card").style.backgroundColor = closestMaterialHex;
 	document.getElementById("name-data").innerHTML = closestMaterialCorrectName;
-	document.getElementById("by-data").innerHTML = closestMaterial;
+	document.getElementById("delta-data").innerHTML = closestMaterial;
 	document.getElementById("rgb-data").innerHTML = closestMaterialRGB;
 	document.getElementById("color-link").href = "/color-picker/#" + closestMaterialName;
 	document.getElementById("color-link").style.display = "initial";
@@ -56,6 +56,7 @@ function hexColorToMaterial() {
 	document.getElementById("end-color-copy").style.display = "initial";
 	document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialHex);
 	document.getElementById("end-color-copy-button").style.display = "initial";
+	document.getElementById("end-color-copy-action").style.display = "block";
 	document.getElementById("formats").style.display = "block";
 }
 

@@ -13,7 +13,10 @@
 			$( document ).ready(function() {
 			$('.modal-trigger-info-popup').leanModal();
 			$(".button-collapse").sideNav();
-			$(".dropdown-button").dropdown();
+			$('.dropdown-button').dropdown({
+				hover: false, // Activate on click
+				}
+			);
 			});
 		</script>
 		<script src="/js/colorConvert.js"></script>
@@ -64,7 +67,14 @@
 	<div id="info-popup" class="modal modal-fixed-footer">
 		<div class="modal-content">
 			<h4>Convert Colors Info</h4>
-			<p>Remind me to fill in when complete.</p>
+			<h5>Description:</h5>
+			<p>This tool is for converting any color (currently only in the three or six digit hex format) to the closest color in the Material Design color palette. You can switch the output format to any other color format with the "Formats" dropdown.</p>
+			<h5>Instructions:</h5>
+			<ul>
+				<li>Enter the not Material Design color in the "Your Color" input field.</li>
+				<li>Press "Convert" or hit "Enter" or "Return".</li>
+				<li>Copy to clipboard by pressing the button with the copy icon or press the eyedropper to navigate to color on the Color Picker's page.</li>
+			</ul>
 		</div>
 		<div class="modal-footer">
 			<a href="#" class="waves-effect teal-text btn-flat modal-action modal-close">Close</a>
@@ -74,7 +84,7 @@
 
 	<nav>
 		<div class="nav-wrapper white">
-			<div class="container nav-container">
+			<div class="container nav-container-static">
 				<ul class="left">
 					<li><a class="teal-text waves-effect modal-trigger-info-popup" href="#info-popup">Info</a>
 				</ul>
@@ -110,11 +120,11 @@
 					<div class="col s6">
 						<div class="card" id="more-info-card" style="height: 300px; margin-top: 5%;">
 							<div class="card-content">
-								<div class="card-title grey-text text-darken-4">Copy Color:</div>
+								<div class="card-title grey-text text-darken-4" style="margin-bottom: 20px;">Copy Color:</div>
 								<p id="end-color-copy" style="display: none;"></p>
 								<a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-convert-formats" id="formats" style="display: none; margin-top: 20px; padding: 1rem 1rem;">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a>
 							</div>
-							<div class="card-action">
+							<div class="card-action" style="display: none;" id="end-color-copy-action">
 								<a class="btn right white-text waves-effect waves-light" id="color-link" style="display: none;"><i class="mdi mdi-eyedropper"></i></a>
 								<a class="waves-effect waves-light btn white-text right color-convert-copy clip_button" id="end-color-copy-button" data-clipboard-text="" href="#!" style="display: none;"><i class="mdi mdi-content-copy"></i></a>
 							</div>
@@ -123,7 +133,7 @@
 					<div class="col s6">
 						<div class="card" id="end-color-data-card" style="height: 300px; margin-top: 5%;">
 							<div class="card-content">
-								<span class="card-title grey-text text-darken-4">Color Data:</span>
+								<div class="card-title grey-text text-darken-4">Color Data:</div>
 								<table class="hoverable responsive-table">
 									<thead>
 										<tr>
@@ -133,16 +143,16 @@
 									</thead>
 
 									<tbody>
-										<tr>
+										<tr class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Name of Color">
 											<td>Name:</td>
 											<td id="name-data"></td>
 										</tr>
-										<tr>
-											<td>By:</td>
-											<td id="by-data"></td>
+										<tr class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="How Close to Original">
+											<td>Delta:</td>
+											<td id="delta-data"></td>
 										</tr>
-										<tr>
-											<td>rgb():</td>
+										<tr class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="RGB Value">
+											<td>RGB:</td>
 											<td id="rgb-data"></td>
 										</tr>
 									</tbody>
