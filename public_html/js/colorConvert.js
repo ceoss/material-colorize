@@ -13,6 +13,7 @@ function hexToRgb(hex) {
 	} : null;
 }
 
+
 function hexColorToMaterial() {
 	var color = document.getElementById("start-color").value;
 	document.getElementById("start-color-card").style.backgroundColor = color;
@@ -32,18 +33,56 @@ function hexColorToMaterial() {
 		var materialBlue = Number(materialColor[3]);
 		compareResult[i] = Math.abs(materialRed - red) + Math.abs(materialGreen - green) + Math.abs(materialBlue - blue);
 	}
-	var closestMaterial = Math.min.apply(Math, compareResult);
-	var closestMaterialID = compareResult.indexOf(closestMaterial);
-	var closestMaterialHex = materialDataHex[closestMaterialID];
-	var closestMaterialName = materialDataNames[closestMaterialID];
-	var closestMaterialCorrectName = materialDataCorrectNames[closestMaterialID];
-	var closestMaterialRGB = materialDataRGB[closestMaterialID];
+	closestMaterial = Math.min.apply(Math, compareResult);
+	closestMaterialID = compareResult.indexOf(closestMaterial);
+	closestMaterialHex = materialDataHex[closestMaterialID];
+	closestMaterialName = materialDataNames[closestMaterialID];
+	closestMaterialCorrectName = materialDataCorrectNames[closestMaterialID];
+	closestMaterialRGB = materialDataRGB[closestMaterialID];
+	closestMaterialHexNoPound = closestMaterialHex.replace("#", "");
+	closestMaterialHexAlpha = closestMaterialHex  + "ff";
+	closestMaterialHexAlphaNoPound = closestMaterialHexAlpha.replace("#", "");
+	closestMaterialRGBNoFormatting = closestMaterialRGB.replace("rgb(", "").replace(")", "");
+	closestMaterialRGBA = closestMaterialRGB.replace("rgb(", "rgba(").replace(")", "") + ",1)";
+	closestMaterialRGBANoFormatting = closestMaterialRGBA.replace("rgba(", "").replace(")", "");
 	document.getElementById("end-color").value = closestMaterialHex;
 	document.getElementById("end-color-card").style.backgroundColor = closestMaterialHex;
 	document.getElementById("name-data").innerHTML = closestMaterialCorrectName;
 	document.getElementById("by-data").innerHTML = closestMaterial;
 	document.getElementById("rgb-data").innerHTML = closestMaterialRGB;
-	document.getElementById("color-link").innerHTML = closestMaterialCorrectName;
 	document.getElementById("color-link").href = "/color-picker/#" + closestMaterialName;
 	document.getElementById("color-link").style.display = "initial";
+	document.getElementById("end-color-copy").innerHTML = closestMaterialHex;
+	document.getElementById("end-color-copy").style.display = "initial";
+	document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialHex);
+	document.getElementById("end-color-copy-button").style.display = "initial";
+	document.getElementById("formats").style.display = "block";
+}
+
+function formatSwitcher(newFormat) {
+	if (newFormat==="hex-with-pound") {
+		document.getElementById("end-color-copy").innerHTML = closestMaterialHex;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialHex);
+	} else if (newFormat==="hex-without-pound"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialHexNoPound;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialHexNoPound);
+	} else if (newFormat==="hex-alpha-with-pound"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialHexAlpha;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialHexAlpha);
+	} else if (newFormat==="hex-alpha-without-pound"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialHexAlphaNoPound;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialHexAlphaNoPound);
+	} else if (newFormat==="rgb-with-formatting"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialRGB;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialRGB);
+	} else if (newFormat==="rgb-without-formatting"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialRGBNoFormatting;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialRGBNoFormatting);
+	} else if (newFormat==="rgba-with-formatting"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialRGBA;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialRGBA);
+	} else if (newFormat==="rgba-without-formatting"){
+		document.getElementById("end-color-copy").innerHTML = closestMaterialRGBANoFormatting;
+		document.getElementById("end-color-copy-button").setAttribute("data-clipboard-text", closestMaterialRGBANoFormatting);
+	};
 }

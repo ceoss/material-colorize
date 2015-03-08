@@ -16,7 +16,6 @@
 			$(".dropdown-button").dropdown();
 			});
 		</script>
-		<script src="/js/formatSwitcher-convertColors.js"></script>
 		<script src="/js/colorConvert.js"></script>
 		<script src="/js/comingSoonDialog.js"></script>
 	</head>
@@ -48,7 +47,7 @@
 
 	<!-- Body Content -->
 	<!-- Dropdown Data Templates -->
-	<ul id="color-picker-formats" class="dropdown-content">
+	<ul id="color-convert-formats" class="dropdown-content">
 		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-with-pound');">#DACODE</a></li>
 		<li><a class="waves-effect" href="javascript:formatSwitcher('hex-without-pound');">DACODE</a></li>
 		<li class="divider"></li>
@@ -79,10 +78,6 @@
 				<ul class="left">
 					<li><a class="teal-text waves-effect modal-trigger-info-popup" href="#info-popup">Info</a>
 				</ul>
-				<ul class="right">
-					<li><a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-picker-formats">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-				</ul>
-			</div>
 		</div>
 	</nav>
 
@@ -94,7 +89,7 @@
 					<div class="col s6">
 						<div class="card" id="start-color-card" style="height: 300px; margin-top: 5%;"></div>
 						<div class="input-field">
-							<input id="start-color" type="text"></input>
+							<input id="start-color" type="text" onkeydown="if (event.keyCode == 13) document.getElementById('btn-convert').click()"></input>
 							<label for="start-color">Your Color</label>
 						</div>
 					</div>
@@ -108,18 +103,20 @@
 				</div>
 			</div>
 			<div class="center-parent" style="margin-bottom: 50px;">
-				<a class="waves-effect waves-light btn white-text center-child" href="javascript:hexColorToMaterial()">Convert</a>
+				<a class="waves-effect waves-light btn white-text center-child" id="btn-convert" href="javascript:hexColorToMaterial()">Convert</a>
 			</div>
 			<div class="row">
 				<div class="container" style="width: 95%;">
 					<div class="col s6">
 						<div class="card" id="more-info-card" style="height: 300px; margin-top: 5%;">
 							<div class="card-content">
-								<span class="card-title grey-text text-darken-4">Copy Color:</span>
-								<p></p>
+								<div class="card-title grey-text text-darken-4">Copy Color:</div>
+								<p id="end-color-copy" style="display: none;"></p>
+								<a class="dropdown-button teal-text waves-effect" href="#!" data-activates="color-convert-formats" id="formats" style="display: none; margin-top: 20px; padding: 1rem 1rem;">Formats<i class="mdi-navigation-arrow-drop-down right"></i></a>
 							</div>
 							<div class="card-action">
-								<a class="btn right white-text" id="color-link" style="display: none;"></a>
+								<a class="btn right white-text waves-effect waves-light" id="color-link" style="display: none;"><i class="mdi mdi-eyedropper"></i></a>
+								<a class="waves-effect waves-light btn white-text right color-convert-copy clip_button" id="end-color-copy-button" data-clipboard-text="" href="#!" style="display: none;"><i class="mdi mdi-content-copy"></i></a>
 							</div>
 						</div>
 					</div>
