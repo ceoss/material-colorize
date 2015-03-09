@@ -62,6 +62,9 @@ nav .brand-logo {
 .team-img {
 	display: none;
 }
+.col.s9.team-text {
+	width: 100%;
+}
 .team-text {
 	width: 100%;
 }
