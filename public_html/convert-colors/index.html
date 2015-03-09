@@ -96,15 +96,15 @@
 		<div class="card">
 			<div class="row">
 				<div class="container" style="width: 95%;">
-					<div class="col s6">
-						<div class="card" id="start-color-card" style="height: 300px; margin-top: 5%;"></div>
+					<div class="col s12 m6">
+						<div class="card" id="start-color-card" style="min-height: 300px; margin-top: 5%;"></div>
 						<div class="input-field">
 							<input id="start-color" type="text" onkeydown="if (event.keyCode == 13) document.getElementById('btn-convert').click()"></input>
 							<label for="start-color">Your Color</label>
 						</div>
 					</div>
-					<div class="col s6">
-						<div class="card" id="end-color-card" style="height: 300px; margin-top: 5%;"></div>
+					<div class="col s12 m6">
+						<div class="card" id="end-color-card" style="min-height: 300px; margin-top: 5%;"></div>
 						<div class="input-field">
 							<input id="end-color" type="text" value="Enter your color first."></input>
 							<label for="end-color">Material Color</label>
@@ -117,8 +117,8 @@
 			</div>
 			<div class="row">
 				<div class="container" style="width: 95%;">
-					<div class="col s6">
-						<div class="card" id="more-info-card" style="height: 300px; margin-top: 5%;">
+					<div class="col s12 m6">
+						<div class="card" id="more-info-card" style="min-height: 300px; margin-top: 5%;">
 							<div class="card-content">
 								<div class="card-title grey-text text-darken-4" style="margin-bottom: 20px;">Copy Color:</div>
 								<p id="end-color-copy" style="display: none;"></p>
@@ -130,11 +130,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="col s6">
-						<div class="card" id="end-color-data-card" style="height: 300px; margin-top: 5%;">
+					<div class="col s12 m6">
+						<div class="card" id="end-color-data-card" style="min-height: 300px; margin-top: 5%;">
 							<div class="card-content">
 								<div class="card-title grey-text text-darken-4">Color Data:</div>
-								<table class="hoverable responsive-table">
+								<table class="hoverable">
 									<thead>
 										<tr>
 											<th data-field="type">Type</th>
