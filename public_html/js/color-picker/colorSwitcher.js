@@ -6,16 +6,17 @@ function colorSwitcher(color, all) {
 			document.getElementById(ids[i]).style.display = displayed; 
 		};
 	} else { // end debugging
+		for (var i = ids.length - 1; i >= 0; i--) {
+			document.getElementById(ids[i]).style.display = "none"; // hide all
+		};	
 		if (color === "grey") { //set titles and dividers
+			document.getElementById(ids[21]).style.display = displayed;
 			document.getElementById(ids[22]).style.display = displayed;
-			document.getElementById(ids[23]).style.display = displayed;
 		} else if (color === "bnw") {
+			document.getElementById(ids[23]).style.display = displayed;
 			document.getElementById(ids[24]).style.display = displayed;
-			document.getElementById(ids[25]).style.display = displayed;
 		} else {
-			for (var i = ids.length - 1; i >= 0; i--) {
-				document.getElementById(ids[i]).style.display = "none"; // hide all
-			};	
+			// you're a pretty color :D (well and you, brown)
 		};
 		document.getElementById(color).style.display = displayed; // display chosen
 	};
