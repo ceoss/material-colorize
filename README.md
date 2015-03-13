@@ -1,4 +1,6 @@
 # Material Colorize:
+
+[![Join the chat at https://gitter.im/evelynhathaway/materialcolorize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/evelynhathaway/materialcolorize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Material Colorize is a web and app development toolkit for colors, particularly the colors consisting of the Material Design color palette.
 
 ## Use the Toolkit:
