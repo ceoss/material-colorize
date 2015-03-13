@@ -15,6 +15,10 @@ function colorSwitcher(color, all) {
 		} else if (color === "bnw") {
 			document.getElementById(ids[23]).style.display = displayed;
 			document.getElementById(ids[24]).style.display = displayed;
+		} else if (color === "all") {
+			for (var i = ids.length - 1; i >= 0; i--) {
+				document.getElementById(ids[i]).style.display = displayed; // display all
+			};	
 		} else {
 			// you're a pretty color :D (well and you, brown)
 		};
