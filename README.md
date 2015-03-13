@@ -23,6 +23,6 @@ You can learn about mastering issues here: https://guides.github.com/features/is
 - [ ] Restrict to a Certain Set (500 or A400)
 - [ ] Use RGB and other color formats on input
 - [x] Span to Block on Mobile (styling to fix the width problem on mobile)
-- 
+
 ### Palette and Reference Roadmap:
 - [ ] Color Palette Creator: See http://www.google.com/design/spec/style/color.html#color-color-palette > UI Application and - [ ] Add a link to http://developer.android.com/training/material/theme.html#ColorPalette
