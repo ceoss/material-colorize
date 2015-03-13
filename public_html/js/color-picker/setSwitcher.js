@@ -13,11 +13,11 @@ function setSwitcher(newSet, all) {
 			for (var i = idsCards.length - 1; i >= 0; i--) {
 				document.getElementById(idsCards[i]).style.display = "block"; // display all
 			};
-			for (var i = idsCards.length - 1; i >= 0; i--) {
+			for (var i = idsSections.length - 1; i >= 0; i--) {
 				document.getElementById(idsSections[i]).style.display = "block"; // display all
 			};
-			document.getElementById(ids[21]).style.display = "none"; // hide ref title
-			document.getElementById(ids[22]).style.display = "none"; // hide ref divider
+			document.getElementById("color-ref").style.display = "none"; // hide ref title
+			document.getElementById("color-ref-divider").style.display = "none"; // hide ref divider
 		} else { // is color
 			// Cards
 			for (var i = idsCards.length - 1; i >= 0; i--) {
@@ -33,10 +33,14 @@ function setSwitcher(newSet, all) {
 			// Sections
 			// if nothing is displayed under a section, hide the tag
 			for (var i = idsSections.length - 1; i >= 0; i--) {
-				var sectionMatches;
-				sectionRe = new RegExp("^" + idsSections[i] + "-");
-				sectionMatch = idsCards[i].match(sectionRe);
+				var sectionMatches = [];
+				if (idsSections[i] != "bnw") {
+					sectionRe = new RegExp("^" + idsSections[i] + "-");
+				} else {
+					sectionRe = new RegExp("^(black)|(white)-");
+				};
 				for (var e = idsCards.length - 1; e >= 0; e--) {
+					sectionMatch = idsCards[e].match(sectionRe);
 					if (sectionMatch) { // get all subordinate cards
 						matchDisplay = document.getElementById(idsCards[e]).style.display; // check if displayed
 						if (matchDisplay === "block") {
@@ -45,14 +49,14 @@ function setSwitcher(newSet, all) {
 							sectionMatches[e] = 0;
 						};
 					} else {
-						// exit
+						sectionMatches[e] = 0; // nothing matched
 					};
 				};
 				sectionTotal = 0;
 				for (var r = sectionMatches.length - 1; r >= 0; r--) {
 					sectionTotal += sectionMatches[r]; // total matches | t = 0 means nothing diplayed
 				};
-				if (sectionTotal > 0) {
+				if (sectionTotal > 0 || idsSections[i] === "all") {
 					// don't change display
 				} else{
 					document.getElementById(idsSections[i]).style.display = "none"; // hide tag if there isn't anything displayed
