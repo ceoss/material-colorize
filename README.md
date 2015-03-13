@@ -25,4 +25,5 @@ You can learn about mastering issues here: https://guides.github.com/features/is
 - [x] Span to Block on Mobile (styling to fix the width problem on mobile)
 
 ### Palette and Reference Roadmap:
-- [ ] Color Palette Creator: See http://www.google.com/design/spec/style/color.html#color-color-palette > UI Application and - [ ] Add a link to http://developer.android.com/training/material/theme.html#ColorPalette
+- [ ] Color Palette Creator: See http://www.google.com/design/spec/style/color.html#color-color-palette > UI Application
+- [ ] Add a link to http://developer.android.com/training/material/theme.html#ColorPalette
