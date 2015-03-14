@@ -7,40 +7,48 @@ function formatSwitcher(newFormat) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = hexCodes[i];
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", hexCodes[i]);
 		};
+		document.getElementById("format-drop").innerHTML = "#DACODE<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="hex-without-pound"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = hexCodes[i].replace("#", "");
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", hexCodes[i].replace("#", ""));
 		};
+		document.getElementById("format-drop").innerHTML = "DACODE<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="hex-alpha-with-pound"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = hexCodes[i]  + "ff";
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", hexCodes[i].replace("#", "")  + "ff");
 		};
+		document.getElementById("format-drop").innerHTML = "#DACODEAA<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="hex-alpha-without-pound"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = hexCodes[i]  + "ff";
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", hexCodes[i].replace("#", "")  + "ff");
 		};
+		document.getElementById("format-drop").innerHTML = "DACODEAA<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="rgb-with-formatting"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = RGBCodes[i];
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", RGBCodes[i]);
 		};
+		document.getElementById("format-drop").innerHTML = "rgb(0,0,0)<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="rgb-without-formatting"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = RGBCodes[i].replace("rgb(", "").replace(")", "");
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", RGBCodes[i].replace("rgb(", "").replace(")", ""));
 		};
+		document.getElementById("format-drop").innerHTML = "0,0,0<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="rgba-with-formatting"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = RGBCodes[i].replace("rgb(", "rgba(").replace(")", ",1)");
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", RGBCodes[i].replace("rgb(", "rgba(").replace(")", ",1)"));
 		};
+		document.getElementById("format-drop").innerHTML = "rgba(0,0,0,0)<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else if (newFormat==="rgba-without-formatting"){
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsCards[i] + "-p").innerHTML = RGBCodes[i].replace("rgb(", "").replace(")", ",1");
 			document.getElementById(idsCards[i] + "-a").setAttribute("data-clipboard-text", RGBCodes[i].replace("rgb(", "").replace(")", ",1"));
 		};
+		document.getElementById("format-drop").innerHTML = "0,0,0,0<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	};
 }

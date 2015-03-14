@@ -4,7 +4,7 @@ function colorSwitcher(color, all) {
 	if (all) { // debugging only
 		for (var i = ids.length - 1; i >= 0; i--) {
 			document.getElementById(ids[i]).style.display = "block";
-			document.getElementById("color-drop").innerHTML = "Debug"; // set dropdown text
+			document.getElementById("color-drop").innerHTML = "Debug" + "<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 		};
 	} else { // end debugging
 		for (var i = ids.length - 1; i >= 0; i--) {
@@ -22,6 +22,6 @@ function colorSwitcher(color, all) {
 		} else { // you're a pretty color :D (well and you, brown)
 		};
 		document.getElementById(color).style.display = "block"; // display chosen
-		document.getElementById("color-drop").innerHTML = colorNames[ids.indexOf(color)]; // set dropdown text 
+		document.getElementById("color-drop").innerHTML = colorNames[ids.indexOf(color)] + "<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text 
 	};
 }

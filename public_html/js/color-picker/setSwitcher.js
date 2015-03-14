@@ -8,6 +8,7 @@ function setSwitcher(newSet, all) {
 		for (var i = idsCards.length - 1; i >= 0; i--) {
 			document.getElementById(idsSections[i]).style.display = "block"; // display all
 		};
+		document.getElementById("set-drop").innerHTML = "Debug" + "<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 	} else {
 		if (newSet === "all") { // display all
 			for (var i = idsCards.length - 1; i >= 0; i--) {
@@ -18,6 +19,7 @@ function setSwitcher(newSet, all) {
 			};
 			document.getElementById("color-ref").style.display = "none"; // hide ref title
 			document.getElementById("color-ref-divider").style.display = "none"; // hide ref divider
+			document.getElementById("set-drop").innerHTML = "Set" + "<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text
 		} else { // is color
 			// Cards
 			for (var i = idsCards.length - 1; i >= 0; i--) {
@@ -62,6 +64,7 @@ function setSwitcher(newSet, all) {
 					document.getElementById(idsSections[i]).style.display = "none"; // hide tag if there isn't anything displayed
 				};
 			};
+			document.getElementById("set-drop").innerHTML = newSet + "<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text 
 		};
 	};
 }
