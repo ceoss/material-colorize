@@ -47,7 +47,7 @@ function setSwitcher(newSet, all) {
 						matchDisplay = document.getElementById(idsCards[e]).style.display; // check if displayed
 						if (matchDisplay === "block") {
 							sectionMatches[e] = 1;
-						} else{
+						} else {
 							sectionMatches[e] = 0;
 						};
 					} else {
@@ -60,10 +60,33 @@ function setSwitcher(newSet, all) {
 				};
 				if (sectionTotal > 0 || idsSections[i] === "all") {
 					// don't change display
-				} else{
+				} else {
 					document.getElementById(idsSections[i]).style.display = "none"; // hide tag if there isn't anything displayed
 				};
 			};
+
+			// None Card
+			// if nothing is displayed, display the none card
+			sectionsDisplay = [];
+			for (var i = idsSections.length - 1; i >= 0; i--) {
+				sectionDisplay = document.getElementById(idsSections[i]).style.display; // check if displayed
+				if (sectionDisplay != "none") {
+					sectionsDisplay[i] = 1;
+				} else {
+					sectionsDisplay[i] = 0;
+				};
+			};
+			sectionTotal = 0;
+			for (var r = sectionsDisplay.length - 1; r >= 0; r--) {
+				sectionTotal += sectionsDisplay[r]; // total matches | t = 0 means nothing diplayed
+			};
+			if (sectionTotal > 0) {
+				document.getElementById("none-card").style.display = "none"; // hide the none card
+			} else {
+				document.getElementById("none-card").style.display = "block"; // display the none card
+			};
+
+			// Dropdown
 			document.getElementById("set-drop").innerHTML = newSet + "<i class='mdi-navigation-arrow-drop-down right'></i>"; // set dropdown text 
 		};
 	};

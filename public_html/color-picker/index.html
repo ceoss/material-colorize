@@ -13,7 +13,10 @@
 		<script>
 			$( document ).ready(function() {
 			$('.modal-trigger-info-popup').leanModal();
-			$(".button-collapse").sideNav();
+			$(".button-collapse").sideNav({
+				hover: false, // Activate on click
+				}
+			);
 			$(".dropdown-button").dropdown();
 			});
 		</script>
@@ -148,6 +151,12 @@
 
 
 	<div class="container main">
+		<div class="card" id="none-card" style="display: none;">
+			<div class="card-content">
+				<div class="card-title black-text">Nothing to Show</div>
+				<p class="black-text" id="red-500-p">There is nothing to show at the moment. Check your filters or report this if you believe this to be an error.</p><p><a class="waves-effect btn-flat black-text right" href="https://github.com/evelynhathaway/materialcolorize/issues">Github</a></p> 
+			</div>
+		</div>
 		<h3 class="teal-text" id="all">All Colors:</h3>
 		<div id="red">
 			&nbsp;&nbsp;
