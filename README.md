@@ -4,7 +4,7 @@ Material Colorize is a web and app development toolkit for colors, particularly 
 ## Use the Toolkit:
 Go to http://materialcolorize.com/ to view and use all of our current tools. At the time of writing this, we push updates every other day.
 
-## Suggest Features or Sumbit Bugs:
+## Suggest Features or Submit Bugs:
 Use the issue tracker tab. We will be grateful for anything you submit, we don't bite!
 You can learn about mastering issues here: https://guides.github.com/features/issues/
 ### Chat:
