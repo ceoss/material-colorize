@@ -96,6 +96,11 @@ nav .brand-logo {
 .team-card.corbin {
 	background-image: url('/images/corbin.png');
 }
+.container.main {
+	width: 100%;
+	margin: 0;
+	padding: 16px;
+}
 }
 
 /* Temp Changes */
