@@ -99,7 +99,7 @@ nav .brand-logo {
 }
 
 /* Card Width */
-@media only screen and (min-width: 993px){
+@media only screen and (max-width: 993px){
 .container.main {
 	width: 100%;
 	margin: 0;
