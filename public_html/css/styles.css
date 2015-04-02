@@ -96,10 +96,14 @@ nav .brand-logo {
 .team-card.corbin {
 	background-image: url('/images/corbin.png');
 }
+}
+
+/* Card Width */
+@media only screen and (min-width: 993px){
 .container.main {
 	width: 100%;
 	margin: 0;
-	padding: 16px;
+	padding: 8px;
 }
 }
 
