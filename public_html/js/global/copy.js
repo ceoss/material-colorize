@@ -16,5 +16,6 @@ var client = new ZeroClipboard( $('.clip_button') );
 	client.on( 'error', function(event) {
 		toast('Flash Error: Copying may not work', 4000)
 		console.log('Flash Error');
+		$(".clip_button").hide();
 		ZeroClipboard.destroy();
 	} );
