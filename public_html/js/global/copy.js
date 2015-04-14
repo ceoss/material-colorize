@@ -2,6 +2,10 @@ ZeroClipboard.config({
 	forceHandCursor: true
 });
 
+function clip_buttonDestroy() {
+	$(".clip_button").hide();
+}
+
 var client = new ZeroClipboard( $('.clip_button') );
 
 	client.on( 'ready', function(event) {
@@ -16,6 +20,6 @@ var client = new ZeroClipboard( $('.clip_button') );
 	client.on( 'error', function(event) {
 		toast('Flash Error: Copying may not work', 4000)
 		console.log('Flash Error');
-		$(".clip_button").hide();
+		clip_buttondestory();
 		ZeroClipboard.destroy();
 	} );
