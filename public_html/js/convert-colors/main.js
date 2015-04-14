@@ -15,8 +15,12 @@ function hexToRgb(hex) {
 
 
 function hexColorToMaterial() {
-	var color = document.getElementById("start-color").value;
-	document.getElementById("start-color-card").style.backgroundColor = color;
+	color = document.getElementById("start-color").value;
+	if (color == /^#([a-f\d]{6})$/) {
+		document.getElementById("start-color-card").style.backgroundColor = color;
+	} else{
+		document.getElementById("start-color-card").style.backgroundColor = "#" + color;
+	};
 	var red = hexToRgb(color).r;
 	var green = hexToRgb(color).g;
 	var blue = hexToRgb(color).b;
