@@ -7,8 +7,6 @@ Go to http://materialcolorize.com/ to view and use all of our current tools. At 
 ## Suggest Features or Submit Bugs:
 Use the issue tracker tab. We will be grateful for anything you submit, we don't bite!
 You can learn about mastering issues here: https://guides.github.com/features/issues/
-### Chat:
-[![Join the chat at https://gitter.im/evelynhathaway/materialcolorize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/evelynhathaway/materialcolorize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Roadmap:
 - [ ] Addition of Color Switcher (Already has been written in Ruby)
