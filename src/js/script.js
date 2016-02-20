@@ -1069,37 +1069,37 @@ var palette = {
 // Remove Element(s)
 // https://gist.github.com/evelynhathaway/5535ef8103da8a168a59
 Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
+	this.parentElement.removeChild(this);
 }
 NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for (var i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
+	for (var i = this.length - 1; i >= 0; i--) {
+		if(this[i] && this[i].parentElement) {
+			this[i].parentElement.removeChild(this[i]);
+		}
+	}
 }
 Element.prototype.removeChildren = function() {
-    while (this.firstChild) {
-        this.removeChild(this.firstChild);
-    }
+	while (this.firstChild) {
+		this.removeChild(this.firstChild);
+	}
 }
 NodeList.prototype.removeChildren = HTMLCollection.prototype.removeChildren = function() {
-    for (var i = this.length - 1; i >= 0; i--) {
-        while (this[i].firstChild) {
-            this[i].removeChild(this[i].firstChild);
-        }
-    }
+	for (var i = this.length - 1; i >= 0; i--) {
+		while (this[i].firstChild) {
+			this[i].removeChild(this[i].firstChild);
+		}
+	}
 }
 
 // Bug Reporter
 // https://gist.github.com/evelynhathaway/bbe5dbc82b862de94270
 (function() {
 	var errors = [];
-	window.onerror = function(error, url, line) {
-		error = {"error": error, "url": url, "line": line};
+	window.onerror = function(message, source, line, column, error) {
+		error = {"message": message, "source": source, "line": line, "column": column, "error": error};
 		if (errors.length > 0) {
 			var lastError = errors[errors.length - 1];
-			if (error.error === lastError.error && error.url === lastError.url && error.line === lastError.line) {
+			if (error.message === lastError.message && error.source === lastError.source && error.line === lastError.line && error.column === lastError.column && error.error === lastError.error) {
 				typeof lastError.recurrences === "number" ? lastError.recurrences ++ : lastError.recurrences = 1;
 				return;
 			}
@@ -1116,28 +1116,31 @@ NodeList.prototype.removeChildren = HTMLCollection.prototype.removeChildren = fu
 			url += encodeURIComponent("None. (Yay!)");
 		}
 		url += encodeURIComponent("\n\nUser-Agent: " + navigator.userAgent + "\n```");
-		var win = window.open(url, '_blank');
+		var win = window.open(url, "_blank");
 		win.focus();
 	}
-});
+	document.getElementById("bug-report").addEventListener("click", bugReport, false);
+}());
 
-function appbar() {
-	if (window.matchMedia("(max-width: 600px) and (orientation: portrait), (max-width: 960px) and (orientation: landscape)").matches) {
-		if (document.body.scrollTop < 48 && document.documentElement.scrollTop < 48) {
-			document.body.classList.remove("scrolling");
+(function() {
+	function appbar() {
+		if (window.matchMedia("(max-width: 600px) and (orientation: portrait), (max-width: 960px) and (orientation: landscape)").matches) {
+			if (document.body.scrollTop < 48 && document.documentElement.scrollTop < 48) {
+				document.body.classList.remove("scrolling");
+			} else {
+				document.body.classList.add("scrolling");
+			}
 		} else {
-			document.body.classList.add("scrolling");
-		}
-	} else {
-		if (document.body.scrollTop === 0 && document.documentElement.scrollTop === 0) {
-			document.body.classList.remove("scrolling");
-		} else {
-			document.body.classList.add("scrolling");
+			if (document.body.scrollTop === 0 && document.documentElement.scrollTop === 0) {
+				document.body.classList.remove("scrolling");
+			} else {
+				document.body.classList.add("scrolling");
+			}
 		}
 	}
-}
-document.addEventListener("scroll", function(){appbar();});
-appbar();
+	document.addEventListener("scroll", appbar, false);
+	appbar();
+}());
 
 function colorFilter(groups, names, types) {
 	var keys = Object.keys(palette);
@@ -1148,7 +1151,7 @@ function colorFilter(groups, names, types) {
 				var colorObject = palette[keys[array]][color];
 				if (new RegExp("^(" + names.join("|") + ")$", "i").test(colorObject.name)) {
 					if (/^A/i.test(colorObject.name)) {
-						type = "Alternate";
+						type = "Accent";
 					} else {
 						type = "Primary";
 					}
@@ -1193,7 +1196,7 @@ function colorAdd(colors) {
 			var colorObject = colors[keys[array]][color];
 			if (!document.getElementById(key + "-" + colorObject.name)) {
 				if (/^A/i.test(colorObject.name)) {
-					type = "Alternate";
+					type = "Accent";
 				} else {
 					type = "Primary";
 				}
@@ -1259,3 +1262,86 @@ function convert(color) {
 	}
 	return mins;
 }
+
+window.onpopstate = function(e){
+	if (e.state){
+		// Change Tab TODO
+	}
+};
+function switchTabs(tab){
+	if (typeof window.history.pushState === "function") {
+		document.title = tab.title;
+		window.history.pushState(document.URL, "", tab.url);
+		// Change Content TODO
+		// Restore Scroll
+	} else {
+		window.location = tab.url;
+	}
+}
+
+if (/\/(pick|convert|image|swticher|palette)/i.test(document.URL)) {
+	// Change Tab TODO
+}
+
+
+function extract(src) {
+	// TODO Allow cross origin request in canvas
+	// TODO Also use the almost 1:1 Material-Palette: https://github.com/marijnvdwerf/material-palette
+	// TODO Also use Color Thief then convert to a Material Color
+	// TODO Create elements for Material-Palette, Vibrant, and Color Thief
+	var img = document.createElement("img");
+	img.src = src;
+	img.addEventListener("load", function() {
+		var vibrant = new Vibrant(img);
+		var swatches = vibrant.swatches()
+		for (var swatch in swatches) {
+			if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
+				console.log(swatch, swatches[swatch].getHex(), swatches[swatch].getPopulation())
+			}
+		}
+	});
+}
+function image(event) {
+	if (event.target.id === "file" && typeof event.target.files[0] !== "undefined") {
+		var src = URL.createObjectURL(event.target.files[0]);
+		document.getElementById("url").value = URL.createObjectURL(event.target.files[0]);
+	} else if (event.target.id === "url" && event.target.value.length > 0) {
+		try {
+			var src = event.target.value;
+		} catch (error) {
+			console.log(error)
+		}
+	} else {
+		return;
+	}
+
+	extract(src);
+}
+document.getElementById("file").addEventListener("change", image, false);
+document.getElementById("url").addEventListener("input", image, false);
+
+function dropzoneDrop(event) {
+	event.stopPropagation();
+	event.preventDefault();
+
+	var files = event.dataTransfer.files;
+	var src = URL.createObjectURL(files[0]);
+	document.getElementById("url").value = URL.createObjectURL(files[0]);
+
+	extract(src);
+}
+function dropzoneDrag(event) {
+	event.stopPropagation();
+	event.preventDefault();
+	event.dataTransfer.dropEffect = "copy";
+}
+function dropzoneClick(event) {
+	if (event.target.id === "url") {
+		return;
+	}
+	document.getElementById("file").click();
+}
+var dropzone = document.getElementById("dropzone");
+dropzone.addEventListener("drop", dropzoneDrop, false);
+dropzone.addEventListener("dragover", dropzoneDrag, false);
+dropzone.addEventListener("click", dropzoneClick, false);

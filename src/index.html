@@ -28,14 +28,34 @@
 			<span class="tab">Palette</span>
 		</span>
 		<span class="actions">
-			<i class="material-icons" onclick="bugReport();" title="Report a Bug via GitHub">&#xE868;</i>
 			<i class="material-icons" title="Color Data">&#xE3B7;</i>
+			<i class="material-icons" id="bug-report" title="Report a Bug via GitHub">&#xE868;</i>
 		</span>
 	</div>
 
 	<div class="waterfall"></div>
 
 	<div class="main" id="pick">
+	</div>
+
+	<div class="main" id="convert">
+	</div>
+
+	<div class="main" id="image">
+		<div class="card">
+			<!-- <div class="actions"><i class="material-icons" title="Permalink">&#xE157;</i><i class="material-icons" title="Color Data">&#xE3B7;</i><i class="material-icons" title="Copy Color Group">&#xE14D;</i></div> -->
+			<div class="card" id="dropzone">
+				<span>Click to browse for files or drag and drop a file here.</span>
+				<input type="file" name="file" accept="image/*" id="file">
+				<input type="url" name="url" id="url">
+			</div>
+		</div>
+	</div>
+
+	<div class="main" id="swticher">
+	</div>
+
+	<div class="main" id="palette">
 	</div>
 	
 	<div class="fab"><i class="material-icons">&#xE152;</i></div>
