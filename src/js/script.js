@@ -1,132 +1,5 @@
-// Remove Element(s)
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for (var i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-}
-Element.prototype.removeChildren = function() {
-    while (this.firstChild) {
-        this.removeChild(this.firstChild);
-    }
-}
-NodeList.prototype.removeChildren = HTMLCollection.prototype.removeChildren = function() {
-    for (var i = this.length - 1; i >= 0; i--) {
-        while (this[i].firstChild) {
-            this[i].removeChild(this[i].firstChild);
-        }
-    }
-}
-
-function appbar() {
-	if (window.matchMedia("(max-width: 600px) and (orientation: portrait), (max-width: 960px) and (orientation: landscape)").matches) {
-		if (document.body.scrollTop < 48 && document.documentElement.scrollTop < 48) {
-			document.body.classList.remove("scrolling");
-		} else {
-			document.body.classList.add("scrolling");
-		}
-	} else {
-		if (document.body.scrollTop === 0 && document.documentElement.scrollTop === 0) {
-			document.body.classList.remove("scrolling");
-		} else {
-			document.body.classList.add("scrolling");
-		}
-	}
-}
-document.addEventListener("scroll", function(){appbar();});
-appbar();
-
-
-var errors = [];
-window.onerror = function(error, url, line) {
-	error = {"error": error, "url": url, "line": line};
-	if (errors.length > 0) {
-		var lastError = errors[errors.length - 1];
-		if (error.error === lastError.error && error.url === lastError.url && error.line === lastError.line) {
-			typeof lastError.recurrences === "number" ? lastError.recurrences ++ : lastError.recurrences = 1;
-			return;
-		}
-	}
-	errors.push(error);
-};
-function bugReport() {
-	var url = "https://github.com/xorprojects/Material-Colorize/issues/new?title=" + encodeURIComponent("Issue with Material Colorize") + "&body=" + encodeURIComponent("Explain your problem here: \n\n*Please leave this for the developers:*\n```json\nErrors: ");
-	if (errors.length > 0) {
-		for (var i = 0; i < errors.length; i++) {
-			url += encodeURIComponent(JSON.stringify(errors[i]));
-		}
-	} else {
-		url += encodeURIComponent("None. (Yay!)");
-	}
-	url += encodeURIComponent("\n\nUser-Agent: " + navigator.userAgent + "\n```");
-	var win = window.open(url, '_blank');
-	win.focus();
-}
-
-new Clipboard("i.clipboard");
-
-function colorAdd(colors) {
-	var pick = document.getElementById("pick");
-	var keys = Object.keys(colors);
-	for (var array = 0; array <= keys.length - 1; array++) {
-		var key = keys[array].toLowerCase().replace(/\s+/g, "-");
-		// Color Group Header & Card
-		if (!document.getElementById(key)) {
-			var subheader = document.createElement("div");
-			subheader.textContent = keys[array];
-			subheader.classList.add("subheader");
-			pick.appendChild(subheader);
-
-			var groupCard = document.createElement("div");
-			groupCard.textContent = keys[array];
-			groupCard.classList.add("card");
-			groupCard.id = key;
-			groupCard.innerHTML = "<div class=\"actions\"><i class=\"material-icons\" title=\"Permalink\">&#xE157;</i><i class=\"material-icons\" title=\"Color Data\">&#xE3B7;</i><i class=\"material-icons\" title=\"Copy Color Group\">&#xE14D;</i></div><div class=\"colors\">";
-			pick.appendChild(groupCard);
-		} else {
-			var groupCard = document.getElementById(key);
-		}
-
-		// Color Card
-		for (var color = 0; color <= colors[keys[array]].length - 1; color++) {
-			var colorObject = colors[keys[array]][color];
-			if (!document.getElementById(key + "-" + colorObject.name)) {
-				if (/^A/i.test(colorObject.name)) {
-					type = "Alternate";
-				} else {
-					type = "Primary";
-				}
-
-				if (!document.getElementById(key + "-" + type.toLowerCase())) {
-					var subheader = document.createElement("div");
-					subheader.textContent = type;
-					subheader.classList.add("subheader");
-					subheader.id = key + "-" + type.toLowerCase();
-					groupCard.children[1].appendChild(subheader);
-				}
-
-				var colorCard = document.createElement("div");
-				colorCard.textContent = keys[array];
-				colorCard.classList.add("card", "color");
-				colorCard.id = key + "-" + colorObject.name.toLowerCase();
-				colorCard.innerHTML = "<div class=\"actions\"><i class=\"material-icons\" title=\"Permalink\">&#xE157;</i><i class=\"material-icons\" title=\"Color Data\">&#xE3B7;</i><i class=\"material-icons clipboard\" title=\"Copy Color\" data-clipboard-text=\"#" + colorObject.hex + "\">&#xE14D;</i></div><div class=\"color-title\">" + colorObject.name + "</div>";
-				groupCard.children[1].appendChild(colorCard);
-			}
-		}
-	}
-}
-
-function colorRemove() {
-	// Remove Parent Cards too TODO
-	for (var i = 0; i <= colors.length - 1; i++) {
-		document.getElementById(colors[i]).remove();
-	}
-}
-colorAdd({
+// Colors
+var palette = {
 	"Red": [
 		{
 			"name": "500",
@@ -1191,4 +1064,162 @@ colorAdd({
 			"hex": "ffffff"
 		}
 	]
+}
+
+// Remove Element(s)
+// https://gist.github.com/evelynhathaway/5535ef8103da8a168a59
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for (var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+Element.prototype.removeChildren = function() {
+    while (this.firstChild) {
+        this.removeChild(this.firstChild);
+    }
+}
+NodeList.prototype.removeChildren = HTMLCollection.prototype.removeChildren = function() {
+    for (var i = this.length - 1; i >= 0; i--) {
+        while (this[i].firstChild) {
+            this[i].removeChild(this[i].firstChild);
+        }
+    }
+}
+
+// Bug Reporter
+// https://gist.github.com/evelynhathaway/bbe5dbc82b862de94270
+(function() {
+	var errors = [];
+	window.onerror = function(error, url, line) {
+		error = {"error": error, "url": url, "line": line};
+		if (errors.length > 0) {
+			var lastError = errors[errors.length - 1];
+			if (error.error === lastError.error && error.url === lastError.url && error.line === lastError.line) {
+				typeof lastError.recurrences === "number" ? lastError.recurrences ++ : lastError.recurrences = 1;
+				return;
+			}
+		}
+		errors.push(error);
+	};
+	function bugReport() {
+		var url = "https://github.com/xorprojects/Material-Colorize/issues/new?title=" + encodeURIComponent("Issue with Material Colorize") + "&body=" + encodeURIComponent("Explain your problem here: \n\n*Please leave this for the developers:*\n```json\nErrors: ");
+		if (errors.length > 0) {
+			for (var i = 0; i < errors.length; i++) {
+				url += encodeURIComponent(JSON.stringify(errors[i]));
+			}
+		} else {
+			url += encodeURIComponent("None. (Yay!)");
+		}
+		url += encodeURIComponent("\n\nUser-Agent: " + navigator.userAgent + "\n```");
+		var win = window.open(url, '_blank');
+		win.focus();
+	}
 });
+
+function appbar() {
+	if (window.matchMedia("(max-width: 600px) and (orientation: portrait), (max-width: 960px) and (orientation: landscape)").matches) {
+		if (document.body.scrollTop < 48 && document.documentElement.scrollTop < 48) {
+			document.body.classList.remove("scrolling");
+		} else {
+			document.body.classList.add("scrolling");
+		}
+	} else {
+		if (document.body.scrollTop === 0 && document.documentElement.scrollTop === 0) {
+			document.body.classList.remove("scrolling");
+		} else {
+			document.body.classList.add("scrolling");
+		}
+	}
+}
+document.addEventListener("scroll", function(){appbar();});
+appbar();
+
+function colorFilter(groups, names, types) {
+	var keys = Object.keys(palette);
+	var filtered = [];
+	for (var array = 0; array <= keys.length - 1; array++) {
+		if (new RegExp("^(" + groups.join("|") + ")$", "i").test(keys[array])) {
+			for (var color = 0; color <= palette[keys[array]].length - 1; color++) {
+				var colorObject = palette[keys[array]][color];
+				if (new RegExp("^(" + names.join("|") + ")$", "i").test(colorObject.name)) {
+					if (/^A/i.test(colorObject.name)) {
+						type = "Alternate";
+					} else {
+						type = "Primary";
+					}
+					if (new RegExp("^(" + types.join("|") + ")$", "i").test(type)) {
+						if (!filtered[keys[array]]) {
+							filtered[keys[array]] = [];
+						}
+						filtered[keys[array]].push(colorObject);
+					}
+				}
+			}
+		}
+	}
+	// console.log(filtered);
+	colorRemove();
+	colorAdd(filtered);
+}
+function colorAdd(colors) {
+	var pick = document.getElementById("pick");
+	var keys = Object.keys(colors);
+	for (var array = 0; array <= keys.length - 1; array++) {
+		var key = keys[array].toLowerCase().replace(/\s+/g, "-");
+		// Color Group Header & Card
+		if (!document.getElementById(key)) {
+			var subheader = document.createElement("div");
+			subheader.textContent = keys[array];
+			subheader.classList.add("subheader");
+			pick.appendChild(subheader);
+
+			var groupCard = document.createElement("div");
+			groupCard.textContent = keys[array];
+			groupCard.classList.add("card");
+			groupCard.id = key;
+			groupCard.innerHTML = "<div class=\"actions\"><i class=\"material-icons\" title=\"Permalink\">&#xE157;</i><i class=\"material-icons\" title=\"Color Data\">&#xE3B7;</i><i class=\"material-icons\" title=\"Copy Color Group\">&#xE14D;</i></div><div class=\"colors\">";
+			pick.appendChild(groupCard);
+		} else {
+			var groupCard = document.getElementById(key);
+		}
+
+		// Color Card
+		for (var color = 0; color <= colors[keys[array]].length - 1; color++) {
+			var colorObject = colors[keys[array]][color];
+			if (!document.getElementById(key + "-" + colorObject.name)) {
+				if (/^A/i.test(colorObject.name)) {
+					type = "Alternate";
+				} else {
+					type = "Primary";
+				}
+
+				if (!document.getElementById(key + "-" + type.toLowerCase())) {
+					var subheader = document.createElement("div");
+					subheader.textContent = type;
+					subheader.classList.add("subheader");
+					subheader.id = key + "-" + type.toLowerCase();
+					groupCard.children[1].appendChild(subheader);
+				}
+
+				var colorCard = document.createElement("div");
+				colorCard.textContent = keys[array];
+				colorCard.classList.add("card", "color");
+				colorCard.id = key + "-" + colorObject.name.toLowerCase();
+				colorCard.innerHTML = "<div class=\"actions\"><i class=\"material-icons\" title=\"Permalink\">&#xE157;</i><i class=\"material-icons\" title=\"Color Data\">&#xE3B7;</i><i class=\"material-icons clipboard\" title=\"Copy Color\" data-clipboard-text=\"#" + colorObject.hex + "\">&#xE14D;</i></div><div class=\"color-title\">" + colorObject.name + "</div>";
+				groupCard.children[1].appendChild(colorCard);
+			}
+		}
+	}
+}
+function colorRemove() {
+	groups = document.getElementById("pick").children;
+	groups.remove();
+}
+colorAdd(palette);
+
+new Clipboard("i.clipboard");
