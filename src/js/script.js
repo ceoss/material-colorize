@@ -1240,21 +1240,21 @@ function hexToRgb(hex) {
 
 function convert(color) {
 	var colorRgb = hexToRgb(color);
-	var diff = {};
+	var delta = {};
 	var mins = {};
 	var keys = Object.keys(palette);
 	for (var array = 0; array <= keys.length - 1; array++) {
 		for (var color = 0; color <= palette[keys[array]].length - 1; color++) {
 			var colorObject = palette[keys[array]][color];
-			if (!diff[keys[array]]) {
-				diff[keys[array]] = [];
+			if (!delta[keys[array]]) {
+				delta[keys[array]] = [];
 			}
 			var materialRgb = hexToRgb(colorObject.hex);
-			diff[keys[array]].push(Math.abs(materialRgb.r - colorRgb.r) + Math.abs(materialRgb.g - colorRgb.g) + Math.abs(materialRgb.b - colorRgb.b));
+			delta[keys[array]].push(Math.abs(materialRgb.r - colorRgb.r) + Math.abs(materialRgb.g - colorRgb.g) + Math.abs(materialRgb.b - colorRgb.b));
 		}
 		mins[keys[array]] = {
-			"index": diff[keys[array]].indexOf(Math.min.apply(Math, diff[keys[array]])),
-			"diff": Math.min.apply(Math, diff[keys[array]])
+			"index": delta[keys[array]].indexOf(Math.min.apply(Math, delta[keys[array]])),
+			"delta": Math.min.apply(Math, delta[keys[array]])
 		};
 	}
 	return mins;
