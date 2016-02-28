@@ -105,8 +105,23 @@ body:not(.scrolling) .waterfall {
 }
 
 /* Main */
+body, html {
+	overflow-x: hidden;
+}
+.mains {
+	width: 500%;
+	position: relative;
+	transition: margin .3s ease;
+}
 .main {
-	margin: 0 24px 24px 24px;
+	padding: 0 24px 24px 24px;
+	box-sizing: border-box;
+	width: 20%;
+	float: left;
+}
+.main:not(.active) {
+	height: calc(100vh - 64px);
+	overflow: hidden;
 }
 
 /* Cards */
@@ -201,7 +216,7 @@ body:not(.scrolling) .waterfall {
 	clear: both;
 	transition: color .2s ease;
 }
-body:not(.scrolling) > .main > .subheader:nth-of-type(1) {
+body:not(.scrolling) .main > .subheader:nth-of-type(1) {
 	color: #fff;
 }
 .card .subheader {
@@ -362,6 +377,8 @@ input[type="text"], input[type="url"] {
 	
 }
 
+
+
 @media (max-width: 599px) and (orientation: portrait), (max-width: 959px) and (orientation: landscape) {
 	body {
 		margin: 96px 0 0 0;
@@ -410,11 +427,11 @@ input[type="text"], input[type="url"] {
 	.waterfall {
 		display: none;
 	}
-	body:not(.scrolling) > .main > .subheader:nth-of-type(1) {
+	body:not(.scrolling) .main > .subheader:nth-of-type(1) {
 		color: rgba(0,0,0,.54);
 	}
 	.main {
-		margin: 0 16px 16px 16px;
+		padding: 0 16px 16px 16px;
 	}
 	.subheader {
 		padding: 0 16px;

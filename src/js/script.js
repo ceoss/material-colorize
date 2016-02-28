@@ -1263,12 +1263,14 @@ function convert(color) {
 	return mins;
 }
 
-window.onpopstate = function(e){
+
+// URL and History
+window.onpopstate = function(e) {
 	if (e.state){
-		// Change Tab TODO
+		testURL();
 	}
 };
-function switchTabs(tab){
+function pushHistory(tab) {
 	if (typeof window.history.pushState === "function") {
 		document.title = tab.title;
 		window.history.pushState(document.URL, "", tab.url);
@@ -1279,10 +1281,48 @@ function switchTabs(tab){
 	}
 }
 
-if (/\/(pick|convert|image|swticher|palette)/i.test(document.URL)) {
-	// Change Tab TODO
-}
+scrollTopTabs = [0,0,0,0,0];
+lastTabNum = 1;
+function switchTab(num) {
+	var mains = document.getElementsByClassName("mains")[0];
+	var tabs = document.getElementsByClassName("tabs")[0];
+	// Restore Scroll
+	scrollTopTabs[(lastTabNum - 1)] = document.body.scrollTop;
+	document.body.scrollTop = scrollTopTabs[(num - 1)];
 
+	// Move Mains
+	mains.style.marginLeft = "-" + (num - 1) + "00%";
+
+	// Hide Scroll on Tabs Not in View
+	mains.children[(lastTabNum - 1)].classList.remove("active");
+	mains.children[(num - 1)].classList.add("active");
+	tabs.children[(lastTabNum - 1)].classList.remove("active");
+	tabs.children[(num - 1)].classList.add("active");
+
+	lastTabNum = num;
+	pushHistory({"title": "Material Colorize - " + tabs.children[(num - 1)].textContent, "url": tabs.children[(num - 1)].textContent.toLowerCase()});
+}
+document.getElementsByClassName("tabs")[0].addEventListener("click", function(event) {
+	var tabs = document.getElementsByClassName("tabs")[0].children;
+	for (var i = 0; i < tabs.length; i++) {
+		if (tabs[i] === event.target) {
+			switchTab(i + 1);
+		}
+	}
+}, false)
+
+function testURL() {
+	if (/\/(pick|convert|image|swticher|palette)/i.test(document.URL)) {
+		// Change Tab TODO
+	}
+	if (/\/pick\/[\w\-]+/i.test(document.URL)) {
+		// Scroll to Group TODO
+	}
+	if (/\/pick\/[\w\-]+\/\w+/i.test(document.URL)) {
+		// Scroll to Group then Pulse filter on color TODO
+	}
+}
+testURL();
 
 function extract(src) {
 	// TODO Allow cross origin request in canvas
@@ -1320,6 +1360,7 @@ function image(event) {
 document.getElementById("file").addEventListener("change", image, false);
 document.getElementById("url").addEventListener("input", image, false);
 
+// Drag and Drop File Input
 function dropzoneDrop(event) {
 	event.stopPropagation();
 	event.preventDefault();

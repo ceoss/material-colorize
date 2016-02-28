@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Material Colorize</title>
+<head itemscope itemtype="http://schema.org/website">
 	<meta charset="UTF-8">
 	<meta name="theme-color" content="#64b5f6">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+	<title property="name">Material Colorize</title>
+	<meta property="og:title" content="Material Colorize">
+	<meta name="description" content="Toolkit for colors. Uses the Material Design palette and specifications.">
+	<meta property="og:description" content="Toolkit for colors. Uses the Material Design palette and specifications.">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Material Colorize">
+	<meta property="og:url" content="http://materialcolorize.com">
+	<meta property="og:image" content="/img/promo.png"> <!-- Images that are too small or not square enough are not included in the +Snippet, even if the images are explicitly referenced by schema.org microdata or Open Graph markup. Specifically, the height must be at least 120px, and if the width is less than 100px, then the aspect ratio must be no greater than 3.0. -->
+	<link rel="canonical" href="https://materialcolorize.com/" itemprop="url">
 
 	<!-- Icons -->
 	<link rel="icon" href="/img/favicon.ico">
@@ -35,27 +45,29 @@
 
 	<div class="waterfall"></div>
 
-	<div class="main" id="pick">
-	</div>
+	<div class="mains">
+		<div class="main active" id="pick">
+		</div>
 
-	<div class="main" id="convert">
-	</div>
+		<div class="main" id="convert">
+		</div>
 
-	<div class="main" id="image">
-		<div class="card">
-			<!-- <div class="actions"><i class="material-icons" title="Permalink">&#xE157;</i><i class="material-icons" title="Color Data">&#xE3B7;</i><i class="material-icons" title="Copy Color Group">&#xE14D;</i></div> -->
-			<div class="card" id="dropzone">
-				<span>Click to browse for files or drag and drop a file here.</span>
-				<input type="file" name="file" accept="image/*" id="file">
-				<input type="url" name="url" id="url">
+		<div class="main" id="image">
+			<div class="card">
+				<!-- <div class="actions"><i class="material-icons" title="Permalink">&#xE157;</i><i class="material-icons" title="Color Data">&#xE3B7;</i><i class="material-icons" title="Copy Color Group">&#xE14D;</i></div> -->
+				<div class="card" id="dropzone">
+					<span>Click to browse for files or drag and drop a file here.</span>
+					<input type="file" name="file" accept="image/*" id="file">
+					<input type="url" name="url" id="url">
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="main" id="swticher">
-	</div>
+		<div class="main" id="swticher">
+		</div>
 
-	<div class="main" id="palette">
+		<div class="main" id="palette">
+		</div>
 	</div>
 	
 	<div class="fab"><i class="material-icons">&#xE152;</i></div>
