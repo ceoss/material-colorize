@@ -53,12 +53,79 @@
 		</div>
 
 		<div class="main" id="image">
+			<div class="subheader">Image Select</div>
 			<div class="card">
-				<!-- <div class="actions"><i class="material-icons" title="Permalink">&#xE157;</i><i class="material-icons" title="Color Data">&#xE3B7;</i><i class="material-icons" title="Copy Color Group">&#xE14D;</i></div> -->
-				<div class="card" id="dropzone">
-					<span>Click to browse for files or drag and drop a file here.</span>
+				<div id="dropzone">
+					<div id="dropzone-caption">
+						<i class="material-icons">&#xE2C7;</i>
+						<div>Click or Drop</div>
+					</div>
 					<input type="file" name="file" accept="image/*" id="file">
-					<input type="url" name="url" id="url">
+				</div>
+				<input type="url" name="url" id="url" placeholder="URI">
+			</div>
+
+			<div class="subheader">Preview</div>
+			<div class="card" id="preview">
+				<div id="preview-caption">
+					<i class="material-icons">&#xE3F4;</i>
+				</div>
+			</div>
+
+			<div class="subheader">Colors</div>
+			<div class="card colors">
+				<div class="card color" id="vibrant">
+					<div class="actions">
+						<i class="material-icons" title="Permalink">&#xE157;</i>
+						<i class="material-icons" title="Color Data">&#xE3B7;</i>
+						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
+					</div>
+					<div class="color-title">Vibrant</div>
+				</div>
+
+				<div class="card color" id="muted">
+					<div class="actions">
+						<i class="material-icons" title="Permalink">&#xE157;</i>
+						<i class="material-icons" title="Color Data">&#xE3B7;</i>
+						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
+					</div>
+					<div class="color-title">Muted</div>
+				</div>
+
+				<div class="card color" id="darkvibrant">
+					<div class="actions">
+						<i class="material-icons" title="Permalink">&#xE157;</i>
+						<i class="material-icons" title="Color Data">&#xE3B7;</i>
+						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
+					</div>
+					<div class="color-title">Dark Vibrant</div>
+				</div>
+
+				<div class="card color" id="darkmuted">
+					<div class="actions">
+						<i class="material-icons" title="Permalink">&#xE157;</i>
+						<i class="material-icons" title="Color Data">&#xE3B7;</i>
+						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
+					</div>
+					<div class="color-title">Dark Muted</div>
+				</div>
+
+				<div class="card color" id="lightvibrant">
+					<div class="actions">
+						<i class="material-icons" title="Permalink">&#xE157;</i>
+						<i class="material-icons" title="Color Data">&#xE3B7;</i>
+						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
+					</div>
+					<div class="color-title">Light Vibrant</div>
+				</div>
+
+				<div class="card color" id="lightmuted">
+					<div class="actions">
+						<i class="material-icons" title="Permalink">&#xE157;</i>
+						<i class="material-icons" title="Color Data">&#xE3B7;</i>
+						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
+					</div>
+					<div class="color-title">Light Muted</div>
 				</div>
 			</div>
 		</div>

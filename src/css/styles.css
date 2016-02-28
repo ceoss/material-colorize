@@ -374,9 +374,62 @@ input[type="text"], input[type="url"] {
 	display: none;
 }
 #dropzone {
-	
+	border: 4px dashed rgba(0,0,0,.54);
+	border-radius: 2px;
+	padding: 24px;
+	height: 25vh;
+	color: rgba(0,0,0,.54);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background: 50% 50% / cover;
+	cursor: pointer;
 }
-
+#dropzone::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgba(0,0,0,0);
+	transition: background .2s ease;
+}
+#dropzone:hover::after, #dropzone.dragover::after {
+	background: rgba(0,0,0,.1);
+}
+#dropzone-caption {
+	text-align: center;
+}
+#dropzone-caption > i {
+	font-size: 64px;
+	width: 100%;
+}
+#dropzone-caption > div {
+	font-size: 24px;
+	font-weight: 600;
+}
+#preview {
+	padding: 0;
+	overflow: hidden;
+}
+#preview-caption {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(0,0,0,.54);
+	height: 25vh;
+}
+#preview-caption > i {
+	text-align: center;
+	font-size: 64px;
+	width: 100%;
+}
+#preview img {
+	max-width: 100%;
+	display: block;
+}
 
 
 @media (max-width: 599px) and (orientation: portrait), (max-width: 959px) and (orientation: landscape) {

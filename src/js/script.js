@@ -1354,20 +1354,31 @@ function testURL() {
 testURL();
 
 function extract(src) {
-	// TODO Allow cross origin request in canvas
 	// TODO Also use the almost 1:1 Material-Palette: https://github.com/marijnvdwerf/material-palette
-	// TODO Also use Color Thief then convert to a Material Color
-	// TODO Create elements for Material-Palette, Vibrant, and Color Thief
 	var img = document.createElement("img");
 	img.src = src;
+	img.id = "preview-image";
 	img.addEventListener("load", function() {
 		var vibrant = new Vibrant(img);
 		var swatches = vibrant.swatches()
 		for (var swatch in swatches) {
 			if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
-				console.log(swatch, swatches[swatch].getHex(), swatches[swatch].getPopulation())
+				console.log(swatch, swatches[swatch].getHex(), swatches[swatch].getPopulation()) // TODO Remove, add population to cards
+				var element = document.getElementById(swatch.toLowerCase());
+				element.style.backgroundColor = swatches[swatch].getHex();
+				element.dataset.clipboardText = swatches[swatch].getHex();
 			}
 		}
+
+		if (document.getElementById("preview-caption")) {
+			document.getElementById("preview-caption").remove();
+		}
+		if (document.getElementById("preview-image")) {
+			document.getElementById("preview-image").remove();
+		}
+
+		document.getElementById("preview").appendChild(img);
+		document.body.scrollTop = document.getElementById("preview").offsetTop;
 	});
 }
 function image(event) {
@@ -1381,7 +1392,8 @@ function text(event) {
 	if (event.target.value.length > 0) {
 		var img = event.target.value;
 		post("http://bumpytext.com/img-proxy/", "img=" + img).then(function(data) {
-			extract("/img-proxy/img/" + encodeURIComponent(data));
+			var img = "/img-proxy/img/" + encodeURIComponent(data);
+			extract(img);
 		});
 	}
 }
@@ -1393,6 +1405,9 @@ function dropzoneDrop(event) {
 	event.stopPropagation();
 	event.preventDefault();
 
+	document.getElementById("dropzone").classList.remove("dragover");
+	document.getElementById("dropzone-caption").children[1].textContent = "Dropped"
+
 	var files = event.dataTransfer.files;
 	var src = URL.createObjectURL(files[0]);
 	document.getElementById("url").value = URL.createObjectURL(files[0]);
@@ -1402,6 +1417,10 @@ function dropzoneDrop(event) {
 function dropzoneDrag(event) {
 	event.stopPropagation();
 	event.preventDefault();
+
+	document.getElementById("dropzone").classList.add("dragover");
+	document.getElementById("dropzone-caption").children[1].textContent = "Drop Here"
+
 	event.dataTransfer.dropEffect = "copy";
 }
 function dropzoneClick(event) {
