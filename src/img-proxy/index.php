@@ -8,11 +8,13 @@
 
 	if (preg_match("/\.(png|jpeg|jpg)$/i", $img)) {
 		// Download File
-		echo nl2br(htmlentities(shell_exec("wget " . $img . " --output-document=./img/" . encodeURIComponent($img) . " 2>&1")), false);
+		shell_exec("wget " . $img . " --output-document=./img/" . encodeURIComponent($img) . " 2>&1");
+		shell_exec("touch ./img/" . encodeURIComponent($img) . " 2>&1");
+		echo encodeURIComponent($img);
 	} else {
 		echo "false";
 	}
 	
 	// Remove Older Files
-	echo nl2br(htmlentities(shell_exec("find ./img/* -mtime +1 -exec rm {} \\; 2>&1")), false);
+	shell_exec("find ./img/* -mtime +1 -exec rm {} \\; 2>&1");
 ?>

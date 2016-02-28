@@ -1122,6 +1122,35 @@ NodeList.prototype.removeChildren = HTMLCollection.prototype.removeChildren = fu
 	document.getElementById("bug-report").addEventListener("click", bugReport, false);
 }());
 
+// Post Promise
+function post(url, data) {
+	return new Promise(function(resolve, reject) {
+		function handleError() {
+			console.error("There was a connection error of some sort");
+			reject();
+		}
+
+		var request = new XMLHttpRequest();
+		request.open("POST", url, true);
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		request.addEventListener("load", function() {
+			if (request.status >= 200 && request.status < 400) {
+				// Success!
+				resolve(request.response);
+				return;
+			}
+			handleError();
+		});
+
+		request.addEventListener("error", function() {
+			handleError();
+		});
+
+		request.send(data);
+	});
+}
+
 (function() {
 	function appbar() {
 		if (window.matchMedia("(max-width: 600px) and (orientation: portrait), (max-width: 960px) and (orientation: landscape)").matches) {
@@ -1342,23 +1371,22 @@ function extract(src) {
 	});
 }
 function image(event) {
-	if (event.target.id === "file" && typeof event.target.files[0] !== "undefined") {
-		var src = URL.createObjectURL(event.target.files[0]);
+	if (typeof event.target.files[0] !== "undefined") {
+		var img = URL.createObjectURL(event.target.files[0]);
 		document.getElementById("url").value = URL.createObjectURL(event.target.files[0]);
-	} else if (event.target.id === "url" && event.target.value.length > 0) {
-		try {
-			var src = event.target.value;
-		} catch (error) {
-			console.log(error)
-		}
-	} else {
-		return;
+		extract(img);
 	}
-
-	extract(src);
+}
+function text(event) {
+	if (event.target.value.length > 0) {
+		var img = event.target.value;
+		post("http://bumpytext.com/img-proxy/", "img=" + img).then(function(data) {
+			extract("/img-proxy/img/" + encodeURIComponent(data));
+		});
+	}
 }
 document.getElementById("file").addEventListener("change", image, false);
-document.getElementById("url").addEventListener("input", image, false);
+document.getElementById("url").addEventListener("input", text, false);
 
 // Drag and Drop File Input
 function dropzoneDrop(event) {
