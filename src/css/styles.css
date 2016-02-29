@@ -158,8 +158,11 @@ body, html {
 	margin: 12px 12px 0 0;
 	float: left;
 }
-.card.color:last-of-type, .card.color:nth-of-type(5n+1) {
+.colors .card.color:last-of-type, .colors .card.color:nth-of-type(5n+1) {
 	margin-right: 0;
+}
+.card.palette .card.color:last-of-type, .card.palette .card.color:nth-of-type(5n) {
+    margin-right: 0;
 }
 .card.color .actions {
 	text-align: center;
@@ -201,6 +204,9 @@ body, html {
 }
 #black-and-white-black .color-title {
 	color: rgba(255,255,255,.2);
+}
+.card.color .color-title.two-line {
+    height: 128px;
 }
 
 /* Sub headers */
@@ -315,10 +321,10 @@ body:not(.scrolling) .main > .subheader:nth-of-type(1) {
 	width: 56px;
 	height: 56px;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-	transition: all 0.3s ease;
 	text-align: center;
 	color: #fff !important;
 	z-index: 9994;
+	transition: all 0.2s ease;
 }
 
 .fab:hover {
@@ -341,9 +347,28 @@ body:not(.scrolling) .main > .subheader:nth-of-type(1) {
 	pointer-events: none;
 	content: "";
 }
-
+.fab.inbetween-tabs {
+	animation: inbetween-tabs .2s;
+}
 .fab .material-icons {
 	line-height: 56px !important;
+}
+.fab.inbetween-tabs .material-icons {
+	display: none;
+}
+@keyframes inbetween-tabs {
+	50% {
+		width: 0;
+		height: 0;
+		bottom: 52px;
+		right: 52px;
+	}
+	100% {
+		width: 56px;
+		height: 56px;
+		bottom: 24px;
+		right: 24px;
+	}
 }
 
 /* Inputs */
@@ -429,6 +454,7 @@ input[type="text"], input[type="url"] {
 #preview img {
 	max-width: 100%;
 	display: block;
+	margin: auto;
 }
 
 
@@ -507,6 +533,20 @@ input[type="text"], input[type="url"] {
 	.fab {
 		bottom: 16px;
 		right: 16px;
+	}
+	@keyframes inbetween-tabs {
+		50% {
+			width: 0;
+			height: 0;
+			bottom: 44px;
+			right: 44px;
+		}
+		100% {
+			width: 56px;
+			height: 56px;
+			bottom: 16px;
+			right: 16px;
+		}
 	}
 }
 @media (max-width: 600px) { /* TODO Make cards fit the most amount of cards usable */

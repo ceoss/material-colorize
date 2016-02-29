@@ -1331,6 +1331,14 @@ function switchTab(num) {
 	tabs.children[(lastTabNum - 1)].classList.remove("active");
 	tabs.children[(num - 1)].classList.add("active");
 
+	// FAB
+	var fab = document.getElementsByClassName("fab")[0];
+	fab.children[0].textContent = mains.children[(num - 1)].dataset.fabIcon;
+	fab.classList.add("inbetween-tabs");
+	fab.addEventListener("animationend", function() {
+		fab.classList.remove("inbetween-tabs");
+	}, false);
+
 	lastTabNum = num;
 	pushHistory({"title": "Material Colorize - " + tabs.children[(num - 1)].textContent, "url": tabs.children[(num - 1)].textContent.toLowerCase()});
 }

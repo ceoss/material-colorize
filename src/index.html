@@ -46,25 +46,21 @@
 	<div class="waterfall"></div>
 
 	<div class="mains">
-		<div class="main active" id="pick">
+		<div class="main active" id="pick" data-fab-icon="&#xE152;" data-fab-action="dialog">
+			<!-- <div class="dialog">
+				<div class="subheader">Color Groups</div>
+				<div class="subheader">Color Names</div>
+			</div> -->
 		</div>
 
-		<div class="main" id="convert">
+		<div class="main" id="convert" data-fab-icon="&#xE152;" data-fab-action="dialog">
+			<!-- <div class="dialog">
+				<div class="subheader">Color Groups</div>
+				<div class="subheader">Color Names</div>
+			</div> -->
 		</div>
 
-		<div class="main" id="image">
-			<div class="subheader">Image Select</div>
-			<div class="card">
-				<div id="dropzone">
-					<div id="dropzone-caption">
-						<i class="material-icons">&#xE2C7;</i>
-						<div>Click or Drop</div>
-					</div>
-					<input type="file" name="file" accept="image/*" id="file">
-				</div>
-				<input type="url" name="url" id="url" placeholder="URI">
-			</div>
-
+		<div class="main" id="image" data-fab-icon="&#xE3F4;" data-fab-action="dialog">
 			<div class="subheader">Preview</div>
 			<div class="card" id="preview">
 				<div id="preview-caption">
@@ -72,8 +68,8 @@
 				</div>
 			</div>
 
-			<div class="subheader">Colors</div>
-			<div class="card colors">
+			<div class="subheader">Palette</div>
+			<div class="card palette">
 				<div class="card color" id="vibrant">
 					<div class="actions">
 						<i class="material-icons" title="Permalink">&#xE157;</i>
@@ -98,7 +94,7 @@
 						<i class="material-icons" title="Color Data">&#xE3B7;</i>
 						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
 					</div>
-					<div class="color-title">Dark Vibrant</div>
+					<div class="color-title two-line">Dark Vibrant</div>
 				</div>
 
 				<div class="card color" id="darkmuted">
@@ -107,7 +103,7 @@
 						<i class="material-icons" title="Color Data">&#xE3B7;</i>
 						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
 					</div>
-					<div class="color-title">Dark Muted</div>
+					<div class="color-title two-line">Dark Muted</div>
 				</div>
 
 				<div class="card color" id="lightvibrant">
@@ -116,7 +112,7 @@
 						<i class="material-icons" title="Color Data">&#xE3B7;</i>
 						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
 					</div>
-					<div class="color-title">Light Vibrant</div>
+					<div class="color-title two-line">Light Vibrant</div>
 				</div>
 
 				<div class="card color" id="lightmuted">
@@ -125,8 +121,24 @@
 						<i class="material-icons" title="Color Data">&#xE3B7;</i>
 						<i class="material-icons clipboard" title="Copy Color">&#xE14D;</i>
 					</div>
-					<div class="color-title">Light Muted</div>
+					<div class="color-title two-line">Light Muted</div>
 				</div>
+			</div>
+
+
+			<div class="dialog">
+				<div class="subheader">Local Image</div>
+				<!-- <div class="card"> -->
+				<div id="dropzone">
+					<div id="dropzone-caption">
+						<i class="material-icons">&#xE2C7;</i>
+						<div>Click or Drop</div>
+					</div>
+					<input type="file" name="file" accept="image/*" id="file">
+				</div>
+				<div class="subheader">Remote Image Proxy</div>
+				<input type="url" name="url" id="url" placeholder="URI">
+				<!-- </div> -->
 			</div>
 		</div>
 
