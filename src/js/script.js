@@ -1315,9 +1315,8 @@ lastTabNum = 1;
 function switchTab(num) {
 	var mains = document.getElementsByClassName("mains")[0];
 	var tabs = document.getElementsByClassName("tabs")[0];
-	// Restore Scroll
+	// Save Scroll
 	scrollTopTabs[(lastTabNum - 1)] = document.body.scrollTop;
-	document.body.scrollTop = scrollTopTabs[(num - 1)];
 
 	// Move Mains
 	mains.style.marginLeft = "-" + (num - 1) + "00%";
@@ -1325,6 +1324,10 @@ function switchTab(num) {
 	// Hide Scroll on Tabs Not in View
 	mains.children[(lastTabNum - 1)].classList.remove("active");
 	mains.children[(num - 1)].classList.add("active");
+
+	// Restore Scroll
+	document.body.scrollTop = scrollTopTabs[(num - 1)];
+
 	tabs.children[(lastTabNum - 1)].classList.remove("active");
 	tabs.children[(num - 1)].classList.add("active");
 
