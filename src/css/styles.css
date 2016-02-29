@@ -162,7 +162,7 @@ body, html {
 	margin-right: 0;
 }
 .card.palette .card.color:last-of-type, .card.palette .card.color:nth-of-type(5n) {
-    margin-right: 0;
+	margin-right: 0;
 }
 .card.color .actions {
 	text-align: center;
@@ -182,19 +182,19 @@ body, html {
 	z-index: 5;
 }
 .card.color .color-title {
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 64px;
-    margin: auto;
-    font-size: 64px;
-    line-height: 64px;
-    color: rgba(0,0,0,.4);
-    user-select: none;
-    opacity: 1;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 64px;
+	margin: auto;
+	font-size: 64px;
+	line-height: 64px;
+	color: rgba(0,0,0,.4);
+	user-select: none;
+	opacity: 1;
 	z-index: 5;
 	transition: opacity .3s ease;
 }
@@ -206,7 +206,8 @@ body, html {
 	color: rgba(255,255,255,.2);
 }
 .card.color .color-title.two-line {
-    height: 128px;
+	word-spacing: 99999999px;
+	height: 128px;
 }
 
 /* Sub headers */
@@ -456,6 +457,30 @@ input[type="text"], input[type="url"] {
 	display: block;
 	margin: auto;
 }
+
+@media (max-width: 1199px) and (min-width: 600px) {
+	.card.palette .card.color {
+		width: calc(33.33% - 12px);
+		padding-bottom: calc(33.33% - 12px); /* Fake Height */
+	}
+	.card.palette .card.color:last-of-type, .card.palette .card.color:nth-of-type(5n) {
+		margin-right: 12px;
+	}
+	.card.palette .card.color:last-of-type, .card.palette .card.color:nth-of-type(3n) {
+		margin-right: 0;
+	}
+}
+@media (max-width: 899px) and (min-width: 600px) {
+	.card.palette .card.color .color-title.two-line {
+		height: 96px;
+	}
+	.card.palette .card.color .color-title {
+		height: 48px;
+		font-size: 48px;
+		line-height: 48px;
+	}
+}
+
 
 
 @media (max-width: 599px) and (orientation: portrait), (max-width: 959px) and (orientation: landscape) {
