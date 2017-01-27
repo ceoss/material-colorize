@@ -499,11 +499,11 @@ input[type="text"], input[type="url"] {
 	.tabs {
 		height: 48px;
 		top: 48px;
-		min-width: 500px;
 		overflow-x: auto;
 		background: #03a9f4;
 		box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.14), 0 10px 10px -9px rgba(0, 0, 0, 0.12), 0 4px 4px -3px rgba(0, 0, 0, 0.4);
 		transition: top .2s ease;
+		white-space: nowrap;
 	}
 
 	.tabs > .tab {
@@ -511,7 +511,9 @@ input[type="text"], input[type="url"] {
 		height: 48px;
 		line-height: 48px;
 		margin: 0;
-		float: left;
+		min-width: 100px;
+		display: inline-block;
+		white-space: normal;
 	}
 	body.scrolling .appbar {
 		top: -48px;
