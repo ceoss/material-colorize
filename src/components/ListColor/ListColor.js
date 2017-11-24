@@ -6,40 +6,28 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import {mainColorNumber, primaryColorNumbers, accentColorNumbers} from '../../shared/colors';
+import Color from '../Color/Color';
 import './ListColor.css';
 
 export default class ListColor extends React.Component {
-  mainColorNumber = '500';
-
-  primaryColorNumbers = [
-    '50',
-    '100',
-    '200',
-    '300',
-    '400',
-    '600',
-    '700',
-    '800',
-    '900'
-  ];
-
-  accentColorNumbers = [
-    'A100',
-    'A200',
-    'A400',
-    'A700'
-  ];
-
   render() {
     return (
       <div>
         <p>{this.props.colorName}</p>
-        <p>{this.mainColorNumber}: {this.props.color[this.mainColorNumber]}</p>
         {
-          this.primaryColorNumbers.map(number => <p>{number} : {this.props.color[number]}</p>)
+          this.props.numbers.length === 0 ? true : this.props.numbers.includes(mainColorNumber)
+            && <Color color={this.props.color} colorName={this.props.colorName} number={mainColorNumber}></Color>
         }
         {
-          this.accentColorNumbers.map(number => <p>{number} : {this.props.color[number]}</p>)
+          primaryColorNumbers
+            .filter(number => this.props.numbers.length === 0 ? true : this.props.numbers.includes(number))
+            .map(number => <Color color={this.props.color} colorName={this.props.colorName} number={number}></Color>)
+        }
+        {
+          accentColorNumbers
+            .filter(number => this.props.numbers.length === 0 ? true : this.props.numbers.includes(number))
+            .map(number => <Color color={this.props.color} colorName={this.props.colorName} number={number}></Color>)
         }
       </div>
     );
@@ -49,4 +37,5 @@ export default class ListColor extends React.Component {
 ListColor.propTypes = {
   colorName: PropTypes.string.isRequired,
   color: PropTypes.object.isRequired,
+  numbers: PropTypes.array.isRequired,
 };

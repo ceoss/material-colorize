@@ -8,12 +8,12 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import ListColor from '../ListColor/ListColor';
+import {mainColorNumber, primaryColorNumbers, accentColorNumbers} from '../../shared/colors';
 import {
   amber,
   blue,
   blueGrey,
   brown,
-  common,
   cyan,
   deepOrange,
   deepPurple,
@@ -69,7 +69,6 @@ class ColorsList extends React.Component {
   blue = blue;
   blueGrey = blueGrey;
   brown = brown;
-  common = common;
   cyan = cyan;
   deepOrange = deepOrange;
   deepPurple = deepPurple;
@@ -88,10 +87,15 @@ class ColorsList extends React.Component {
 
   state = {
     colors: [],
+    numbers: []
   };
 
-  handleChange = event => {
-    this.setState({ colors: event.target.value });
+  changeColor = event => {
+    this.setState({ colors: event.target.value, numbers: this.state.numbers });
+  };
+
+  changeNumber = event => {
+    this.setState({ numbers: event.target.value, colors: this.state.colors });
   };
 
   render() {
@@ -104,7 +108,7 @@ class ColorsList extends React.Component {
           <Select
             multiple
             value={this.state.colors}
-            onChange={this.handleChange}
+            onChange={this.changeColor}
             input={<Input id="name-multiple" />}
             MenuProps={{
               PaperProps: {
@@ -128,10 +132,59 @@ class ColorsList extends React.Component {
             ))}
           </Select>
         </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="name-multiple">Numbers</InputLabel>
+          <Select
+            multiple
+            value={this.state.numbers}
+            onChange={this.changeNumber}
+            input={<Input id="name-multiple" />}
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+                  width: 200,
+                },
+              },
+            }}
+          >
+            <MenuItem
+              key={mainColorNumber}
+              value={mainColorNumber}
+              style={{
+                fontWeight: this.state.numbers.indexOf(mainColorNumber) !== -1 ? '500' : '400',
+              }}
+            >
+              {mainColorNumber}
+            </MenuItem>
+            {primaryColorNumbers.map(number => (
+              <MenuItem
+                key={number}
+                value={number}
+                style={{
+                  fontWeight: this.state.numbers.indexOf(number) !== -1 ? '500' : '400',
+                }}
+              >
+                {number}
+              </MenuItem>
+            ))}
+            {accentColorNumbers.map(number => (
+              <MenuItem
+                key={number}
+                value={number}
+                style={{
+                  fontWeight: this.state.numbers.indexOf(number) !== -1 ? '500' : '400',
+                }}
+              >
+                {number}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         {
           this.colors
             .filter(color => this.state.colors.length === 0 ? true : this.state.colors.includes(color))
-            .map(color => <ListColor colorName={color} color={this[color]}></ListColor>)
+            .map(color => <ListColor colorName={color} color={this[color]} numbers={this.state.numbers}></ListColor>)
         }
       </div>
     );
