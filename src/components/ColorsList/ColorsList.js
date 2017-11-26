@@ -91,11 +91,11 @@ class ColorsList extends React.Component {
   };
 
   changeColor = event => {
-    this.setState({ colors: event.target.value, numbers: this.state.numbers });
+    this.setState({ colors: event.target.value});
   };
 
   changeNumber = event => {
-    this.setState({ numbers: event.target.value, colors: this.state.colors });
+    this.setState({ numbers: event.target.value});
   };
 
   render() {
