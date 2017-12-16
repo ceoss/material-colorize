@@ -11,11 +11,15 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import ColorsList from './components/ColorsList/ColorsList'
+import ConvertColors from './components/ConvertColor/ConvertColor'
 
 class App extends React.Component {
   state = {
     value: 0,
+    scrim: false
   };
+
+  convertColors = null;
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -25,9 +29,18 @@ class App extends React.Component {
     this.setState({ value: index });
   };
 
+  toggleScrim = () => {
+    this.setState({scrim: !this.state.scrim})
+  };
+
+  closePicker = () => {
+    if (this.convertColors) this.convertColors.handleClick();
+  }
+
   render() {
     return (
       <div>
+        {this.state.scrim ? <div style={{height: '100vh', width: '100vw', position: 'fixed', top: '0', left: '0'}} onClick={this.closePicker()}/> : null}
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography type="title" color="inherit">
@@ -54,7 +67,7 @@ class App extends React.Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <ColorsList></ColorsList>
-          <div><p>CONVERT</p></div>
+          <ConvertColors toggleScrim={this.toggleScrim} ref={(comp) => { this.convertColors = comp; }}></ConvertColors>
           <div><p>IMAGE</p></div>
           <div><p>SWITCHER</p></div>
           <div><p>PALETTE</p></div>
