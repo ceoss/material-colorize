@@ -2,8 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import { ChromePicker } from 'react-color'
+import {convert as convertColor} from '../../shared/convert';
 import './ConvertColor.css';
 
 export default class ColorsList extends React.Component {
@@ -21,6 +21,10 @@ export default class ColorsList extends React.Component {
     this.setState({ color: color.hex });
   };
 
+  convert = () => {
+    convertColor(this.state.color)
+      .then(res => console.log(res))
+  };
 
   render() {
     const { classes } = this.props;
@@ -33,13 +37,14 @@ export default class ColorsList extends React.Component {
         { this.state.displayColorPicker ? <div className="popover">
           <ChromePicker disableAlpha color={ this.state.color } onChange={ this.handleChange } />
         </div> : null }
-
+        <div>
+          <button onClick={this.convert}>Convert</button>
+        </div>
       </div>
     );
   }
 }
 
 ColorsList.propTypes = {
-  classes: PropTypes.object.isRequired,
   toggleScrim: PropTypes.func.isRequired
 };

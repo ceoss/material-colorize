@@ -8,28 +8,8 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import ListColor from '../ListColor/ListColor';
-import {mainColorNumber, primaryColorNumbers, accentColorNumbers} from '../../shared/colors';
-import {
-  amber,
-  blue,
-  blueGrey,
-  brown,
-  cyan,
-  deepOrange,
-  deepPurple,
-  green,
-  grey,
-  indigo,
-  lightBlue,
-  lightGreen,
-  lime,
-  orange,
-  pink,
-  purple,
-  red,
-  teal,
-  yellow
-} from 'material-ui/colors';
+import {mainColorNumber, primaryColorNumbers, accentColorNumbers, colors} from '../../shared/colors';
+import {colorNames} from '../../shared/colors';
 import './ColorsList.css';
 
 const styles = theme => ({
@@ -45,45 +25,8 @@ const ITEM_PADDING_TOP = 8;
 
 
 class ColorsList extends React.Component {
-  colors = ['amber',
-    'blue',
-    'blueGrey',
-    'brown',
-    'cyan',
-    'deepOrange',
-    'deepPurple',
-    'green',
-    'grey',
-    'indigo',
-    'lightBlue',
-    'lightGreen',
-    'lime',
-    'orange',
-    'pink',
-    'purple',
-    'red',
-    'teal',
-    'yellow']
-
-  amber = amber;
-  blue = blue;
-  blueGrey = blueGrey;
-  brown = brown;
-  cyan = cyan;
-  deepOrange = deepOrange;
-  deepPurple = deepPurple;
-  green = green;
-  grey = grey;
-  indigo = indigo;
-  lightBlue = lightBlue;
-  lightGreen = lightGreen;
-  lime = lime;
-  orange = orange;
-  pink = pink;
-  purple = purple;
-  red = red;
-  teal = teal;
-  yellow = yellow;
+  colors = colorNames;
+  colorObjects = colors;
 
   state = {
     colors: [],
@@ -184,7 +127,7 @@ class ColorsList extends React.Component {
         {
           this.colors
             .filter(color => this.state.colors.length === 0 ? true : this.state.colors.includes(color))
-            .map(color => <ListColor colorName={color} color={this[color]} numbers={this.state.numbers}></ListColor>)
+            .map(color => <ListColor colorName={color} color={this.colorObjects[color]} numbers={this.state.numbers}/>)
         }
       </div>
     );

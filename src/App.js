@@ -30,11 +30,14 @@ class App extends React.Component {
   };
 
   toggleScrim = () => {
-    this.setState({scrim: !this.state.scrim})
+    this.setState({scrim: !this.state.scrim});
   };
 
   closePicker = () => {
-    if (this.convertColors) this.convertColors.handleClick();
+    if (this.convertColors) {
+      this.convertColors.handleClick();
+      console.log(this.convertColors)
+    }
   }
 
   render() {
@@ -66,8 +69,8 @@ class App extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <ColorsList></ColorsList>
-          <ConvertColors toggleScrim={this.toggleScrim} ref={(comp) => { this.convertColors = comp; }}></ConvertColors>
+          <ColorsList/>
+          <ConvertColors toggleScrim={this.toggleScrim} ref={(comp) => { this.convertColors = comp; }}/>
           <div><p>IMAGE</p></div>
           <div><p>SWITCHER</p></div>
           <div><p>PALETTE</p></div>
