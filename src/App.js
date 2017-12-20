@@ -30,7 +30,12 @@ class App extends React.Component {
   };
 
   toggleScrim = () => {
-    this.setState({scrim: !this.state.scrim});
+    console.log('This is a test');
+    this.setState(prevState => {
+      console.log('Toggle scrim');
+      console.log(prevState);
+      return {scrim: !prevState.scrim}
+    });
   };
 
   closePicker = () => {

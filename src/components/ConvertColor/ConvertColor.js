@@ -9,11 +9,15 @@ import './ConvertColor.css';
 export default class ColorsList extends React.Component {
   state = {
     displayColorPicker: false,
-    color: '#FFFFFF',
+    color: '#000000',
   };
 
   handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    this.setState(prevState => {
+      console.log('Handle Click');
+      console.log(prevState);
+      return { displayColorPicker: !prevState.displayColorPicker }
+    });
     this.props.toggleScrim();
   };
 
@@ -27,8 +31,6 @@ export default class ColorsList extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div>
         <div className="swatch" onClick={ this.handleClick }>
