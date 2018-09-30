@@ -17,17 +17,17 @@ export default class ListColor extends React.Component {
         <p>{this.props.colorName}</p>
         {
           this.props.numbers.length === 0 ? true : this.props.numbers.includes(mainColorNumber)
-            && <Color color={this.props.color} colorName={this.props.colorName} number={mainColorNumber}></Color>
+            && <Color color={this.props.color} colorName={this.props.colorName} number={mainColorNumber}/>
         }
         {
           primaryColorNumbers
             .filter(number => this.props.numbers.length === 0 ? true : this.props.numbers.includes(number))
-            .map(number => <Color color={this.props.color} colorName={this.props.colorName} number={number}></Color>)
+            .map(number => <Color color={this.props.color} colorName={this.props.colorName} number={number}/>)
         }
         {
           accentColorNumbers
             .filter(number => this.props.numbers.length === 0 ? true : this.props.numbers.includes(number))
-            .map(number => <Color color={this.props.color} colorName={this.props.colorName} number={number}></Color>)
+            .map(number => <Color color={this.props.color} colorName={this.props.colorName} number={number}/>)
         }
       </div>
     );

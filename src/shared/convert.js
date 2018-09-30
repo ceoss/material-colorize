@@ -2,12 +2,9 @@ import {colorNumbers, colorNames, white, black, mainColorNumber, colors} from '.
 
 
 export function hexToRgb(hex) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-    return r + r + g + g + b + b;
-  });
-
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const splitHex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(splitHex);
   return result ? {
     r: parseInt(result[1], 16),
     g: parseInt(result[2], 16),
@@ -18,14 +15,13 @@ export function hexToRgb(hex) {
 function convertHexToValue(from, to) {
   const materialRgb = hexToRgb(from);
   const colorRgb = hexToRgb(to);
-  return Math.abs(materialRgb.r - colorRgb.r) + Math.abs(materialRgb.g - colorRgb.g) + Math.abs(materialRgb.b - colorRgb.b);
+  const diffColor = (key) => Math.abs(materialRgb[key] - colorRgb[key]);
+  return diffColor('r') + diffColor('g') + diffColor('b');
 }
 
-export async function convert(color) {
-  let min = { value: 9000, number: '', color: '' };
-
-  let objects = await colorNames.map(colorName => {
-    return colorNumbers.map(number => {
+export function convert(color) {
+  let objects = Object.keys(colors).map(colorName =>
+    Object.keys(colors[colorName]).map(number => {
       const colorHex = colors[colorName][number];
       return {
         color: colorName,
@@ -33,7 +29,7 @@ export async function convert(color) {
         value: convertHexToValue(colorHex, color)
       };
     })
-  });
+  );
 
   const blackObject = {
     color: 'black',
@@ -48,9 +44,9 @@ export async function convert(color) {
     value: convertHexToValue(white, color)
   };
 
-  objects = await [].concat.apply([], [...objects, whiteObject, blackObject]);
+  const fullObjects = [...objects, whiteObject, blackObject];
 
-  let values = await objects.map(res => res.value);
+  let values = fullObjects.map(res => res.value);
 
-  return objects[values.indexOf(Math.min(...values))];
+  return fullObjects[values.indexOf(Math.min(...values))];
 }
