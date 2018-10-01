@@ -1,10 +1,4 @@
 import React from 'react';
-import {
-  Route,
-  Router,
-  IndexRoute,
-  browserHistory
-} from 'react-router';
 import SwipeableViews from 'react-swipeable-views';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,8 +20,8 @@ class App extends React.Component {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
-    this.setState({ value: index });
+  handleChangeIndex = value => {
+    this.setState({ value });
   };
 
   toggleScrim = () => {
@@ -44,12 +38,16 @@ class App extends React.Component {
       this.convertColors.handleClick();
       console.log(this.convertColors)
     }
-  }
+  };
 
   render() {
     return (
       <div>
-        {this.state.scrim ? <div style={{height: '100vh', width: '100vw', position: 'fixed', top: '0', left: '0'}} onClick={this.closePicker()}/> : null}
+        {
+          this.state.scrim ?
+            <div style={{height: '100vh', width: '100vw', position: 'fixed', top: '0', left: '0'}} onClick={this.closePicker()}/> :
+            null
+        }
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography type="title" color="inherit">

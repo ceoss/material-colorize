@@ -6,26 +6,32 @@ export const white = '#FFFFFF';
 
 export const mainColorNumber = '500';
 
-export const primaryColorNumbers = [
-  '50',
-  '100',
-  '200',
-  '300',
-  '400',
-  '600',
-  '700',
-  '800',
-  '900'
+const nonCommonColorName = Object.keys(colorItems).find(key => key !== 'common');
+const keepPrevAndAddArr = (prev, key, val) => ({
+  ...prev,
+  [key]: [
+    ...prev[key],
+    val
+  ]
+});
+
+export const {accentColorNumbers, primaryColorNumbers} = Object.keys(colorItems[nonCommonColorName]).reduce((prev, key) =>
+    key.startsWith('A') ?
+      keepPrevAndAddArr(prev, 'accentColorNumbers', key) :
+      keepPrevAndAddArr(prev, 'primaryColorNumbers', key),
+  {
+    accentColorNumbers: [],
+    primaryColorNumbers: []
+  });
+
+export const colorNumbers = [
+  ...primaryColorNumbers,
+  ...accentColorNumbers
 ];
 
-export const accentColorNumbers = [
-  'A100',
-  'A200',
-  'A400',
-  'A700'
-];
-
-export const colorNumbers = [mainColorNumber, primaryColorNumbers, accentColorNumbers];
-
-export const colorNames = Object.keys(colorItems);
-export const colors = colorItems;
+export const colors = Object.keys(colorItems)
+  .reduce((prev, key) => key === 'common' ? prev : {
+    ...prev,
+    [key]: colorItems[key]
+  }, {});
+export const colorNames = Object.keys(colors);

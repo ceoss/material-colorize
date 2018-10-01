@@ -1,4 +1,4 @@
-import {colorNumbers, colorNames, white, black, mainColorNumber, colors} from './colors';
+import {white, black, mainColorNumber, colors} from './colors';
 
 
 export function hexToRgb(hex) {
