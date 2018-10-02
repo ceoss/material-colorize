@@ -1,14 +1,13 @@
 import React from 'react';
-import ListColor from '../ListColor/ListColor';
+import ColorList from '../components/ColorList';
 import {
   colorNames,
   colorNumbers,
   colors
-} from '../../shared/colors';
-import './ColorsList.css';
-import GenericMultiSelect from "../GenericMultiSelect/GenericMultiSelect";
+} from '../shared/colors';
+import GenericMultiSelect from "../components/GenericMultiSelect";
 
-export default class ColorsList extends React.Component {
+export default class PalleteListView extends React.Component {
   state = {
     colors: [],
     numbers: []
@@ -32,7 +31,7 @@ export default class ColorsList extends React.Component {
         {
           colorNames
             .filter(color => this.state.colors.length === 0 ? true : this.state.colors.includes(color))
-            .map(color => <ListColor key={color} colorName={color} color={colors[color]} numbers={this.state.numbers}/>)
+            .map(color => <ColorList key={color} colorName={color} color={colors[color]} numbers={this.state.numbers}/>)
         }
       </div>
     );

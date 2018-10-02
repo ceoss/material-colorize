@@ -5,8 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import ColorsList from './components/ColorsList/ColorsList'
-import ConvertColors from './components/ConvertColor/ConvertColor'
+import PalleteListView from './views/PalleteListView';
+import ConvertColorView from "./views/ConvertColorView";
 
 class App extends React.Component {
   state = {
@@ -17,11 +17,11 @@ class App extends React.Component {
   convertColors = null;
 
   handleChange = (event, value) => {
-    this.setState({ value });
+    this.setState({value});
   };
 
   handleChangeIndex = value => {
-    this.setState({ value });
+    this.setState({value});
   };
 
   toggleScrim = () => {
@@ -45,7 +45,13 @@ class App extends React.Component {
       <div>
         {
           this.state.scrim ?
-            <div style={{height: '100vh', width: '100vw', position: 'fixed', top: '0', left: '0'}} onClick={this.closePicker()}/> :
+            <div style={{
+              height: '100vh',
+              width: '100vw',
+              position: 'fixed',
+              top: '0',
+              left: '0'
+            }} onClick={this.closePicker()}/> :
             null
         }
         <AppBar position="static" color="default">
@@ -73,8 +79,8 @@ class App extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <ColorsList/>
-          <ConvertColors toggleScrim={this.toggleScrim} ref={(comp) => { this.convertColors = comp; }}/>
+          <PalleteListView/>
+          <ConvertColorView/>
           <div><p>IMAGE</p></div>
           <div><p>SWITCHER</p></div>
           <div><p>PALETTE</p></div>
