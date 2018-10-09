@@ -8,19 +8,21 @@ import {colorNumbers, mainColorNumber} from '../shared/colors';
 import Color from './Color';
 
 export default function ColorList(props) {
+  const {numbers, colorName, format, color} = props;
   return (
     <div>
-      <p>{props.colorName}</p>
+      <p>{colorName}</p>
       {
-        props.numbers.length === 0 ? true : props.numbers.includes(mainColorNumber)
-          && <Color color={props.color} key={`${props.colorName}${mainColorNumber}`} colorName={props.colorName} number={mainColorNumber}/>
+        numbers.length === 0 ? true : numbers.includes(mainColorNumber)
+          && <Color color={color} key={`${colorName}${mainColorNumber}`} colorName={colorName} number={mainColorNumber}/>
       }
       {
         colorNumbers
           .filter(number => number !== mainColorNumber &&
-            (props.numbers.length === 0 ? true : props.numbers.includes(number)))
+            (numbers.length === 0 ? true : numbers.includes(number)))
           .map(number =>
-            <Color color={props.color} key={`${props.colorName}${number}`} colorName={props.colorName} number={number}/>)
+            <Color color={color} key={`${colorName}${number}`} colorName={colorName} number={number}
+                   format={format}/>)
       }
     </div>
   );
@@ -30,4 +32,9 @@ ColorList.propTypes = {
   colorName: PropTypes.string.isRequired,
   color: PropTypes.object.isRequired,
   numbers: PropTypes.array.isRequired,
+  format: PropTypes.string,
+};
+
+ColorList.defaultProps = {
+  format: 'hex'
 };

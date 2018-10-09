@@ -1,52 +1,42 @@
-import {white, black, mainColorNumber, colors} from './colors';
+import {colorArray} from './colors';
+import tinycolor from 'tinycolor2';
+import {getImagePallete} from "./image";
 
 
-export function hexToRgb(hex) {
-  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  const splitHex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(splitHex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
-}
+getImagePallete();
 
-function convertHexToValue(from, to) {
-  const materialRgb = hexToRgb(from);
-  const colorRgb = hexToRgb(to);
+function diffColors(from, to) {
+  const materialRgb = tinycolor(from).toRgb();
+  const colorRgb = tinycolor(to).toRgb();
   const diffColor = (key) => Math.abs(materialRgb[key] - colorRgb[key]);
   return diffColor('r') + diffColor('g') + diffColor('b');
 }
 
 export function convert(color) {
-  let objects = Object.keys(colors).map(colorName =>
-    Object.keys(colors[colorName]).map(number => {
-      const colorHex = colors[colorName][number];
-      return {
-        color: colorName,
-        number: number,
-        value: convertHexToValue(colorHex, color)
-      };
-    })
-  );
-
-  const blackObject = {
-    color: 'black',
-    number: mainColorNumber,
-    value: convertHexToValue(black, color)
-  };
-
-
-  const whiteObject = {
-    color: 'white',
-    number: mainColorNumber,
-    value: convertHexToValue(white, color)
-  };
-
-  const fullObjects = [...objects, whiteObject, blackObject];
-
-  let values = fullObjects.map(res => res.value);
-
-  return fullObjects[values.indexOf(Math.min(...values))];
+  const colorMatch = colorArray.reduce((match, colorItem) => {
+    const diffVal = diffColors(color, colorItem.value);
+    if (diffVal < match.diffVal) {
+      return {diffVal, color: colorItem}
+    } else {
+      return match;
+    }
+  }, {diffVal: Infinity, color: {}});
+  return colorMatch.color;
 }
+
+const getFormatMethod = (format) => {
+  switch (format) {
+    case 'hex':
+      return 'toHexString';
+    case 'hexOpacity':
+      return 'toHex8String';
+    case 'rgb':
+      return 'toRgbString';
+    case 'rgbPercentage':
+      return 'toPercentageRgbString';
+    default:
+      return 'toString'
+  }
+};
+
+export const getColorFormat = (color, format) => tinycolor(color)[getFormatMethod(format)]();

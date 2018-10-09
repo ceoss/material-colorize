@@ -18,12 +18,12 @@ const GenericMultiSelect = (props) => {
         input={<Input id={props.inputId}/>}
         renderValue={selected => selected.join(', ')}
       >
-        {props.options.map(option => (
+        {props.options.map(option =>
           <MenuItem key={option} value={option}>
             <Checkbox checked={props.value.includes(option)}/>
             <ListItemText primary={option}/>
           </MenuItem>
-        ))}
+        )}
       </Select>
     </FormControl>;
 };

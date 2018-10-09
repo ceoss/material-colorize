@@ -6,6 +6,7 @@ import {
   colors
 } from '../shared/colors';
 import GenericMultiSelect from "../components/GenericMultiSelect";
+import PropTypes from "prop-types";
 
 export default class PalleteListView extends React.Component {
   state = {
@@ -22,18 +23,30 @@ export default class PalleteListView extends React.Component {
   };
 
   render() {
+    const {format} = this.props;
+    const {colors: stateColors, numbers} = this.state;
     return (
       <div>
-        <GenericMultiSelect handleChange={this.changeColor} value={this.state.colors} inputId="colors-selector"
+        <GenericMultiSelect handleChange={this.changeColor} value={stateColors} inputId="colors-selector"
                             options={colorNames} label="Colors"/>
-        <GenericMultiSelect handleChange={this.changeNumber} value={this.state.numbers} inputId="numbers-selector"
+        <GenericMultiSelect handleChange={this.changeNumber} value={numbers} inputId="numbers-selector"
                             options={colorNumbers} label="Numbers"/>
         {
           colorNames
-            .filter(color => this.state.colors.length === 0 ? true : this.state.colors.includes(color))
-            .map(color => <ColorList key={color} colorName={color} color={colors[color]} numbers={this.state.numbers}/>)
+            .filter(color => stateColors.length === 0 ? true : stateColors.includes(color))
+            .map(color =>
+              <ColorList format={format} key={color} colorName={color} color={colors[color]} numbers={numbers}/>
+            )
         }
       </div>
     );
   }
 }
+
+PalleteListView.propTypes = {
+  format: PropTypes.string,
+};
+
+ColorList.defaultProps = {
+  format: 'hex'
+};

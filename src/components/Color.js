@@ -6,29 +6,62 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {ContentCopy} from 'mdi-material-ui'
+import tinycolor, {mostReadable} from 'tinycolor2';
+import Clipboard from 'clipboard';
+import {getColorFormat} from "../shared/convert";
 
-function Color(props) {
-  return (
-    <Card style={{backgroundColor: props.color[props.number]}}>
-      <CardContent>
-        <Typography type="headline" component="h2">
-          {props.colorName} {props.number}
-        </Typography>
-      </CardContent>
-      <CardActions disableActionSpacing>
-        <div className="grow"/>
-        <IconButton aria-label="Add to favorites">
-          <ContentCopy/>
-        </IconButton>
-      </CardActions>
-    </Card>
-  );
+class Color extends React.PureComponent {
+  componentDidMount () {
+    const button = this.button;
+
+    this.clipboard = new Clipboard(button, {
+        text: trigger => trigger.getAttribute('clipboard-text')
+      }
+    )
+  }
+
+  componentWillUnmount() {
+    this.clipboard.destroy()
+  }
+
+  render() {
+    const {number, color, colorName, format} = this.props,
+      actualColor = color[number],
+      tinyActualColor = tinycolor(actualColor),
+      formattedColor = getColorFormat(actualColor, format),
+      strColor = tinyActualColor.toHexString(),
+      darkenedColor = tinyActualColor.darken(60).toHexString(),
+      lightenedColor = tinyActualColor.lighten(80).toHexString(),
+      readableColor = mostReadable(strColor, [darkenedColor, lightenedColor], {includeFallbackColors: true}).toHexString();
+
+    return (
+      <Card style={{backgroundColor: strColor, color: readableColor}}>
+        <CardContent>
+          <Typography type="headline" color="inherit" component="h2">
+            {colorName} {number}
+          </Typography>
+        </CardContent>
+        <CardActions disableActionSpacing>
+          <div className="grow"/>
+          <IconButton aria-label="Copy Color to Clipboard" color="inherit" buttonRef={(element) => {this.button = element}}
+                      clipboard-text={formattedColor}>
+            <ContentCopy/>
+          </IconButton>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 Color.propTypes = {
   colorName: PropTypes.string.isRequired,
   color: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  number: PropTypes.string,
+  format: PropTypes.string
+};
+
+Color.defaultProps = {
+  format: 'hex'
 };
 
 export default Color;

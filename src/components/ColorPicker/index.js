@@ -10,7 +10,6 @@ class ColorPicker extends React.Component {
   state = {
     arrowRef: null,
     open: false,
-    color: '#FFFFFF'
   };
 
   handleClickButton = () => {
@@ -25,15 +24,8 @@ class ColorPicker extends React.Component {
     });
   };
 
-
-  handleColorChange = (color) => {
-    console.log(color);
-    this.setState({ color: color.hex });
-  };
-
-
   render() {
-    const {classes} = this.props;
+    const {classes, color, changeColor} = this.props;
     const {open, arrowRef} = this.state;
     const id = open ? 'scroll-playground' : null;
 
@@ -48,7 +40,7 @@ class ColorPicker extends React.Component {
           aria-describedby={id}
         >
           <div className={classes.swatch}>
-            <div className={classes.color} style={{background: this.state.color}}/>
+            <div className={classes.color} style={{background: color}}/>
           </div>
         </ButtonBase>
         <Popper
@@ -69,7 +61,7 @@ class ColorPicker extends React.Component {
           }}
         >
           <span className={classes.arrow} ref={this.handleArrowRef}/>
-          <ChromePicker disableAlpha color={this.state.color} onChange={this.handleColorChange}/>
+          <ChromePicker disableAlpha color={color} onChange={changeColor}/>
         </Popper>
       </div>
     );
@@ -78,6 +70,8 @@ class ColorPicker extends React.Component {
 
 ColorPicker.propTypes = {
   classes: PropTypes.object.isRequired,
+  color: PropTypes.string.isRequired,
+  changeColor: PropTypes.func.isRequired
 };
 
 export default withStyles(style)(ColorPicker);

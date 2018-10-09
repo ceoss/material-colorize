@@ -11,7 +11,8 @@ import ConvertColorView from "./views/ConvertColorView";
 class App extends React.Component {
   state = {
     value: 0,
-    scrim: false
+    scrim: false,
+    format: 'hex'
   };
 
   convertColors = null;
@@ -25,10 +26,7 @@ class App extends React.Component {
   };
 
   toggleScrim = () => {
-    console.log('This is a test');
     this.setState(prevState => {
-      console.log('Toggle scrim');
-      console.log(prevState);
       return {scrim: !prevState.scrim}
     });
   };

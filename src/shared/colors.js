@@ -35,3 +35,24 @@ export const colors = Object.keys(colorItems)
     [key]: colorItems[key]
   }, {});
 export const colorNames = Object.keys(colors);
+
+export const colorArray = [
+  ...Object.keys(colors).map(colorName =>
+    Object.keys(colors[colorName]).map(number =>
+      ({
+        color: colorName,
+        number: number,
+        value: colors[colorName][number]
+      })
+    )),
+  {
+    color: 'black',
+    number: mainColorNumber,
+    value: black
+  },
+  {
+    color: 'white',
+    number: mainColorNumber,
+    value: white
+  }
+];
