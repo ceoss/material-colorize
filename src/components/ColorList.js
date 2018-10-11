@@ -35,6 +35,4 @@ type ColorListPropType = {
   format?: string
 }
 
-ColorList.defaultProps = {
-  format: 'hex'
-};
+ColorList.

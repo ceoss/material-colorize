@@ -31,7 +31,7 @@ type GenericMultiSelectPropType = {
   handleChange: (selection: string[]) => void,
   value: string[],
   label: string,
-  inputid: string,
+  inputId: string,
   options: string[]
 }
 

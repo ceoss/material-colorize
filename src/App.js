@@ -8,21 +8,21 @@ import Tab from '@material-ui/core/Tab';
 import PalleteListView from './views/PalleteListView';
 import ConvertColorView from "./views/ConvertColorView";
 
-class App extends React.Component<{}> {
+class App extends React.Component<{}, {
+  tabIndex: number,
+  scrim: boolean,
+  format: string
+}> {
   state = {
-    value: 0,
+    tabIndex: 0,
     scrim: false,
     format: 'hex'
   };
 
   convertColors = null;
 
-  handleChange = (event, value) => {
-    this.setState({value});
-  };
-
-  handleChangeIndex = value => {
-    this.setState({value});
+  handleChangeIndex = (tabIndex: number) => {
+    this.setState({tabIndex});
   };
 
   toggleScrim = () => {
@@ -59,8 +59,8 @@ class App extends React.Component<{}> {
             </Typography>
           </Toolbar>
           <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
+            value={this.state.tabIndex}
+            onChange={this.handleChangeIndex}
             indicatorColor="primary"
             textColor="primary"
             centered
@@ -74,7 +74,7 @@ class App extends React.Component<{}> {
         </AppBar>
         <SwipeableViews
           axis={'' === 'rtl' ? 'x-reverse' : 'x'}
-          index={this.state.value}
+          index={this.state.tabIndex}
           onChangeIndex={this.handleChangeIndex}
         >
           <PalleteListView/>

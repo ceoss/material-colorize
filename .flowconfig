@@ -1,6 +1,7 @@
 [ignore]
 .*/node_modules/.*
 .*/build/.*
+.*\.test\.js
 
 [include]
 

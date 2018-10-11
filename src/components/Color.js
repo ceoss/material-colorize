@@ -11,6 +11,9 @@ import {getColorFormat} from "../shared/convert";
 import type {ColorType} from "../shared/colors";
 
 class Color extends React.PureComponent<ColorPropType> {
+  button: any;
+  clipboard: any;
+
   componentDidMount () {
     const button = this.button;
 
@@ -23,6 +26,10 @@ class Color extends React.PureComponent<ColorPropType> {
   componentWillUnmount() {
     this.clipboard.destroy()
   }
+
+  static defaultProps = {
+    format: 'hex'
+  };
 
   render() {
     const {number, color, colorName, format} = this.props,
@@ -59,9 +66,5 @@ type ColorPropType = {
   number?: string,
   format?: string
 }
-
-Color.defaultProps = {
-  format: 'hex'
-};
 
 export default Color;

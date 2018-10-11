@@ -12,6 +12,10 @@ export default class ConvertColorView extends React.Component<ConvertColorViewPr
     this.setState({color: color.hex});
   };
 
+  static defaultProps = {
+    format: 'hex'
+  };
+
   render() {
     const {format} = this.props;
     const {color} = this.state;
@@ -31,9 +35,5 @@ export default class ConvertColorView extends React.Component<ConvertColorViewPr
 }
 
 type ConvertColorViewPropType = {
-  format: string
-};
-
-ConvertColorView.defaultProps = {
-  format: 'hex'
+  format?: string
 };

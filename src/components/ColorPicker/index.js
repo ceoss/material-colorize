@@ -1,16 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Popper from '@material-ui/core/Popper';
 import {ChromePicker} from 'react-color'
 import style from './style';
 
-class ColorPicker extends React.Component<ColorPickerPropType> {
+class ColorPicker extends React.Component<ColorPickerPropType, {
+  arrowRef: any,
+  open: boolean
+}> {
   state = {
     arrowRef: null,
     open: false,
   };
+
+  anchorEl: any;
 
   handleClickButton = () => {
     this.setState(state => ({
@@ -70,15 +74,9 @@ class ColorPicker extends React.Component<ColorPickerPropType> {
 
 type ColorPickerPropType = {
   // TODO: Fix the Classes typing
-  classes: {},
+  classes: any,
   color: string,
   changeColor: (color: string) => void
 }
-
-ColorPicker.propTypes = {
-  classes: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
-  changeColor: PropTypes.func.isRequired
-};
 
 export default withStyles(style)(ColorPicker);

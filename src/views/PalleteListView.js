@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import ColorList from '../components/ColorList';
 import {
   colorNames,
@@ -7,7 +7,10 @@ import {
 } from '../shared/colors';
 import GenericMultiSelect from "../components/GenericMultiSelect";
 
-export default class PalleteListView extends React.Component<PalleteListViewPropType> {
+export default class PalleteListView extends React.Component<PalleteListViewPropType, {
+  colors: string[],
+  numbers: string[]
+}> {
   state = {
     colors: [],
     numbers: []
@@ -17,8 +20,12 @@ export default class PalleteListView extends React.Component<PalleteListViewProp
     this.setState({colors: event.target.value});
   };
 
-  changeNumber = event => {
+  changeNumber = (event: SyntheticEvent<HTMLSelectElement>) => {
     this.setState({numbers: event.target.value});
+  };
+
+  static defaultProps = {
+    format: 'hex'
   };
 
   render() {
@@ -45,7 +52,3 @@ export default class PalleteListView extends React.Component<PalleteListViewProp
 type PalleteListViewPropType = {
   format?: string
 }
-
-ColorList.defaultProps = {
-  format: 'hex'
-};
