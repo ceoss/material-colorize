@@ -1,9 +1,8 @@
 import React from "react";
 import ColorPicker from "../components/ColorPicker";
-import PropTypes from "prop-types";
 import Color from "../components/Color";
 
-export default class ConvertColorView extends React.Component {
+export default class ConvertColorView extends React.Component<ConvertColorViewPropType> {
   state = {
     color: '#FFFFFF',
     convertedColor: null
@@ -31,8 +30,8 @@ export default class ConvertColorView extends React.Component {
   }
 }
 
-ConvertColorView.propTypes = {
-  format: PropTypes.string,
+type ConvertColorViewPropType = {
+  format: string
 };
 
 ConvertColorView.defaultProps = {

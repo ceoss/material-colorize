@@ -1,10 +1,7 @@
-// @flow weak
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import ColorPicker from "./ColorPicker";
 
-export default class ColorsList extends React.Component {
+export default class ColorsList extends React.Component<ConvertColorPropType> {
   state = {
     displayColorPicker: false,
     color: '#000000',
@@ -33,6 +30,6 @@ export default class ColorsList extends React.Component {
   }
 }
 
-ColorsList.propTypes = {
-  toggleScrim: PropTypes.func.isRequired
+type ConvertColorPropType = {
+  toggleScrim: () => void
 };

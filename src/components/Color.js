@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,8 +8,9 @@ import {ContentCopy} from 'mdi-material-ui'
 import tinycolor, {mostReadable} from 'tinycolor2';
 import Clipboard from 'clipboard';
 import {getColorFormat} from "../shared/convert";
+import type {ColorType} from "../shared/colors";
 
-class Color extends React.PureComponent {
+class Color extends React.PureComponent<ColorPropType> {
   componentDidMount () {
     const button = this.button;
 
@@ -53,12 +53,12 @@ class Color extends React.PureComponent {
   }
 }
 
-Color.propTypes = {
-  colorName: PropTypes.string.isRequired,
-  color: PropTypes.object.isRequired,
-  number: PropTypes.string,
-  format: PropTypes.string
-};
+type ColorPropType = {
+  color: ColorType,
+  colorName: string,
+  number?: string,
+  format?: string
+}
 
 Color.defaultProps = {
   format: 'hex'

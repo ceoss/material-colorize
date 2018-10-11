@@ -3,11 +3,11 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import {colorNumbers, mainColorNumber} from '../shared/colors';
 import Color from './Color';
+import type {ColorType} from "../shared/colors";
 
-export default function ColorList(props) {
+export default function ColorList(props: ColorListPropType) {
   const {numbers, colorName, format, color} = props;
   return (
     <div>
@@ -28,12 +28,12 @@ export default function ColorList(props) {
   );
 }
 
-ColorList.propTypes = {
-  colorName: PropTypes.string.isRequired,
-  color: PropTypes.object.isRequired,
-  numbers: PropTypes.array.isRequired,
-  format: PropTypes.string,
-};
+type ColorListPropType = {
+  color: ColorType,
+  colorName: string,
+  numbers: string[],
+  format?: string
+}
 
 ColorList.defaultProps = {
   format: 'hex'

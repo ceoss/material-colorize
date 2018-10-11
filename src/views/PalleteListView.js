@@ -6,9 +6,8 @@ import {
   colors
 } from '../shared/colors';
 import GenericMultiSelect from "../components/GenericMultiSelect";
-import PropTypes from "prop-types";
 
-export default class PalleteListView extends React.Component {
+export default class PalleteListView extends React.Component<PalleteListViewPropType> {
   state = {
     colors: [],
     numbers: []
@@ -43,9 +42,9 @@ export default class PalleteListView extends React.Component {
   }
 }
 
-PalleteListView.propTypes = {
-  format: PropTypes.string,
-};
+type PalleteListViewPropType = {
+  format?: string
+}
 
 ColorList.defaultProps = {
   format: 'hex'

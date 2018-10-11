@@ -2,9 +2,6 @@ import {colorArray} from './colors';
 import tinycolor from 'tinycolor2';
 import {getImagePallete} from "./image";
 
-
-getImagePallete();
-
 function diffColors(from, to) {
   const materialRgb = tinycolor(from).toRgb();
   const colorRgb = tinycolor(to).toRgb();

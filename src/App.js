@@ -8,7 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import PalleteListView from './views/PalleteListView';
 import ConvertColorView from "./views/ConvertColorView";
 
-class App extends React.Component {
+class App extends React.Component<{}> {
   state = {
     value: 0,
     scrim: false,

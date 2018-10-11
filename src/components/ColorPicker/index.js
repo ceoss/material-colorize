@@ -6,7 +6,7 @@ import Popper from '@material-ui/core/Popper';
 import {ChromePicker} from 'react-color'
 import style from './style';
 
-class ColorPicker extends React.Component {
+class ColorPicker extends React.Component<ColorPickerPropType> {
   state = {
     arrowRef: null,
     open: false,
@@ -66,6 +66,13 @@ class ColorPicker extends React.Component {
       </div>
     );
   }
+}
+
+type ColorPickerPropType = {
+  // TODO: Fix the Classes typing
+  classes: {},
+  color: string,
+  changeColor: (color: string) => void
 }
 
 ColorPicker.propTypes = {
