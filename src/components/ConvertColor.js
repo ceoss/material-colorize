@@ -1,6 +1,12 @@
+// @flow
+
 import React from 'react';
 import ColorPicker from "./ColorPicker";
 import type {ColorResult} from 'react-color';
+
+type ConvertColorPropType = {
+  toggleScrim: () => void
+};
 
 export default class ColorsList extends React.Component<ConvertColorPropType, {
   color: string,
@@ -33,7 +39,3 @@ export default class ColorsList extends React.Component<ConvertColorPropType, {
     )
   }
 }
-
-type ConvertColorPropType = {
-  toggleScrim: () => void
-};

@@ -1,3 +1,5 @@
+// @flow
+
 import * as colorItems from '@material-ui/core/colors';
 
 export type ColorType = {

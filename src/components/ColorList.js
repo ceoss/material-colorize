@@ -1,3 +1,4 @@
+// @flow
 /*
  * This component should list the colors that are called in
  */
@@ -6,7 +7,13 @@ import React from 'react';
 import {colorNumbers, mainColorNumber} from '../shared/colors';
 import Color from './Color';
 import type {ColorType} from "../shared/colors";
-import type {ColorResult} from 'react-color';
+
+type ColorListPropType = {
+  color: ColorType,
+  colorName: string,
+  numbers: string[],
+  format?: string
+}
 
 export default function ColorList(props: ColorListPropType) {
   const {numbers, colorName, format, color} = props;
@@ -27,11 +34,4 @@ export default function ColorList(props: ColorListPropType) {
       }
     </div>
   );
-}
-
-type ColorListPropType = {
-  color: ColorType,
-  colorName: string,
-  numbers: string[],
-  format?: string
 }

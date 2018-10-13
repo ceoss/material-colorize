@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,6 +11,13 @@ import tinycolor, {mostReadable} from 'tinycolor2';
 import Clipboard from 'clipboard';
 import {getColorFormat} from "../shared/convert";
 import type {ColorType} from "../shared/colors";
+
+type ColorPropType = {
+  color: ColorType | string,
+  colorName: string,
+  number?: string,
+  format: string
+}
 
 class Color extends React.PureComponent<ColorPropType> {
   button: any;
@@ -58,13 +67,6 @@ class Color extends React.PureComponent<ColorPropType> {
       </Card>
     );
   }
-}
-
-type ColorPropType = {
-  color: ColorType | string,
-  colorName: string,
-  number?: string,
-  format: string
 }
 
 export default Color;

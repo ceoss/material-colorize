@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import ColorList from '../components/ColorList';
 import {
@@ -6,6 +8,10 @@ import {
   colors
 } from '../shared/colors';
 import GenericMultiSelect from "../components/GenericMultiSelect";
+
+type PalleteListViewPropType = {
+  format?: string
+}
 
 export default class PalleteListView extends React.Component<PalleteListViewPropType, {
   colors: string[],
@@ -47,8 +53,4 @@ export default class PalleteListView extends React.Component<PalleteListViewProp
       </div>
     );
   }
-}
-
-type PalleteListViewPropType = {
-  format?: string
 }

@@ -1,6 +1,8 @@
+// @flow
+
 import {colorArray} from './colors';
 import tinycolor from 'tinycolor2';
-import type {ColorArrayType, ColorType} from "./colors";
+import type {ColorArrayType} from "./colors";
 
 function diffColors(from: string, to: string): number {
   const materialRgb = tinycolor(from).toRgb();

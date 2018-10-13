@@ -1,3 +1,5 @@
+// @flow
+
 export default (theme: any) => ({
   popper: {
     zIndex: 1,

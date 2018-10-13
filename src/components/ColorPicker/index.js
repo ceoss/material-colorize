@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -5,6 +7,13 @@ import Popper from '@material-ui/core/Popper';
 import {ChromePicker} from 'react-color';
 import type {ColorResult} from 'react-color';
 import style from './style';
+
+type ColorPickerPropType = {
+  // TODO: Fix the Classes typing
+  classes: any,
+  color: string,
+  changeColor: (color: ColorResult) => void
+}
 
 class ColorPicker extends React.Component<ColorPickerPropType, {
   arrowRef: any,
@@ -71,13 +80,6 @@ class ColorPicker extends React.Component<ColorPickerPropType, {
       </div>
     );
   }
-}
-
-type ColorPickerPropType = {
-  // TODO: Fix the Classes typing
-  classes: any,
-  color: string,
-  changeColor: (color: ColorResult) => void
 }
 
 export default withStyles(style)(ColorPicker);

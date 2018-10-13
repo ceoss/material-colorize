@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -6,6 +8,14 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
+
+type GenericMultiSelectPropType = {
+  handleChange: (selection: any[]) => void,
+  value: any[],
+  label: string,
+  inputId: string,
+  options: any[]
+}
 
 const GenericMultiSelect = (props: GenericMultiSelectPropType) => {
   return <FormControl>
@@ -26,13 +36,5 @@ const GenericMultiSelect = (props: GenericMultiSelectPropType) => {
       </Select>
     </FormControl>;
 };
-
-type GenericMultiSelectPropType = {
-  handleChange: (selection: any[]) => void,
-  value: any[],
-  label: string,
-  inputId: string,
-  options: any[]
-}
 
 export default GenericMultiSelect;

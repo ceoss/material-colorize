@@ -1,7 +1,13 @@
+// @flow
+
 import React from "react";
 import ColorPicker from "../components/ColorPicker";
 import Color from "../components/Color";
 import type {ColorResult} from 'react-color';
+
+type ConvertColorViewPropType = {
+  format?: string
+};
 
 export default class ConvertColorView extends React.Component<ConvertColorViewPropType, {
   color: string,
@@ -37,7 +43,3 @@ export default class ConvertColorView extends React.Component<ConvertColorViewPr
     );
   }
 }
-
-type ConvertColorViewPropType = {
-  format?: string
-};
