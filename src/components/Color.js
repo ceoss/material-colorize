@@ -42,7 +42,7 @@ class Color extends React.PureComponent<ColorPropType> {
 
   render() {
     const {number, color, colorName, format} = this.props,
-      actualColor: string = number ? (color[(number: any)]: any) : (color: any),
+      actualColor: string = (number && (color[(number: any)]: any)) || (color: any),
       tinyActualColor = tinycolor(actualColor),
       formattedColor = getColorFormat(actualColor, format),
       strColor = tinyActualColor.toHexString(),
