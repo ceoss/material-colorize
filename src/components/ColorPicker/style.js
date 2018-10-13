@@ -1,4 +1,4 @@
-export default theme => ({
+export default (theme: any) => ({
   popper: {
     zIndex: 1,
     '&[x-placement*="bottom"] $arrow': {

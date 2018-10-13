@@ -1,14 +1,18 @@
 import React from "react";
 import ColorPicker from "../components/ColorPicker";
 import Color from "../components/Color";
+import type {ColorResult} from 'react-color';
 
-export default class ConvertColorView extends React.Component<ConvertColorViewPropType> {
+export default class ConvertColorView extends React.Component<ConvertColorViewPropType, {
+  color: string,
+  convertedColor: string | null
+}> {
   state = {
     color: '#FFFFFF',
     convertedColor: null
   };
 
-  handleColorChange = (color) => {
+  handleColorChange = (color: ColorResult) => {
     this.setState({color: color.hex});
   };
 
@@ -23,7 +27,7 @@ export default class ConvertColorView extends React.Component<ConvertColorViewPr
       <div>
         <div>
           <Color format={format} color={color} colorName={color}/>
-          <ColorPicker color={this.state.color}
+          <ColorPicker color={color}
                        changeColor={this.handleColorChange}/>
         </div>
         <div>

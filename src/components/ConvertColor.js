@@ -1,5 +1,6 @@
 import React from 'react';
 import ColorPicker from "./ColorPicker";
+import type {ColorResult} from 'react-color';
 
 export default class ColorsList extends React.Component<ConvertColorPropType, {
   color: string,
@@ -17,7 +18,7 @@ export default class ColorsList extends React.Component<ConvertColorPropType, {
     this.props.toggleScrim();
   };
 
-  handleChange = (color) => {
+  handleChange = (color: ColorResult) => {
     this.setState({ color: color.hex });
   };
 

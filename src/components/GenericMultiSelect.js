@@ -28,11 +28,11 @@ const GenericMultiSelect = (props: GenericMultiSelectPropType) => {
 };
 
 type GenericMultiSelectPropType = {
-  handleChange: (selection: string[]) => void,
-  value: string[],
+  handleChange: (selection: any[]) => void,
+  value: any[],
   label: string,
   inputId: string,
-  options: string[]
+  options: any[]
 }
 
 export default GenericMultiSelect;

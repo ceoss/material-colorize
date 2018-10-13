@@ -233,7 +233,7 @@ declare module '@material-ui/core/colors/grey' {
 }
 
 declare module '@material-ui/core/colors' {
-  declare module.exports: ColorType[];
+  declare module.exports: {[colorName: string]: ColorType};
 }
 
 declare module '@material-ui/core/colors/indigo' {

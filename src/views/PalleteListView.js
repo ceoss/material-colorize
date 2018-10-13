@@ -1,4 +1,4 @@
-import React, {SyntheticEvent} from 'react';
+import React from 'react';
 import ColorList from '../components/ColorList';
 import {
   colorNames,
@@ -16,11 +16,11 @@ export default class PalleteListView extends React.Component<PalleteListViewProp
     numbers: []
   };
 
-  changeColor = event => {
+  changeColor = (event: any) => {
     this.setState({colors: event.target.value});
   };
 
-  changeNumber = (event: SyntheticEvent<HTMLSelectElement>) => {
+  changeNumber = (event: any) => {
     this.setState({numbers: event.target.value});
   };
 

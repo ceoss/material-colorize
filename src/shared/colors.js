@@ -1,21 +1,16 @@
 import * as colorItems from '@material-ui/core/colors';
-export const black = '#000000';
-
-export const white = '#FFFFFF';
-
-export const mainColorNumber = '500';
 
 export type ColorType = {
-  50: string;
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-  600: string;
-  700: string;
-  800: string;
-  900: string;
+  '50': string;
+  '100': string;
+  '200': string;
+  '300': string;
+  '400': string;
+  '500': string;
+  '600': string;
+  '700': string;
+  '800': string;
+  '900': string;
   A100: string;
   A200: string;
   A400: string;
@@ -24,9 +19,16 @@ export type ColorType = {
 
 export type ColorKeysType = $Keys<ColorType>;
 
-const nonCommonColor: string = colorItems[Object.keys(colorItems).find(key => key !== 'common')];
+export const black = '#000000';
+
+export const white = '#FFFFFF';
+
+export const mainColorNumber: ColorKeysType = '500';
+
+const nonCommonColorName: string = (Object.keys(colorItems).find(key => key !== 'common'): any);
+const nonCommonColor: ColorType = colorItems[nonCommonColorName];
 type NonCommonColorKeysType = $Keys<typeof nonCommonColor>;
-const keepPrevAndAddArr = <P = {}, T, I>(prev: P, key: $Keys<I>, val: T): prev & {|[key: $Keys<I>]: T|} => ({
+const keepPrevAndAddArr = <P: Object, T, I: Object>(prev: P, key: $Keys<I>, val: T): P & {|[key: $Keys<I>]: T|} => ({
   ...prev,
   [key]: [
     ...prev[key],
@@ -37,10 +39,10 @@ const keepPrevAndAddArr = <P = {}, T, I>(prev: P, key: $Keys<I>, val: T): prev &
 export const {accentColorNumbers, primaryColorNumbers} = Object.keys(nonCommonColor).reduce((prev: {
     accentColorNumbers: NonCommonColorKeysType[],
     primaryColorNumbers: NonCommonColorKeysType[]
-  }, key: string) =>
-    key.startsWith('A') ?
-      keepPrevAndAddArr<typeof prev, NonCommonColorKeysType, ColorType>(prev, 'accentColorNumbers', key) :
-      keepPrevAndAddArr<typeof prev, NonCommonColorKeysType, ColorType>(prev, 'primaryColorNumbers', key),
+  }, key: $Keys<ColorType>) =>
+    (key: string).startsWith('A') ?
+      keepPrevAndAddArr<typeof prev, NonCommonColorKeysType, typeof prev>(prev, 'accentColorNumbers', key) :
+      keepPrevAndAddArr<typeof prev, NonCommonColorKeysType, typeof prev>(prev, 'primaryColorNumbers', key),
   {
     accentColorNumbers: [],
     primaryColorNumbers: []
@@ -58,19 +60,23 @@ export const colors: {[colorName: string]: ColorType} = Object.keys(colorItems)
   }, {});
 export const colorNames: ($Keys<typeof colors>)[] = Object.keys(colors);
 
-export const colorArray: {
+export type ColorArrayType = {
   color: string,
   number: ColorKeysType,
-  value: ColorType[ColorKeysType]
-} = [
-  ...Object.keys(colors).map(colorName =>
-    Object.keys(colors[colorName]).map(number =>
-      ({
+  value: string
+};
+
+export const colorArray: ColorArrayType[] = [
+  ...Object.keys(colors).reduce((prev: ColorArrayType[], colorName: string): ColorArrayType[] =>
+    [
+      ...prev,
+      ...Object.keys(colors[colorName]).map((number: ColorKeysType): ColorArrayType => ({
         color: colorName,
         number: number,
-        value: colors[colorName][number]
+        value: (colors[colorName][number]: string)
       })
-    )),
+    )
+  ], []),
   {
     color: 'black',
     number: mainColorNumber,

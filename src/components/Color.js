@@ -33,7 +33,7 @@ class Color extends React.PureComponent<ColorPropType> {
 
   render() {
     const {number, color, colorName, format} = this.props,
-      actualColor = color[number],
+      actualColor: string = number ? (color[(number: any)]: any) : (color: any),
       tinyActualColor = tinycolor(actualColor),
       formattedColor = getColorFormat(actualColor, format),
       strColor = tinyActualColor.toHexString(),
@@ -61,10 +61,10 @@ class Color extends React.PureComponent<ColorPropType> {
 }
 
 type ColorPropType = {
-  color: ColorType,
+  color: ColorType | string,
   colorName: string,
   number?: string,
-  format?: string
+  format: string
 }
 
 export default Color;

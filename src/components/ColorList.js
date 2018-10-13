@@ -6,6 +6,7 @@ import React from 'react';
 import {colorNumbers, mainColorNumber} from '../shared/colors';
 import Color from './Color';
 import type {ColorType} from "../shared/colors";
+import type {ColorResult} from 'react-color';
 
 export default function ColorList(props: ColorListPropType) {
   const {numbers, colorName, format, color} = props;
@@ -34,5 +35,3 @@ type ColorListPropType = {
   numbers: string[],
   format?: string
 }
-
-ColorList.
