@@ -62,17 +62,17 @@ export const colors: {[colorName: string]: ColorType} = Object.keys(colorItems)
   }, {});
 export const colorNames: ($Keys<typeof colors>)[] = Object.keys(colors);
 
-export type ColorArrayType = {
+export type ColorMatchType = {
   color: string,
   number: ColorKeysType,
   value: string
 };
 
-export const colorArray: ColorArrayType[] = [
-  ...Object.keys(colors).reduce((prev: ColorArrayType[], colorName: string): ColorArrayType[] =>
+export const colorArray: ColorMatchType[] = [
+  ...Object.keys(colors).reduce((prev: ColorMatchType[], colorName: string): ColorMatchType[] =>
     [
       ...prev,
-      ...Object.keys(colors[colorName]).map((number: ColorKeysType): ColorArrayType => ({
+      ...Object.keys(colors[colorName]).map((number: ColorKeysType): ColorMatchType => ({
         color: colorName,
         number: number,
         value: (colors[colorName][number]: string)

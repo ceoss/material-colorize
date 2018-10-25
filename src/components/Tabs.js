@@ -15,53 +15,51 @@ type TabsPropType = {
   handleTabChange: (event: React.ChangeEvent<{}>, value: number) => void
 }
 
-class Tabs extends React.Component<TabsPropType> {
-  static defaultProps = {
-    tabIndex: 0
-  };
-
-  render() {
-    const {
-      tabIndex,
-      children: reactChildren,
-      handleChangeIndex,
-      handleTabChange,
-      title
-    } = this.props;
-    const children = React.Children.toArray(reactChildren);
-    return (
-      <React.Fragment>
-        <AppBar position="static" color="default">
-          <Toolbar>
-            <Typography type="title" color="inherit">
-              {title}
-            </Typography>
-          </Toolbar>
-          {/*Convert to children with label prop*/}
-          <MaterialTabs
-            value={tabIndex}
-            onChange={handleTabChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            {
-              children.map(child => <Tab label={child.props.tabLabel}/>)
-            }
-            </MaterialTabs>
-        </AppBar>
-        <SwipeableViews
-          axis={'' === 'rtl' ? 'x-reverse' : 'x'}
-          index={tabIndex}
-          onChangeIndex={handleChangeIndex}
+function Tabs(props: TabsPropType) {
+  const {
+    tabIndex,
+    children: reactChildren,
+    handleChangeIndex,
+    handleTabChange,
+    title
+  } = props;
+  const children = React.Children.toArray(reactChildren);
+  return (
+    <React.Fragment>
+      <AppBar position="static" color="default">
+        <Toolbar>
+          <Typography type="title" color="inherit">
+            {title}
+          </Typography>
+        </Toolbar>
+        <MaterialTabs
+          value={tabIndex}
+          onChange={handleTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
         >
           {
-            children.map((child, i) => <div style={tabIndex === i ? {} : {height: 0}}>{child}</div>)
+            children.map(child => <Tab key={child.props.tabLabel} label={child.props.tabLabel}/>)
           }
-        </SwipeableViews>
-      </React.Fragment>
-    );
-  }
+        </MaterialTabs>
+      </AppBar>
+      <SwipeableViews
+        axis={'' === 'rtl' ? 'x-reverse' : 'x'}
+        index={tabIndex}
+        onChangeIndex={handleChangeIndex}
+      >
+        {
+          children.map((child, i) =>
+            <div key={child.props.tabLabel}
+                 style={tabIndex === i ? {} : {height: 0}}>
+              {child}
+            </div>
+          )
+        }
+      </SwipeableViews>
+    </React.Fragment>
+  );
 }
 
 export default Tabs;

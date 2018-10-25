@@ -2,7 +2,7 @@
 
 import {colorArray} from './colors';
 import tinycolor from 'tinycolor2';
-import type {ColorArrayType} from "./colors";
+import type {ColorMatchType} from "./colors";
 
 function diffColors(from: string, to: string): number {
   const materialRgb = tinycolor(from).toRgb();
@@ -11,8 +11,8 @@ function diffColors(from: string, to: string): number {
   return diffColor('r') + diffColor('g') + diffColor('b');
 }
 
-export function convert(color: string): ColorArrayType {
-  const colorMatch = colorArray.reduce((match: {diffVal: number, color: ColorArrayType}, colorItem: ColorArrayType) => {
+export function convert(color: string): ColorMatchType {
+  const colorMatch = colorArray.reduce((match: {diffVal: number, color: ColorMatchType}, colorItem: ColorMatchType) => {
     const diffVal = diffColors(color, colorItem.value);
     if (diffVal < match.diffVal) {
       return {diffVal, color: colorItem}

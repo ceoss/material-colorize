@@ -6,7 +6,7 @@ import ColorPicker from "../components/ColorPicker";
 import Color from "../components/Color";
 import type {ColorResult} from 'react-color';
 import {convert} from "../shared/convert";
-import type {ColorArrayType} from "../shared/colors";
+import type {ColorMatchType} from "../shared/colors";
 
 type ConvertColorViewPropType = {
   format?: string
@@ -14,7 +14,7 @@ type ConvertColorViewPropType = {
 
 export default class ConvertColorView extends React.Component<ConvertColorViewPropType, {
   color: string,
-  convertedColor: ColorArrayType | null
+  convertedColor: ColorMatchType | null
 }> {
   state = {
     color: '#FFFFFF',

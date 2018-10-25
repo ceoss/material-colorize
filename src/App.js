@@ -2,6 +2,7 @@ import React from 'react';
 import Tabs from './components/Tabs';
 import PalleteListView from './views/PalleteListView';
 import ConvertColorView from "./views/ConvertColorView";
+import ImageExtractView from "./views/ImageExtractView";
 
 class App extends React.Component<{}, {
   tabIndex: number,
@@ -59,7 +60,7 @@ class App extends React.Component<{}, {
               title="Title">
           <PalleteListView tabLabel="Pick"/>
           <ConvertColorView tabLabel="Convert"/>
-          <div tabLabel="Convert"><p>IMAGE</p></div>
+          <ImageExtractView tabLabel="Image"/>
         </Tabs>
       </React.Fragment>
     );
