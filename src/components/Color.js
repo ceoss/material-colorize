@@ -15,8 +15,10 @@ import type {ColorType} from "../shared/colors";
 type ColorPropType = {
   color: ColorType | string,
   colorName: string,
+  subText?: string,
   number?: string,
-  format: string
+  format: string,
+  className?: string
 }
 
 class Color extends React.PureComponent<ColorPropType> {
@@ -37,11 +39,12 @@ class Color extends React.PureComponent<ColorPropType> {
   }
 
   static defaultProps = {
-    format: 'hex'
+    format: 'hex',
+    className: ''
   };
 
   render() {
-    const {number, color, colorName, format} = this.props,
+    const {number, color, colorName, format, subText, className} = this.props,
       actualColor: string = (number && (color[(number: any)]: any)) || (color: any),
       tinyActualColor = tinycolor(actualColor),
       formattedColor = getColorFormat(actualColor, format),
@@ -51,13 +54,15 @@ class Color extends React.PureComponent<ColorPropType> {
       readableColor = mostReadable(strColor, [darkenedColor, lightenedColor], {includeFallbackColors: true}).toHexString();
 
     return (
-      <Card style={{backgroundColor: strColor, color: readableColor}}>
+      <Card style={{backgroundColor: strColor, color: readableColor}} className={className}>
         <CardContent>
           <Typography type="headline" color="inherit" component="h2">
             {colorName} {number}
           </Typography>
         </CardContent>
         <CardActions disableActionSpacing>
+          {/* TODO: Fix styling */}
+          {subText ? <p>{subText}</p> : null}
           <div className="grow"/>
           <IconButton aria-label="Copy Color to Clipboard" color="inherit" buttonRef={(element) => {this.button = element}}
                       clipboard-text={formattedColor}>

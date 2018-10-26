@@ -13,7 +13,7 @@ type Swatch = {
   _rgb: number[]
 }
 
-type ColorPalette<T = Swatch> = {
+export type ColorPalette<T = Swatch> = {
   DarkMuted: T,
   DarkVibrant: T,
   LightMuted: T,

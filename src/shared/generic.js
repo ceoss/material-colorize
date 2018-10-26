@@ -17,3 +17,7 @@ export function ObjectMap<T: object>(object: T, cb: (value: $Values<T>, key: $Ke
     [key]: cb(object[key], key, object)
   }), {});
 }
+
+export function titleFromCamelCase(str: string): string {
+  return str.replace(/(?!^)[A-Z]/g, ' $&');
+}
