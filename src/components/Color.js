@@ -56,7 +56,7 @@ class Color extends React.PureComponent<ColorPropType> {
     return (
       <Card style={{backgroundColor: strColor, color: readableColor}} className={className}>
         <CardContent>
-          <Typography type="headline" color="inherit" component="h2">
+          <Typography type="headline" color="inherit" component="h2" className="text-caps">
             {colorName} {number}
           </Typography>
         </CardContent>

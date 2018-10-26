@@ -24,14 +24,14 @@ export default function ColorList(props: ColorListPropType) {
       <Typography className="text-caps" variant="h3" noWrap={true}>{titleFromCamelCase(colorName)}</Typography>
       {
         numbers.length === 0 ? true : numbers.includes(mainColorNumber)
-          && <Color className="margin-20" color={color} key={`${colorName}${mainColorNumber}`} colorName={colorName} number={mainColorNumber}/>
+          && <Color className="margin-20" color={color} key={`${colorName}${mainColorNumber}`} colorName={titleFromCamelCase(colorName)} number={mainColorNumber}/>
       }
       {
         colorNumbers
           .filter(number => number !== mainColorNumber &&
             (numbers.length === 0 ? true : numbers.includes(number)))
           .map(number =>
-            <Color className="margin-20" color={color} key={`${colorName}${number}`} colorName={colorName} number={number}
+            <Color className="margin-20" color={color} key={`${colorName}${number}`} colorName={titleFromCamelCase(colorName)} number={number}
                    format={format}/>)
       }
     </div>
