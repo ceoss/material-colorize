@@ -1,6 +1,6 @@
 const tabBorderSize = '1px';
 const tabBorderColor = '#e5e5e5';
-const tabBorder = `${tabBorderSize} ${tabBorderColor} solid`;
+const tabBorder = `${tabBorderSize} ${tabBorderColor} solid !important`;
 const inactiveTabMargin = '12px';
 const iconSize = '50px';
 const smallSize = '600px';
@@ -78,20 +78,28 @@ export default (theme: any) => ({
     width: iconSize,
     marginBottom: '10px'
   },
-  tabText: {
-    textAlign: 'center'
-  },
   tab: {
+    textAlign: 'center',
+    '-webkit-appearance': 'none',
+    background: 'none',
+    border: 'none',
     width: '100px',
     padding: '15px',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    cursor: 'pointer',
     '&::after': {
       position: 'absolute',
       content: '" "',
       background: tabBorderColor,
+    },
+    '&:active, &:hover, &:focus': {
+      outline: 'none'
+    },
+    '&:hover, &:focus': {
+      background: '#eceff1'
     }
   }
 });

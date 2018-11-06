@@ -23,12 +23,13 @@ function Tabs(props: TabsPropType) {
       <div className={classes.tabs}>
         {
           children.map((child, i) =>
-            <div key={child.props.tabLabel}
+            <button key={child.props.tabLabel}
                  className={`${classes.tab} ${tabIndex === i ? classes.tabActive : ''}`}
-                 onClick={() => setTabIndex(i)}>
+                 onClick={() => setTabIndex(i)}
+                 type="button">
                 {React.cloneElement(child.props.tabIcon, { className: classes.tabIcon })}
-              <Typography className={classes.tabText} type="headline2">{child.props.tabLabel}</Typography>
-            </div>
+              {child.props.tabLabel}
+            </button>
           )
         }
         <div className={`${classes.tabSideBorder} grow`}/>
