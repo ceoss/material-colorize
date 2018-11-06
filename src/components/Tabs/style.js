@@ -3,6 +3,7 @@ const tabBorderColor = '#e5e5e5';
 const tabBorder = `${tabBorderSize} ${tabBorderColor} solid`;
 const inactiveTabMargin = '12px';
 const iconSize = '50px';
+const smallSize = '600px';
 
 export default (theme: any) => ({
   tabsDiv: {
@@ -18,29 +19,59 @@ export default (theme: any) => ({
     flexGrow: 0,
     flexWrap: 'nowrap'
   },
-  '@media only screen and (min-width: 600px)': {
+  [`@media only screen and (min-width: ${smallSize})`]: {
     bodyDiv: {
       paddingLeft: '25px',
     },
     tabs: {
       flexDirection: 'column'
-    }
+    },
+    tab: {
+      borderRight: tabBorder,
+      '&::after': {
+        height: tabBorderSize,
+        bottom: '-1px',
+        left: inactiveTabMargin,
+        width: `calc(100% - (${inactiveTabMargin} * 2))`,
+
+      }
+    },
+    tabActive: {
+      borderBottom: tabBorder,
+      borderRight: 'none !important',
+      '&:not(:first-of-type)': {
+        borderTop: tabBorder
+      }
+    },
+    tabSideBorder: {
+      borderRight: tabBorder,
+    },
   },
-  '@media only screen and (max-width: 600px)': {
+  [`@media only screen and (max-width: ${smallSize})`]: {
     tabsDiv: {
       gridTemplateColumns: '1fr'
     },
     tabs: {
       order: 1,
       flexDirection: 'row'
-    }
-  },
-  tabActive: {
-    borderBottom: tabBorder,
-    borderRight: 'none !important',
-    '&:not(:first-of-type)': {
-      borderTop: tabBorder
-    }
+    },
+    tab: {
+      borderTop: tabBorder,
+      '&::after': {
+        width: tabBorderSize,
+        right: '-1px',
+        top: inactiveTabMargin,
+        height: `calc(100% - (${inactiveTabMargin} * 2))`,
+      }
+    },
+    tabActive: {
+      borderLeft: tabBorder,
+      borderTop: 'none !important',
+      borderRight: tabBorder
+    },
+    tabSideBorder: {
+      borderTop: tabBorder,
+    },
   },
   tabIcon: {
     height: iconSize,
@@ -50,9 +81,6 @@ export default (theme: any) => ({
   tabText: {
     textAlign: 'center'
   },
-  tabRightBorder: {
-    borderRight: tabBorder,
-  },
   tab: {
     width: '100px',
     padding: '15px',
@@ -60,15 +88,10 @@ export default (theme: any) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    borderRight: tabBorder,
     '&::after': {
       position: 'absolute',
       content: '" "',
       background: tabBorderColor,
-      height: tabBorderSize,
-      bottom: '-1px',
-      left: inactiveTabMargin,
-      width: `calc(100% - (${inactiveTabMargin} * 2))`,
     }
   }
 });

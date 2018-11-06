@@ -31,7 +31,7 @@ function Tabs(props: TabsPropType) {
             </div>
           )
         }
-        <div className={`${classes.tabRightBorder} grow`}/>
+        <div className={`${classes.tabSideBorder} grow`}/>
       </div>
       <div className={classes.bodyDiv}>
         {
