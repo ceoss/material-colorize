@@ -10,7 +10,7 @@ import style from './style';
 
 type ColorPickerPropType = {
   // TODO: Fix the Classes typing
-  classes: any,
+  classes: {[key: string]: string},
   color: string,
   changeColor: (color: ColorResult) => void
 }

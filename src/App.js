@@ -3,6 +3,9 @@ import Tabs from './components/Tabs';
 import PalleteListView from './views/PalleteListView';
 import ConvertColorView from "./views/ConvertColorView";
 import ImageExtractView from "./views/ImageExtractView";
+import Colorize from '@material-ui/icons/ColorizeOutlined';
+import CompareArrows from '@material-ui/icons/CompareArrowsOutlined';
+import Palette from '@material-ui/icons/PaletteOutlined';
 
 class App extends React.Component<{}, {
   tabIndex: number,
@@ -10,20 +13,11 @@ class App extends React.Component<{}, {
   format: string
 }> {
   state = {
-    tabIndex: 0,
     scrim: false,
     format: 'hex'
   };
 
   convertColors = null;
-
-  handleChangeIndex = (tabIndex: number) => {
-    this.setState({tabIndex});
-  };
-
-  handleTabChange = (event: React.ChangeEvent<{}>, value: number) => {
-    this.handleChangeIndex(value);
-  };
 
   toggleScrim = () => {
     this.setState(prevState => {
@@ -54,13 +48,10 @@ class App extends React.Component<{}, {
               null
           }
         </div>
-        <Tabs handleChangeIndex={this.handleChangeIndex}
-              handleTabChange={this.handleTabChange}
-              tabIndex={this.state.tabIndex}
-              title="Title">
-          <PalleteListView tabLabel="Pick"/>
-          <ConvertColorView tabLabel="Convert"/>
-          <ImageExtractView tabLabel="Image"/>
+        <Tabs title="Title">
+          <PalleteListView tabLabel="Pick" tabIcon={<Colorize/>}/>
+          <ConvertColorView tabLabel="Match" tabIcon={<CompareArrows/>}/>
+          <ImageExtractView tabLabel="Image" tabIcon={<Palette/>}/>
         </Tabs>
       </React.Fragment>
     );

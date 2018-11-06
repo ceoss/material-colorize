@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow: hidden;
   padding: 0;
 }
 
@@ -11,6 +12,26 @@ body {
   margin: 20px;
 }
 
+.overflowScroll {
+  overflow: scroll;
+}
+
+.overflowAuto {
+  overflow: auto;
+}
+
 .text-caps {
   text-transform: capitalize;
+}
+
+.hideOverflow {
+  overflow: hidden;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
 }
