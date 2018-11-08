@@ -35,3 +35,13 @@ body {
 .full-width {
   width: 100%;
 }
+
+.center-img {
+  background-size: cover;
+  background-position: center center;
+}
+
+.center-img.square {
+  width: 100%;
+  padding-bottom: 100%;
+}

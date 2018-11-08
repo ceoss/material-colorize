@@ -71,5 +71,13 @@ export default (theme: any) => ({
     width: '36px',
     height: '14px',
     borderRadius: '2px',
+  },
+  scrim: {
+    height: '100vh',
+    width: '100vw',
+    position: 'fixed',
+    top: '0',
+    left: '0'
+
   }
 });

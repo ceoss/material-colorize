@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import Typography from "@material-ui/core/Typography";
 import {withStyles} from "@material-ui/core";
 import style from "./style";
+import type {SetStateType} from "../../shared/generic";
 
 type TabsPropType = {
   title: string,
@@ -12,7 +13,7 @@ type TabsPropType = {
 }
 
 function Tabs(props: TabsPropType) {
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex]: SetStateType<number> = useState(0);
   const {
     children: reactChildren,
     classes

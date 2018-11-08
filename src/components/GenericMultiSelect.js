@@ -18,7 +18,7 @@ type GenericMultiSelectPropType = {
   options: any[]
 }
 
-const GenericMultiSelect = (props: GenericMultiSelectPropType) => {
+function GenericMultiSelect(props: GenericMultiSelectPropType) {
   return <FormControl>
       <InputLabel htmlFor={props.inputId}>{props.label}</InputLabel>
       <Select
@@ -37,6 +37,6 @@ const GenericMultiSelect = (props: GenericMultiSelectPropType) => {
         )}
       </Select>
     </FormControl>;
-};
+}
 
 export default GenericMultiSelect;

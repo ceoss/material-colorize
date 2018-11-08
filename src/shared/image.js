@@ -1,4 +1,4 @@
-import {from as palleteFrom} from 'node-vibrant';
+import Vibrant from 'node-vibrant';
 import {ObjectMap} from "./generic";
 import tinycolor from 'tinycolor2';
 import {convert} from "./convert";
@@ -23,8 +23,9 @@ export type ColorPalette<T = Swatch> = {
 }
 
 export async function getImagePalette(fileUrl): ColorPalette<ColorMatchType> {
-  const palette: ColorPalette = await palleteFrom(fileUrl)
+  const palette: ColorPalette = await Vibrant.from(fileUrl)
     .getPalette();
+  console.log('palette', palette);
   return ObjectMap(palette, val => {
     const {r,g,b} = val;
     const tinyRGB = tinycolor({r,g,b});

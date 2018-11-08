@@ -21,3 +21,5 @@ export function ObjectMap<T: object>(object: T, cb: (value: $Values<T>, key: $Ke
 export function titleFromCamelCase(str: string): string {
   return str.replace(/(?!^)[A-Z]/g, ' $&');
 }
+
+export type SetStateType<T> = [T, (val: T) => void];

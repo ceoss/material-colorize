@@ -1,56 +1,36 @@
 // @flow
 
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Popper from '@material-ui/core/Popper';
 import {ChromePicker} from 'react-color';
 import type {ColorResult} from 'react-color';
 import style from './style';
+import type {SetStateType} from "../../shared/generic";
+import {Portal} from "@material-ui/core";
 
 type ColorPickerPropType = {
   // TODO: Fix the Classes typing
-  classes: {[key: string]: string},
+  classes: { [key: string]: string },
   color: string,
   changeColor: (color: ColorResult) => void
 }
 
-class ColorPicker extends React.Component<ColorPickerPropType, {
-  arrowRef: any,
-  open: boolean
-}> {
-  state = {
-    arrowRef: null,
-    open: false,
-  };
+function ColorPicker(props: ColorPickerPropType) {
+  const arrowRef = useRef(null);
+  const anchorEl = useRef(null);
+  const [open, setOpen]: SetStateType<boolean> = useState(false);
+  const {classes, color, changeColor} = props;
+  const id = open ? 'scroll-playground' : null;
 
-  anchorEl: any;
-
-  handleClickButton = () => {
-    this.setState(state => ({
-      open: !state.open,
-    }));
-  };
-
-  handleArrowRef = node => {
-    this.setState({
-      arrowRef: node,
-    });
-  };
-
-  render() {
-    const {classes, color, changeColor} = this.props;
-    const {open, arrowRef} = this.state;
-    const id = open ? 'scroll-playground' : null;
-
-    return (
+  return (
+    <React.Fragment>
       <div>
         <ButtonBase
-          buttonRef={node => {
-            this.anchorEl = node;
-          }}
+          buttonRef={anchorEl}
           variant="contained"
-          onClick={this.handleClickButton}
+          onClick={() => setOpen(!open)}
           aria-describedby={id}
         >
           <div className={classes.swatch}>
@@ -60,7 +40,7 @@ class ColorPicker extends React.Component<ColorPickerPropType, {
         <Popper
           id={id}
           open={open}
-          anchorEl={this.anchorEl}
+          anchorEl={anchorEl.current}
           placement="bottom"
           disablePortal={false}
           className={classes.popper}
@@ -70,16 +50,24 @@ class ColorPicker extends React.Component<ColorPickerPropType, {
             },
             arrow: {
               enabled: true,
-              element: arrowRef,
+              element: arrowRef.current,
             },
           }}
         >
-          <span className={classes.arrow} ref={this.handleArrowRef}/>
+          <span className={classes.arrow} ref={arrowRef}/>
           <ChromePicker disableAlpha color={color} onChange={changeColor}/>
         </Popper>
       </div>
-    );
-  }
+
+      <Portal container={document.body}>
+        {
+          open ?
+            <div className={classes.scrim} onClick={() => setOpen(false)}/> :
+            <div/>
+        }
+      </Portal>
+    </React.Fragment>
+  );
 }
 
 export default withStyles(style)(ColorPicker);

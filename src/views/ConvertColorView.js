@@ -1,60 +1,41 @@
 // @flow
 
-import React from "react";
+import React, {useState} from "react";
 import Button from '@material-ui/core/Button';
 import ColorPicker from "../components/ColorPicker";
 import Color from "../components/Color";
 import type {ColorResult} from 'react-color';
-import {convert} from "../shared/convert";
 import type {ColorMatchType} from "../shared/colors";
+import type {SetStateType} from "../shared/generic";
+import {convert} from "../shared/convert";
 
 type ConvertColorViewPropType = {
   format?: string
 };
 
-export default class ConvertColorView extends React.Component<ConvertColorViewPropType, {
-  color: string,
-  convertedColor: ColorMatchType | null
-}> {
-  state = {
-    color: '#FFFFFF',
-    convertedColor: null
-  };
+export default function ConvertColorView(props: ConvertColorViewPropType) {
+  const {format = 'hex'} = props;
 
-  handleColorChange = (color: ColorResult) => {
-    this.setState({color: color.hex});
-  };
+  const [convertedColor, setConvertedColor]: SetStateType<ColorMatchType | null> = useState(null);
+  const [color, setColor]: SetStateType<string> = useState('#FFFFFF');
 
-  convertColor = () => {
-    this.setState({convertedColor: convert(this.state.color)});
-  };
-
-  static defaultProps = {
-    format: 'hex'
-  };
-
-  render() {
-    const {format} = this.props;
-    const {color, convertedColor} = this.state;
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          <Color format={format} color={color} colorName={color}/>
-          <ColorPicker color={color}
-                       changeColor={this.handleColorChange}/>
-          <Button variant="contained" color="primary" onClick={this.convertColor}>
-            Convert
-          </Button>
-          {
-            convertedColor &&
-              <Color format={format}
-                     color={convertedColor.value}
-                     colorName={convertedColor.color}
-                     number={convertedColor.number}/>
-          }
-
-        </div>
+        <Color format={format} color={color} colorName={color}/>
+        <ColorPicker color={color}
+                     changeColor={(clr: ColorResult) => setColor(clr.hex)}/>
+        <Button variant="contained" color="primary" onClick={() => setConvertedColor(convert(color))}>
+          Convert
+        </Button>
+        {
+          convertedColor &&
+          <Color format={format}
+                 color={convertedColor.value}
+                 colorName={convertedColor.color}
+                 number={convertedColor.number}/>
+        }
       </div>
-    );
-  }
+    </div>
+  );
 }
