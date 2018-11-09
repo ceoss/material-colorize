@@ -1,7 +1,8 @@
 // @flow
 
-import {colorArray} from './colors';
+import {colorArray, formats} from './colors';
 import tinycolor from 'tinycolor2';
+import type {TinyColor} from 'tinycolor2';
 import type {ColorMatchType} from "./colors";
 
 function diffColors(from: string, to: string): number {
@@ -23,19 +24,32 @@ export function convert(color: string): ColorMatchType {
   return colorMatch.color;
 }
 
-const getFormatMethod = (format: string): string => {
+// TODO: Both of these functions should share some logic of some kind like a lookup table for the allowed formats
+export function getFormatString(color: TinyColor, format: $Values<formats>): string {
   switch (format) {
     case 'hex':
-      return 'toHexString';
-    case 'hexOpacity':
-      return 'toHex8String';
+      return color['toHexString']();
     case 'rgb':
-      return 'toRgbString';
-    case 'rgbPercentage':
-      return 'toPercentageRgbString';
+      return color['toRgbString']();
+    case 'hsl':
+      return color['toHslString']();
     default:
-      return 'toString'
+      throw new Error('The format you mentioned was unknown');
   }
-};
+}
 
-export const getColorFormat = (color: string, format: string) => tinycolor(color)[getFormatMethod(format)]();
+declare function getFormatValue(color: TinyColor, format: 'hex'): string
+declare function getFormatValue(color: TinyColor, format: 'rgb'): {r: number, g: number, b: number}
+declare function getFormatValue(color: TinyColor, format: 'hsl'): {h: number, s: number, l: number, a: number}
+export function getFormatValue(color: TinyColor, format: $Values<formats>) {
+  switch (format) {
+    case 'hex':
+      return color['toHex']();
+    case 'rgb':
+      return color['toRgb']();
+    case 'hsl':
+      return color['toHsl']();
+    default:
+      throw new Error(`The format you mentioned was unknown. Format: ${format}`);
+  }
+}

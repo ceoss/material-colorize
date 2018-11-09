@@ -12,6 +12,14 @@ body {
   margin: 20px;
 }
 
+.bold {
+  font-weight: bold !important;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
 .overflowScroll {
   overflow: scroll;
 }

@@ -8,21 +8,26 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
-import {titleFromCamelCase} from "../shared/generic";
+import {titleFromCamelCase} from "../../shared/generic";
+import {withStyles} from "@material-ui/core";
+import style from "./style";
 
 type GenericMultiSelectPropType = {
   handleChange: (selection: any[]) => void,
   value: any[],
   label: string,
   inputId: string,
-  options: any[]
+  options: any[],
+  classes?: typeof style
 }
 
 function GenericMultiSelect(props: GenericMultiSelectPropType) {
+  const {classes} = props;
   return <FormControl>
       <InputLabel htmlFor={props.inputId}>{props.label}</InputLabel>
       <Select
-        className="text-caps"
+        autoWidth={true}
+        className={`text-caps ${classes.selectClass}`}
         multiple
         value={props.value}
         onChange={props.handleChange}
@@ -39,4 +44,4 @@ function GenericMultiSelect(props: GenericMultiSelectPropType) {
     </FormControl>;
 }
 
-export default GenericMultiSelect;
+export default withStyles(style)(GenericMultiSelect);

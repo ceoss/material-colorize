@@ -7,11 +7,12 @@ import Clipboard from 'clipboard';
 
 type CopyIconPropType = {
   copyVal: string,
-  ariaLabel?: string
+  ariaLabel?: string,
+  className?: string
 }
 
 export default function CopyIcon(props: CopyIconPropType) {
-  const {copyVal, ariaLabel = 'Copy Color to Clipboard'} = props;
+  const {copyVal, ariaLabel = 'Copy Color to Clipboard', className = ''} = props;
   const button = useRef(null);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function CopyIcon(props: CopyIconPropType) {
   }, [button]);
 
   return (
-    <IconButton aria-label={ariaLabel} color="inherit" buttonRef={button}
+    <IconButton className={className} aria-label={ariaLabel} color="inherit" buttonRef={button}
                 clipboard-text={copyVal}>
       <ContentCopy/>
     </IconButton>

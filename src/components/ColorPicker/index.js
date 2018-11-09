@@ -11,8 +11,7 @@ import type {SetStateType} from "../../shared/generic";
 import {Portal} from "@material-ui/core";
 
 type ColorPickerPropType = {
-  // TODO: Fix the Classes typing
-  classes: { [key: string]: string },
+  classes?: typeof style,
   color: string,
   changeColor: (color: ColorResult) => void
 }

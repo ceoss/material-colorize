@@ -5,7 +5,7 @@ const inactiveTabMargin = '12px';
 const iconSize = '50px';
 const smallSize = '600px';
 
-export default (theme: any) => ({
+export default () => ({
   tabsDiv: {
     height: '100vh',
     display: 'grid',

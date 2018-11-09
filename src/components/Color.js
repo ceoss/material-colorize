@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import tinycolor, {mostReadable} from 'tinycolor2';
-import {getColorFormat} from "../shared/convert";
 import type {ColorType} from "../shared/colors";
 import CopyIcon from "./CopyIcon";
 
@@ -23,7 +22,6 @@ export default function Color(props: ColorPropType) {
   const {number, color, colorName = '', format = 'hex', subText, className} = props,
     actualColor: string = (number && (color[(number: any)]: any)) || (color: any),
     tinyActualColor = tinycolor(actualColor),
-    formattedColor = getColorFormat(actualColor, format),
     strColor = tinyActualColor.toHexString(),
     darkenedColor = tinyActualColor.darken(60).toHexString(),
     lightenedColor = tinyActualColor.lighten(80).toHexString(),
@@ -40,7 +38,7 @@ export default function Color(props: ColorPropType) {
         {/* TODO: Fix styling */}
         {subText ? <p>{subText}</p> : null}
         <div className="grow"/>
-        <CopyIcon copyVal={formattedColor}/>
+        <CopyIcon copyVal={''}/>
       </CardActions>
     </Card>
   );

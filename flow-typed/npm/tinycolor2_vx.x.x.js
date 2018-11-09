@@ -15,6 +15,7 @@
 
 declare module 'tinycolor2' {
   declare module.exports: any;
+  export type TinyColor = any;
 }
 
 /**

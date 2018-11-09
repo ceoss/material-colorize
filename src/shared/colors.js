@@ -2,6 +2,11 @@
 
 import * as colorItems from '@material-ui/core/colors';
 
+export const formats = ['hex', 'rgb', 'hsl'];
+
+// 'cmyk'
+// 'hsb'
+
 export type ColorType = {
   '50': string;
   '100': string;
