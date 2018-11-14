@@ -2,22 +2,25 @@
 
 import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
-import {getImagePalette} from "../shared/image";
-import Color from "../components/Color";
-import type {ColorMatchType} from "../shared/colors";
-import type {ColorPalette} from "../shared/image";
-import {titleFromCamelCase} from "../shared/generic";
+import {getImagePalette} from "../../shared/image";
+import Color from "../../components/Color";
+import type {ColorMatchType} from "../../shared/colors";
+import type {ColorPalette} from "../../shared/image";
+import {titleFromCamelCase} from "../../shared/generic";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar/Snackbar";
 import Grid from "@material-ui/core/Grid/Grid";
-import type {SetStateType} from "../shared/generic";
+import type {SetStateType} from "../../shared/generic";
+import style from "./style";
+import {withStyles} from "@material-ui/core";
 
 type ImageExtractViewPropType = {
-  format?: string
+  format?: string,
+  classes?: typeof style
 }
 
-export default function ImageExtractView(props: ImageExtractViewPropType) {
+export function ImageExtractView(props: ImageExtractViewPropType) {
   const [fileUrl, setFileURL]: SetStateType<string> = useState('');
   const [palette, setPalette]: SetStateType<ColorPalette<ColorMatchType>> = useState(null);
   const [showSnackbar, setShowSnackbar]: SetStateType<boolean> = useState(false);
@@ -114,5 +117,6 @@ export default function ImageExtractView(props: ImageExtractViewPropType) {
       ]}
     />
   </React.Fragment>
-
 }
+
+export default withStyles(style)(ImageExtractView);

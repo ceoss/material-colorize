@@ -4,6 +4,7 @@ import {colorArray, formats} from './colors';
 import tinycolor from 'tinycolor2';
 import type {TinyColor} from 'tinycolor2';
 import type {ColorMatchType} from "./colors";
+import {ObjectMap} from "./generic";
 
 function diffColors(from: string, to: string): number {
   const materialRgb = tinycolor(from).toRgb();
@@ -38,17 +39,34 @@ export function getFormatString(color: TinyColor, format: $Values<formats>): str
   }
 }
 
-declare function getFormatValue(color: TinyColor, format: 'hex'): string
-declare function getFormatValue(color: TinyColor, format: 'rgb'): {r: number, g: number, b: number}
-declare function getFormatValue(color: TinyColor, format: 'hsl'): {h: number, s: number, l: number, a: number}
+declare function getFormatValue(color: TinyColor, format: 'hex'): {data: $Call<TinyColor.toHex>, formatted: $Call<TinyColor.toHex>}
+declare function getFormatValue(color: TinyColor, format: 'rgb'): {data: $Call<TinyColor.toRgb>, formatted: $Call<TinyColor.toRgb>, orderOfKeys: ($Keys<$Call<TinyColor.toRgb>>)[]}
+declare function getFormatValue(color: TinyColor, format: 'hsl'): {data: $Call<TinyColor.toHsl>, formatted: $Call<TinyColor.toHsl>, orderOfKeys: ($Keys<$Call<TinyColor.toHsl>>)[]}
 export function getFormatValue(color: TinyColor, format: $Values<formats>) {
   switch (format) {
-    case 'hex':
-      return color['toHex']();
-    case 'rgb':
-      return color['toRgb']();
-    case 'hsl':
-      return color['toHsl']();
+    case 'hex': {
+      const data = color.toHex();
+      return {
+        data,
+        formatted: `#${data}`
+      };
+    }
+    case 'rgb': {
+      const data = color.toRgb();
+      return {
+        data,
+        formatted: data,
+        orderOfKeys: ['r', 'g', 'b']
+      }
+    }
+    case 'hsl': {
+      const data = color.toHsl();
+      return {
+        data,
+        formatted: ObjectMap(data, val => `${Math.floor(val * 100)}%`),
+        orderOfKeys: ['h', 's', 'l']
+      }
+    }
     default:
       throw new Error(`The format you mentioned was unknown. Format: ${format}`);
   }

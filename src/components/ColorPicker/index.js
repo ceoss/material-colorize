@@ -2,40 +2,45 @@
 
 import React, {useRef, useState} from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import Popper from '@material-ui/core/Popper';
 import {ChromePicker} from 'react-color';
 import type {ColorResult} from 'react-color';
 import style from './style';
 import type {SetStateType} from "../../shared/generic";
 import {Portal} from "@material-ui/core";
+import ColorizeIcon from '@material-ui/icons/ColorizeOutlined';
+import IconButton from "@material-ui/core/IconButton/IconButton";
 
 type ColorPickerPropType = {
   classes?: typeof style,
   color: string,
-  changeColor: (color: ColorResult) => void
+  changeColor: (color: ColorResult) => void,
+  onClose?: () => void,
+  className?: string,
+  style?: Object
 }
 
 function ColorPicker(props: ColorPickerPropType) {
   const arrowRef = useRef(null);
   const anchorEl = useRef(null);
   const [open, setOpen]: SetStateType<boolean> = useState(false);
-  const {classes, color, changeColor} = props;
+  const {style: styleProp = {}, className = '', classes, color, changeColor, onClose} = props;
   const id = open ? 'scroll-playground' : null;
 
   return (
     <React.Fragment>
-      <div>
-        <ButtonBase
+      <div className={className} style={styleProp}>
+        <IconButton
           buttonRef={anchorEl}
-          variant="contained"
-          onClick={() => setOpen(!open)}
-          aria-describedby={id}
-        >
-          <div className={classes.swatch}>
-            <div className={classes.color} style={{background: color}}/>
-          </div>
-        </ButtonBase>
+          color="inherit"
+          onClick={() => {
+            setOpen(!open);
+            if (!open && onClose) {
+              onClose();
+            }
+          }}>
+          <ColorizeIcon/>
+        </IconButton>
         <Popper
           id={id}
           open={open}
@@ -61,7 +66,12 @@ function ColorPicker(props: ColorPickerPropType) {
       <Portal container={document.body}>
         {
           open ?
-            <div className={classes.scrim} onClick={() => setOpen(false)}/> :
+            <div className={classes.scrim} onClick={() => {
+              setOpen(false);
+              if (onClose) {
+                onClose();
+              }
+            }}/> :
             <div/>
         }
       </Portal>

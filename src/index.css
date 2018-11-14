@@ -8,6 +8,10 @@ body {
   flex-grow: 1;
 }
 
+.relative {
+  position: relative;
+}
+
 .margin-20 {
   margin: 20px;
 }
@@ -49,7 +53,11 @@ body {
   background-position: center center;
 }
 
-.center-img.square {
+.square {
   width: 100%;
   padding-bottom: 100%;
+}
+
+a {
+  text-decoration: none;
 }

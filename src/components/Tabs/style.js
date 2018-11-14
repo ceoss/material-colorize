@@ -1,9 +1,7 @@
-const tabBorderSize = '1px';
-const tabBorderColor = '#e5e5e5';
-const tabBorder = `${tabBorderSize} ${tabBorderColor} solid !important`;
-const inactiveTabMargin = '12px';
-const iconSize = '50px';
-const smallSize = '600px';
+export const tabBorderSize = '1px';
+export const tabBorderColor = '#e5e5e5';
+export const tabBorder = `${tabBorderSize} ${tabBorderColor} solid !important`;
+export const smallSize = '600px';
 
 export default () => ({
   tabsDiv: {
@@ -26,23 +24,6 @@ export default () => ({
     tabs: {
       flexDirection: 'column'
     },
-    tab: {
-      borderRight: tabBorder,
-      '&::after': {
-        height: tabBorderSize,
-        bottom: '-1px',
-        left: inactiveTabMargin,
-        width: `calc(100% - (${inactiveTabMargin} * 2))`,
-
-      }
-    },
-    tabActive: {
-      borderBottom: tabBorder,
-      borderRight: 'none !important',
-      '&:not(:first-of-type)': {
-        borderTop: tabBorder
-      }
-    },
     tabSideBorder: {
       borderRight: tabBorder,
     },
@@ -55,51 +36,8 @@ export default () => ({
       order: 1,
       flexDirection: 'row'
     },
-    tab: {
-      borderTop: tabBorder,
-      '&::after': {
-        width: tabBorderSize,
-        right: '-1px',
-        top: inactiveTabMargin,
-        height: `calc(100% - (${inactiveTabMargin} * 2))`,
-      }
-    },
-    tabActive: {
-      borderLeft: tabBorder,
-      borderTop: 'none !important',
-      borderRight: tabBorder
-    },
     tabSideBorder: {
       borderTop: tabBorder,
     },
-  },
-  tabIcon: {
-    height: iconSize,
-    width: iconSize,
-    marginBottom: '10px'
-  },
-  tab: {
-    textAlign: 'center',
-    '-webkit-appearance': 'none',
-    background: 'none',
-    border: 'none',
-    width: '100px',
-    padding: '15px',
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    cursor: 'pointer',
-    '&::after': {
-      position: 'absolute',
-      content: '" "',
-      background: tabBorderColor,
-    },
-    '&:active, &:hover, &:focus': {
-      outline: 'none'
-    },
-    '&:hover, &:focus': {
-      background: '#eceff1'
-    }
   }
 });

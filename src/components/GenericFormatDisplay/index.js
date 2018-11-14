@@ -4,19 +4,17 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from "@material-ui/core";
 import style from "./style";
-import CopyIcon from "../CopyIcon";
 import Grid from "@material-ui/core/Grid/Grid";
 
 type ColorListPropType = {
-  allowCopy?: boolean,
-  copyVal: string,
   displayVal: string[],
   classes?: typeof style,
-  formatName: string
+  formatName: string,
+  appendIcon?: React.ComponentType<any>
 }
 
 function GenericFormatDisplay(props: ColorListPropType) {
-  const {allowCopy = false, formatName, displayVal, copyVal, classes} = props;
+  const {formatName, displayVal, classes, appendIcon} = props;
   return (
     <Grid
       container
@@ -27,12 +25,12 @@ function GenericFormatDisplay(props: ColorListPropType) {
     >
       <Typography className={`uppercase bold ${classes.formatName}`}>{formatName}</Typography>
       {
-        displayVal.map((displayStr, _, arr) =>
+        displayVal.map((displayStr, i, arr) =>
           // TODO: Add tiny letter icon in corner to show what value it is? Maybe a hover-over?
-          <Typography variant="button" className={arr.length === 1 ? '' : classes.threeCharLength}>{displayStr}</Typography>
+          <Typography key={`${formatName}${i}${displayStr}`} variant="button" className={arr.length === 1 ? '' : classes.threeCharLength}>{displayStr}</Typography>
         )
       }
-      {allowCopy ? <CopyIcon className={classes.copyIcon} copyVal={copyVal}/> : null}
+      {appendIcon || null}
     </Grid>
   );
 }
