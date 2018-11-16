@@ -58,6 +58,6 @@ body {
   padding-bottom: 100%;
 }
 
-a {
+a[href^="/"] {
   text-decoration: none;
 }

@@ -44,11 +44,13 @@ export default () => ({
 
       }
     },
-    tabActive: {
+    tabDivActive: {
       borderBottom: tabBorder,
-      borderRight: 'none !important',
-      '&:not(:first-of-type)': {
+      '&:not(:first-child)': {
         borderTop: tabBorder
+      },
+      '& $tab': {
+        borderRight: 'none !important'
       }
     }
   },
@@ -62,10 +64,12 @@ export default () => ({
         height: `calc(100% - (${inactiveTabMargin} * 2))`,
       }
     },
-    tabActive: {
+    tabDivActive: {
       borderLeft: tabBorder,
-      borderTop: 'none !important',
-      borderRight: tabBorder
+      borderRight: tabBorder,
+      '& $tab': {
+        borderTop: 'none !important'
+      }
     }
   },
   tabIcon: {

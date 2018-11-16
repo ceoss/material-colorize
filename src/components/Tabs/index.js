@@ -20,7 +20,6 @@ function Tabs(props: TabsPropType) {
   const children = React.Children.toArray(reactChildren);
   return (
     <Router>
-
       <div className={classes.tabsDiv}>
         <div className={classes.tabs}>
           {
@@ -30,13 +29,12 @@ function Tabs(props: TabsPropType) {
         </div>
         <div className={classes.bodyDiv}>
           {
-            children.map((child, i) =>
-              <Route exact path={child.props.path} key={child.props.tabLabel} component={({match}) =>
-                <div className={match.path === child.props.path ? "overflowAuto full-height" : "hideOverflow"}
-                     style={match.path === child.props.path ? {} : {height: 0}}>
+            children.map((child) =>
+              <Route exact path={child.props.path} key={child.props.tabLabel} children={({match}) =>
+                <div className={match ? "overflowAuto full-height" : "hideOverflow"}
+                     style={match ? {} : {height: 0}}>
                   {child}
                 </div>
-
               }/>
             )
           }
