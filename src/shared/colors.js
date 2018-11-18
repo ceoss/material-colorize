@@ -1,8 +1,16 @@
 // @flow
 
 import * as colorItems from '@material-ui/core/colors';
+import {useEffect, useState} from 'react';
+import type {TinyColor} from 'tinycolor2';
+import tinycolor, {mostReadable} from "tinycolor2";
+import type {SetStateType} from "./generic";
 
-export const formats = ['hex', 'rgb', 'hsl'];
+export const formats = [
+  'hex',
+  'rgb',
+  'hsl'
+];
 
 // 'cmyk'
 // 'hsb'
@@ -35,7 +43,7 @@ export const mainColorNumber: ColorKeysType = '500';
 const nonCommonColorName: string = (Object.keys(colorItems).find(key => key !== 'common'): any);
 const nonCommonColor: ColorType = colorItems[nonCommonColorName];
 type NonCommonColorKeysType = $Keys<typeof nonCommonColor>;
-const keepPrevAndAddArr = <P: Object, T, I: Object>(prev: P, key: $Keys<I>, val: T): P & {|[key: $Keys<I>]: T|} => ({
+const keepPrevAndAddArr = <P: Object, T, I: Object>(prev: P, key: $Keys<I>, val: T): P & {| [key: $Keys<I>]: T |} => ({
   ...prev,
   [key]: [
     ...prev[key],
@@ -60,7 +68,7 @@ export const colorNumbers: ColorKeysType[] = [
   ...accentColorNumbers
 ];
 
-export const colors: {[colorName: string]: ColorType} = Object.keys(colorItems)
+export const colors: { [colorName: string]: ColorType } = Object.keys(colorItems)
   .reduce((prev, key) => key === 'common' ? prev : {
     ...prev,
     [key]: colorItems[key]
@@ -78,12 +86,12 @@ export const colorArray: ColorMatchType[] = [
     [
       ...prev,
       ...Object.keys(colors[colorName]).map((number: ColorKeysType): ColorMatchType => ({
-        color: colorName,
-        number: number,
-        value: (colors[colorName][number]: string)
-      })
-    )
-  ], []),
+          color: colorName,
+          number: number,
+          value: (colors[colorName][number]: string)
+        })
+      )
+    ], []),
   {
     color: 'black',
     number: mainColorNumber,
@@ -95,3 +103,19 @@ export const colorArray: ColorMatchType[] = [
     value: white
   }
 ];
+
+export function useReadableColor(color) {
+  const [readableColor, setReadableColor]: SetStateType<TinyColor> = useState(tinycolor('#000000'));
+
+  useEffect(() => {
+    const darkenedColor = tinycolor(color).darken(60).toHexString(),
+      lightenedColor = tinycolor(color).lighten(80).toHexString(),
+      readableColor = mostReadable(tinycolor(color), [
+        darkenedColor,
+        lightenedColor
+      ], {includeFallbackColors: true});
+    setReadableColor(readableColor);
+  }, [color]);
+
+  return readableColor;
+}

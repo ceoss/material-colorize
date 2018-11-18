@@ -1,17 +1,17 @@
 // @flow
 
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
+import type {ColorPalette} from "../../shared/image";
 import {getImagePalette} from "../../shared/image";
 import Color from "../../components/Color";
 import type {ColorMatchType} from "../../shared/colors";
-import type {ColorPalette} from "../../shared/image";
+import type {SetStateType} from "../../shared/generic";
 import {titleFromCamelCase} from "../../shared/generic";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar/Snackbar";
 import Grid from "@material-ui/core/Grid/Grid";
-import type {SetStateType} from "../../shared/generic";
 import style from "./style";
 import {withStyles} from "@material-ui/core";
 

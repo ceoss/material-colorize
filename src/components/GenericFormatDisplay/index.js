@@ -27,7 +27,8 @@ function GenericFormatDisplay(props: ColorListPropType) {
       {
         displayVal.map((displayStr, i, arr) =>
           // TODO: Add tiny letter icon in corner to show what value it is? Maybe a hover-over?
-          <Typography key={`${formatName}${i}${displayStr}`} variant="button" className={arr.length === 1 ? '' : classes.threeCharLength}>{displayStr}</Typography>
+          <Typography key={`${formatName}${i}${displayStr}`} variant="button"
+                      className={arr.length === 1 ? '' : classes.threeCharLength}>{displayStr}</Typography>
         )
       }
       {appendIcon || null}

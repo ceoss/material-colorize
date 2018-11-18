@@ -6,6 +6,11 @@ export default () => ({
   colorDiv: {
     padding: '0 20px'
   },
+  colorTitle: {
+    position: 'absolute',
+    bottom: '10px',
+    left: '10px'
+  },
   pickerClass: {
     position: 'absolute',
     bottom: '10px',

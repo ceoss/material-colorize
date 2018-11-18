@@ -3,8 +3,8 @@
 import React, {useRef, useState} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
-import {ChromePicker} from 'react-color';
 import type {ColorResult} from 'react-color';
+import {ChromePicker} from 'react-color';
 import style from './style';
 import type {SetStateType} from "../../shared/generic";
 import {Portal} from "@material-ui/core";

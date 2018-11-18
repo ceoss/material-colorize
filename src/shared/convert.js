@@ -1,9 +1,9 @@
 // @flow
 
-import {colorArray, formats} from './colors';
-import tinycolor from 'tinycolor2';
-import type {TinyColor} from 'tinycolor2';
 import type {ColorMatchType} from "./colors";
+import {colorArray, formats} from './colors';
+import type {TinyColor} from 'tinycolor2';
+import tinycolor from 'tinycolor2';
 import {ObjectMap} from "./generic";
 
 function diffColors(from: string, to: string): number {
@@ -14,14 +14,20 @@ function diffColors(from: string, to: string): number {
 }
 
 export function convert(color: string): ColorMatchType {
-  const colorMatch = colorArray.reduce((match: {diffVal: number, color: ColorMatchType}, colorItem: ColorMatchType) => {
+  const colorMatch = colorArray.reduce((match: { diffVal: number, color: ColorMatchType }, colorItem: ColorMatchType) => {
     const diffVal = diffColors(color, colorItem.value);
     if (diffVal < match.diffVal) {
-      return {diffVal, color: colorItem}
+      return {
+        diffVal,
+        color: colorItem
+      }
     } else {
       return match;
     }
-  }, {diffVal: Infinity, color: ({}: any)});
+  }, {
+    diffVal: Infinity,
+    color: ({}: any)
+  });
   return colorMatch.color;
 }
 
@@ -39,9 +45,12 @@ export function getFormatString(color: TinyColor, format: $Values<formats>): str
   }
 }
 
-declare function getFormatValue(color: TinyColor, format: 'hex'): {data: $Call<TinyColor.toHex>, formatted: $Call<TinyColor.toHex>}
-declare function getFormatValue(color: TinyColor, format: 'rgb'): {data: $Call<TinyColor.toRgb>, formatted: $Call<TinyColor.toRgb>, orderOfKeys: ($Keys<$Call<TinyColor.toRgb>>)[]}
-declare function getFormatValue(color: TinyColor, format: 'hsl'): {data: $Call<TinyColor.toHsl>, formatted: $Call<TinyColor.toHsl>, orderOfKeys: ($Keys<$Call<TinyColor.toHsl>>)[]}
+declare function getFormatValue(color: TinyColor, format: 'hex'): { data: $Call<TinyColor.toHex>, formatted: $Call<TinyColor.toHex> }
+
+declare function getFormatValue(color: TinyColor, format: 'rgb'): { data: $Call<TinyColor.toRgb>, formatted: $Call<TinyColor.toRgb>, orderOfKeys: ($Keys<$Call<TinyColor.toRgb>>)[] }
+
+declare function getFormatValue(color: TinyColor, format: 'hsl'): { data: $Call<TinyColor.toHsl>, formatted: $Call<TinyColor.toHsl>, orderOfKeys: ($Keys<$Call<TinyColor.toHsl>>)[] }
+
 export function getFormatValue(color: TinyColor, format: $Values<formats>) {
   switch (format) {
     case 'hex': {
@@ -56,7 +65,11 @@ export function getFormatValue(color: TinyColor, format: $Values<formats>) {
       return {
         data,
         formatted: data,
-        orderOfKeys: ['r', 'g', 'b']
+        orderOfKeys: [
+          'r',
+          'g',
+          'b'
+        ]
       }
     }
     case 'hsl': {
@@ -64,7 +77,11 @@ export function getFormatValue(color: TinyColor, format: $Values<formats>) {
       return {
         data,
         formatted: ObjectMap(data, val => `${Math.floor(val * 100)}%`),
-        orderOfKeys: ['h', 's', 'l']
+        orderOfKeys: [
+          'h',
+          's',
+          'l'
+        ]
       }
     }
     default:

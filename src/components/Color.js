@@ -25,10 +25,16 @@ export default function Color(props: ColorPropType) {
     strColor = tinyActualColor.toHexString(),
     darkenedColor = tinyActualColor.darken(60).toHexString(),
     lightenedColor = tinyActualColor.lighten(80).toHexString(),
-    readableColor = mostReadable(strColor, [darkenedColor, lightenedColor], {includeFallbackColors: true}).toHexString();
+    readableColor = mostReadable(strColor, [
+      darkenedColor,
+      lightenedColor
+    ], {includeFallbackColors: true}).toHexString();
 
   return (
-    <Card style={{backgroundColor: strColor, color: readableColor}} className={className}>
+    <Card style={{
+      backgroundColor: strColor,
+      color: readableColor
+    }} className={className}>
       <CardContent>
         <Typography type="headline" color="inherit" component="h2" className="text-caps">
           {colorName} {number}

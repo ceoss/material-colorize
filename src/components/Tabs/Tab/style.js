@@ -1,9 +1,4 @@
-import {
-  tabBorderSize,
-  tabBorderColor,
-  tabBorder,
-  smallSize
-} from '../style';
+import {smallSize, tabBorder, tabBorderColor, tabBorderSize} from '../style';
 
 const inactiveTabMargin = '12px';
 const iconSize = '50px';

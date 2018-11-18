@@ -27,8 +27,12 @@ export async function getImagePalette(fileUrl): ColorPalette<ColorMatchType> {
     .getPalette();
   console.log('palette', palette);
   return ObjectMap(palette, val => {
-    const {r,g,b} = val;
-    const tinyRGB = tinycolor({r,g,b});
+    const {r, g, b} = val;
+    const tinyRGB = tinycolor({
+      r,
+      g,
+      b
+    });
     return convert(tinyRGB.toRgbString());
   })
 }

@@ -11,7 +11,7 @@
  * @param {objectMap} cb - The callback in order to run the `Object.map` function
  * @returns - The object with it's keys altered by the cb param
  */
-export function ObjectMap<T: object>(object: T, cb: (value: $Values<T>, key: $Keys<T>, object?: T) => any): {[$Keys<typeof T>]: any} {
+export function ObjectMap<T: object>(object: T, cb: (value: $Values<T>, key: $Keys<T>, object?: T) => any): { [$Keys<typeof T>]: any } {
   return Object.keys(object).reduce((prev, key) => ({
     ...prev,
     [key]: cb(object[key], key, object)

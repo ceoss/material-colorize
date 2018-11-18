@@ -2,11 +2,7 @@
 
 import React, {useState} from 'react';
 import ColorList from '../components/ColorList';
-import {
-  colorNames,
-  colorNumbers,
-  colors
-} from '../shared/colors';
+import {colorNames, colorNumbers, colors} from '../shared/colors';
 import GenericMultiSelect from "../components/GenericMultiSelect";
 import type {SetStateType} from "../shared/generic";
 
@@ -21,9 +17,11 @@ export default function PaletteListView(props: PalleteListViewPropType) {
 
   return (
     <div>
-      <GenericMultiSelect handleChange={event => setColors(event.target.value)} value={stateColors} inputId="colors-selector"
+      <GenericMultiSelect handleChange={event => setColors(event.target.value)} value={stateColors}
+                          inputId="colors-selector"
                           options={colorNames} label="Colors"/>
-      <GenericMultiSelect handleChange={event => setNumbers(event.target.value)} value={numbers} inputId="numbers-selector"
+      <GenericMultiSelect handleChange={event => setNumbers(event.target.value)} value={numbers}
+                          inputId="numbers-selector"
                           options={colorNumbers} label="Numbers"/>
       {
         colorNames

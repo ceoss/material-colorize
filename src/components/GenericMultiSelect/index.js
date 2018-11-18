@@ -24,24 +24,24 @@ type GenericMultiSelectPropType = {
 function GenericMultiSelect(props: GenericMultiSelectPropType) {
   const {classes} = props;
   return <FormControl>
-      <InputLabel htmlFor={props.inputId}>{props.label}</InputLabel>
-      <Select
-        autoWidth={true}
-        className={`text-caps ${classes.selectClass}`}
-        multiple
-        value={props.value}
-        onChange={props.handleChange}
-        input={<Input id={props.inputId}/>}
-        renderValue={selected => selected.map(sel => titleFromCamelCase(sel)).join(', ')}
-      >
-        {props.options.map(option =>
-          <MenuItem key={option} value={option}>
-            <Checkbox checked={props.value.includes(option)}/>
-            <ListItemText className="text-caps" primary={titleFromCamelCase(option)}/>
-          </MenuItem>
-        )}
-      </Select>
-    </FormControl>;
+    <InputLabel htmlFor={props.inputId}>{props.label}</InputLabel>
+    <Select
+      autoWidth={true}
+      className={`text-caps ${classes.selectClass}`}
+      multiple
+      value={props.value}
+      onChange={props.handleChange}
+      input={<Input id={props.inputId}/>}
+      renderValue={selected => selected.map(sel => titleFromCamelCase(sel)).join(', ')}
+    >
+      {props.options.map(option =>
+        <MenuItem key={option} value={option}>
+          <Checkbox checked={props.value.includes(option)}/>
+          <ListItemText className="text-caps" primary={titleFromCamelCase(option)}/>
+        </MenuItem>
+      )}
+    </Select>
+  </FormControl>;
 }
 
 export default withStyles(style)(GenericMultiSelect);
