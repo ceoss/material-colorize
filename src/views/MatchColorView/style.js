@@ -1,6 +1,9 @@
+import {borderStyle} from "../../shared/shared-style";
+
 export default () => ({
   color: {
-    border: '1px solid #E5E5E5',
+    marginBottom: '30px',
+    border: borderStyle,
     borderRadius: '15px'
   },
   colorDiv: {

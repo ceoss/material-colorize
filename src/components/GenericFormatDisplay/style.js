@@ -1,13 +1,17 @@
 // @flow
 
+import {borderStyle} from "../../shared/shared-style";
+
 export default (theme: any) => ({
   formatName: {
     marginRight: 'auto'
   },
   colorDisplay: {
+    '&:not(:first-of-type)': {
+      marginTop: '12px',
+    },
     height: '65px',
-    marginTop: '12px',
-    border: '1px solid #E5E5E5',
+    border: borderStyle,
     borderRadius: '5px',
     padding: '18px 20px 18px 12px'
   },

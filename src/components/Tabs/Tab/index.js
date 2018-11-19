@@ -21,7 +21,7 @@ function Tabs(props: TabsPropType) {
   return (
     <div className={location.pathname === child.props.path ? classes.tabDivActive : ''}>
       <Link to={child.props.path}>
-        <button className={classes.tab}
+        <button className={`${classes.tab} bold uppercase`}
                 type="button">
           {React.cloneElement(child.props.tabIcon, {className: classes.tabIcon})}
           {child.props.tabLabel}

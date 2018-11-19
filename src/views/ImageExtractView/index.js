@@ -83,12 +83,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
           Object.keys(palette).map((swatchKey: string) => {
             const readableKey = titleFromCamelCase(swatchKey);
             const {color, number, value} = palette[swatchKey];
-            return <Color color={value}
-                          colorName={color}
-                          key={swatchKey}
-                          number={number}
-                          format={format}
-                          subText={readableKey}/>
+            return <div/>
           }) : null
       }
     </Grid>

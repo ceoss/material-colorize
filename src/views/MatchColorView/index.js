@@ -1,6 +1,6 @@
 // @flow
 
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import ColorPicker from "../../components/ColorPicker";
 import type {ColorResult} from 'react-color';
 import type {ColorMatchType} from "../../shared/colors";
@@ -23,7 +23,6 @@ type ConvertColorViewPropType = {
 
 function ConvertColorView(props: ConvertColorViewPropType) {
   const {classes} = props;
-
   const [convertedColor, setConvertedColor]: SetStateType<ColorMatchType | null> = useState(null);
   const [color, setColor]: SetStateType<string> = useState('#FFFFFF');
   const readableColor: TinyColor = useReadableColor(color);

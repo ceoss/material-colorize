@@ -2,7 +2,7 @@ export const tabBorderSize = '1px';
 export const tabBorderColor = '#e5e5e5';
 export const tabBorder = `${tabBorderSize} ${tabBorderColor} solid !important`;
 export const smallSize = '600px';
-
+const paddingScreenSize = '25px';
 export default () => ({
   tabsDiv: {
     height: '100vh',
@@ -19,7 +19,10 @@ export default () => ({
   },
   [`@media only screen and (min-width: ${smallSize})`]: {
     bodyDiv: {
-      paddingLeft: '25px',
+      height: `calc(100% - ${paddingScreenSize})`,
+      paddingLeft: paddingScreenSize,
+      paddingRight: paddingScreenSize,
+      paddingTop: paddingScreenSize
     },
     tabs: {
       flexDirection: 'column'

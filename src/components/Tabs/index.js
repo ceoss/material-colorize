@@ -27,13 +27,15 @@ function Tabs(props: TabsPropType) {
           }
           <div className={`${classes.tabSideBorder} grow`}/>
         </div>
-        <div className={classes.bodyDiv}>
+        <div className="overflowAuto">
           {
             children.map((child) =>
               <Route exact path={child.props.path} key={child.props.tabLabel} children={({match}) =>
-                <div className={match ? "overflowAuto full-height" : "hideOverflow"}
+                <div className={match ? classes.bodyDiv : 'hideOverflow'}>
+                <div className={`${child.props.showOverflow ? '' : 'full-height hideOverflow'}`}
                      style={match ? {} : {height: 0}}>
                   {child}
+                </div>
                 </div>
               }/>
             )

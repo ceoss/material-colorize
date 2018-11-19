@@ -25,7 +25,6 @@ export type ColorPalette<T = Swatch> = {
 export async function getImagePalette(fileUrl): ColorPalette<ColorMatchType> {
   const palette: ColorPalette = await Vibrant.from(fileUrl)
     .getPalette();
-  console.log('palette', palette);
   return ObjectMap(palette, val => {
     const {r, g, b} = val;
     const tinyRGB = tinycolor({

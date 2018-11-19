@@ -76,7 +76,7 @@ export function getFormatValue(color: TinyColor, format: $Values<formats>) {
       const data = color.toHsl();
       return {
         data,
-        formatted: ObjectMap(data, val => `${Math.floor(val * 100)}%`),
+        formatted: ObjectMap(data, (val, key) => key === 'h' ? Math.floor(val) : `${Math.floor(val * 100)}%`),
         orderOfKeys: [
           'h',
           's',

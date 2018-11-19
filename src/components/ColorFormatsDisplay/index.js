@@ -45,5 +45,4 @@ function ColorFormatsDisplay(props: ColorFormatDisplayPropType) {
   )
 }
 
-
 export default withStyles(style)(ColorFormatsDisplay);

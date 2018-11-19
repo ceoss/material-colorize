@@ -104,7 +104,7 @@ export const colorArray: ColorMatchType[] = [
   }
 ];
 
-export function useReadableColor(color) {
+export function useReadableColor(color: string) {
   const [readableColor, setReadableColor]: SetStateType<TinyColor> = useState(tinycolor('#000000'));
 
   useEffect(() => {
@@ -119,3 +119,5 @@ export function useReadableColor(color) {
 
   return readableColor;
 }
+
+export type SelectedColor = {colorName: string, colorName: string};
