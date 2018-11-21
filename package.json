@@ -8,7 +8,7 @@
     "clipboard": "^2.0.1",
     "flow-bin": "^0.85.0",
     "mdi-material-ui": "^5.6.0",
-    "node-vibrant": "git+https://github.com/ceoss/node-vibrant.git#f8b016f",
+    "node-vibrant": "git+https://github.com/ceoss/node-vibrant.git#603ac15",
     "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.0",
     "react-clipboard.js": "^2.0.1",
