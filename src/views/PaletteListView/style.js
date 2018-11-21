@@ -10,5 +10,11 @@ export default () => ({
     borderLeft: borderStyle,
     borderRight: borderStyle,
     height: `calc(100% - (${listPadding} * 2))`
+  },
+  filterButton: {
+    transition: 'transform 200ms ease-in-out'
+  },
+  transitionHeight: {
+    transition: 'height 300ms ease-in-out'
   }
 })

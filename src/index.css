@@ -12,6 +12,20 @@ body {
   position: relative;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.bottomZero {
+  bottom: 0;
+}
+.topZero {
+  top: 0;
+}
+.leftZero {
+  left: 0;
+}
+
 .bold {
   font-weight: bold !important;
 }
@@ -34,6 +48,10 @@ body {
 
 .hideOverflow {
   overflow: hidden;
+}
+
+.no-height {
+  height: 0;
 }
 
 .full-height {

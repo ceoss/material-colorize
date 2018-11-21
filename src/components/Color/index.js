@@ -23,18 +23,20 @@ type ColorPropType = {
   className?: string,
   classes?: typeof style,
   isSelected: boolean,
+  displayUnselected?: boolean,
+  unraiseSelected?: boolean,
   select: (val: SelectedColor) => void
 }
 
 function Color(props: ColorPropType) {
-  const {number, color, colorName = '', className, classes, isSelected, select} = props,
+  const {number, color, colorName = '', className, classes, isSelected, select, displayUnselected, unraiseSelected} = props,
     actualColor: string = (number && (color[(number: any)]: any)) || (color: any),
     tinyActualColor = tinycolor(actualColor),
     strColor = tinyActualColor.toHexString();
   const readableColor: TinyColor = useReadableColor(strColor);
   const selectFunc = () => select({
     colorName,
-    colorNumber: number
+    ...(number ? {colorNumber: number} : {})
   });
   const properlySpacedName = titleFromCamelCase(colorName);
 
@@ -42,7 +44,7 @@ function Color(props: ColorPropType) {
     <Paper
       tabIndex={0}
       role="button"
-      aria-label={`${properlySpacedName} ${number}`}
+      aria-label={`${properlySpacedName} ${number || ''}`}
       aria-pressed={`${!!isSelected}`}
       style={{
         background: strColor,
@@ -51,16 +53,16 @@ function Color(props: ColorPropType) {
       onClick={selectFunc}
       onKeyPress={selectFunc}
       className={`${className} ${classes.colorDiv}`}
-      elevation={isSelected ? 3 : 0}>
-      {isSelected && <Grid
+      elevation={isSelected && !unraiseSelected ? 3 : 0}>
+      {(isSelected || displayUnselected) && <Grid
         className="full-height"
         container
         direction="row"
         justify="space-between"
         alignItems="center"
       >
-        <Typography className="text-caps" color="inherit">{properlySpacedName} {number}</Typography>
-        <Check/>
+        <Typography className="text-caps" color="inherit">{properlySpacedName} {number || ''}</Typography>
+        {isSelected && <Check/>}
       </Grid>
       }
     </Paper>
