@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import {useElementSize} from "../../shared/generic-hooks";
 import Color from "../../components/Color";
+import TransitionHeightAuto from "../../components/TransitionHeightAuto";
 
 type PaletteListViewPropType = {
   classes?: typeof style
@@ -61,17 +62,9 @@ function PaletteListView(props: PaletteListViewPropType) {
             </IconButton>
           </Grid>
         </div>
-        {/*<GenericMultiSelect handleChange={event => setColors(event.target.value)} value={stateColors}*/}
-        {/*inputId="colors-selector"*/}
-        {/*options={colorNames} label="Colors"/>*/}
-        {/*<GenericMultiSelect handleChange={event => setNumbers(event.target.value)} value={stateNumbers}*/}
-        {/*inputId="numbers-selector"*/}
-        {/*options={colorNumbers} label="Numbers"/>*/}
         <div className="grow relative" ref={contentEl}>
-          <div
-            style={{height: showFilter ? `${contentSize ? contentSize.height + 'px' : ''}` : '0px'}}
-            className={`absolute full-width topZero leftZero hideOverflow ${classes.transitionHeight}`}>
-            <Grid style={{height: `${contentSize ? contentSize.height + 'px' : ''}`}}
+          <TransitionHeightAuto show={showFilter} position="top" size={contentSize}>
+            <Grid className="full-height"
                   container direction="row" wrap="nowrap">
               <div className="overflowAuto full-height grow">
                 {
@@ -100,6 +93,7 @@ function PaletteListView(props: PaletteListViewPropType) {
                            color="#FFF"
                            displayUnselected
                            unraiseSelected
+                      // TODO: Turn logic into shared function
                            select={({colorName: colorNum}) => {
                              if (!stateNumbers.includes(colorNum)) {
                                setNumbers([
@@ -115,18 +109,16 @@ function PaletteListView(props: PaletteListViewPropType) {
                   </div>)}
               </div>
             </Grid>
-          </div>
-          <div style={{height: showFilter ? '0px' : `${contentSize ? contentSize.height + 'px' : ''}`}}
-               className={`full-width absolute leftZero bottomZero hideOverflow ${classes.transitionHeight}`}>
-            <div className="overflowAuto full-height"
-                 style={{height: `${contentSize ? contentSize.height + 'px' : ''}`}}>
+          </TransitionHeightAuto>
+          <TransitionHeightAuto show={!showFilter} position="bottom" size={contentSize}>
+            <div className="overflowAuto full-height">
               <ColorList
                 select={setColor}
                 selected={selectedColor}
                 colorNames={stateColors && stateColors.length !== 0 ? stateColors : colorNames}
                 colorNumbers={stateNumbers && stateNumbers.length !== 0 ? stateNumbers : colorNumbers}/>
             </div>
-          </div>
+          </TransitionHeightAuto>
         </div>
       </Grid>
     </Grid>

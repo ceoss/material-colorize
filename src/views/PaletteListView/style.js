@@ -13,8 +13,5 @@ export default () => ({
   },
   filterButton: {
     transition: 'transform 200ms ease-in-out'
-  },
-  transitionHeight: {
-    transition: 'height 300ms ease-in-out'
   }
 })
