@@ -21,6 +21,7 @@ function GenericFormatDisplay(props: ColorListPropType) {
       direction="row"
       justify="flex-start"
       alignItems="center"
+      wrap="nowrap"
       className={classes.colorDisplay}
     >
       <Typography className={`uppercase bold ${classes.formatName}`}>{formatName}</Typography>

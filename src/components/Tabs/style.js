@@ -17,13 +17,18 @@ export default () => ({
     flexGrow: 0,
     flexWrap: 'nowrap'
   },
+  offScreen: {
+    top: '-100vh'
+  },
+  bodyDiv: {
+    position: 'absolute',
+    width: `calc(100% - (${paddingScreenSize} * 2))`,
+    height: `calc(100% - ${paddingScreenSize})`,
+    paddingLeft: paddingScreenSize,
+    paddingRight: paddingScreenSize,
+    paddingTop: paddingScreenSize
+  },
   [`@media only screen and (min-width: ${smallSize})`]: {
-    bodyDiv: {
-      height: `calc(100% - ${paddingScreenSize})`,
-      paddingLeft: paddingScreenSize,
-      paddingRight: paddingScreenSize,
-      paddingTop: paddingScreenSize
-    },
     tabs: {
       flexDirection: 'column'
     },
