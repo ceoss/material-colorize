@@ -23,3 +23,15 @@ export function titleFromCamelCase(str: string): string {
 }
 
 export type SetStateType<T> = [T, (val: T) => void];
+
+export function immutableToggleArray<T>(arr: T[], val: T): T[] {
+  if (!arr.includes(val)) {
+    return [
+      ...arr,
+      val
+    ]
+  } else {
+    const valIndex = arr.indexOf(val);
+    return arr.filter((_, i) => i !== valIndex);
+  }
+}

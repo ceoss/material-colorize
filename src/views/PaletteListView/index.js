@@ -6,6 +6,7 @@ import ColorList from '../../components/ColorList';
 import type {SelectedColor} from "../../shared/colors";
 import {colorNames, colorNumbers, colors, mainColorNumber} from '../../shared/colors';
 import type {SetStateType} from "../../shared/generic";
+import {immutableToggleArray} from "../../shared/generic";
 import ColorFormatsDisplay from "../../components/ColorFormatsDisplay";
 import style from "./style";
 import {withStyles} from "@material-ui/core";
@@ -71,17 +72,7 @@ function PaletteListView(props: PaletteListViewPropType) {
                   colorNames.map(colorName => <div key={colorName}>
                     <Color isSelected={stateColors.includes(colorName)}
                            color={colors[colorName][mainColorNumber]}
-                           select={({colorName}) => {
-                             if (!stateColors.includes(colorName)) {
-                               setColors([
-                                 ...stateColors,
-                                 colorName
-                               ])
-                             } else {
-                               const colorIndex = stateColors.indexOf(colorName);
-                               setColors(stateColors.filter((_, i) => i !== colorIndex));
-                             }
-                           }}
+                           select={({colorName}) => setColors(immutableToggleArray(stateColors, colorName))}
                            colorName={colorName}/>
                   </div>)
                 }
@@ -93,18 +84,7 @@ function PaletteListView(props: PaletteListViewPropType) {
                            color="#FFF"
                            displayUnselected
                            unraiseSelected
-                      // TODO: Turn logic into shared function
-                           select={({colorName: colorNum}) => {
-                             if (!stateNumbers.includes(colorNum)) {
-                               setNumbers([
-                                 ...stateNumbers,
-                                 colorNum
-                               ])
-                             } else {
-                               const numberIndex = stateNumbers.indexOf(colorNum);
-                               setNumbers(stateNumbers.filter((_, i) => i !== numberIndex));
-                             }
-                           }}
+                           select={({colorName: colorNum}) => setNumbers(immutableToggleArray(stateNumbers, colorNum))}
                            colorName={colorNumber}/>
                   </div>)}
               </div>

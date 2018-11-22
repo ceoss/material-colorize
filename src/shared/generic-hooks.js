@@ -5,7 +5,6 @@ export const useElementSize = (element: React.Ref<any>): ClientRect => {
 
   useEffect(
   () => {
-    console.log(element);
     const resizeListener = () => {
       if (element && element.current) {
         setElSize(element.current.getBoundingClientRect());
