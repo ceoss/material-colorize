@@ -22,7 +22,7 @@ type ColorPropType = {
   number?: string,
   className?: string,
   classes?: typeof style,
-  isSelected: boolean,
+  isSelected?: boolean,
   displayUnselected?: boolean,
   unraiseSelected?: boolean,
   select: (val: SelectedColor) => void

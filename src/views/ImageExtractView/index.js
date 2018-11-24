@@ -6,7 +6,7 @@ import type {ColorPalette} from "../../shared/image";
 import {getImagePalette} from "../../shared/image";
 import type {ColorMatchType} from "../../shared/colors";
 import type {SetStateType} from "../../shared/generic";
-// import {titleFromCamelCase} from "../../shared/generic";
+import {titleFromCamelCase} from "../../shared/generic";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import MountainIcon from "@material-ui/icons/FilterHdrOutlined";
 import CloseIcon from "@material-ui/icons/Close";
@@ -14,6 +14,8 @@ import Snackbar from "@material-ui/core/Snackbar/Snackbar";
 import Grid from "@material-ui/core/Grid/Grid";
 import style from "./style";
 import {withStyles} from "@material-ui/core";
+import Color from "../../components/Color";
+import ColorFormatsDisplay from "../../components/ColorFormatsDisplay";
 
 type ImageExtractViewPropType = {
   classes?: typeof style
@@ -22,6 +24,7 @@ type ImageExtractViewPropType = {
 export function ImageExtractView(props: ImageExtractViewPropType) {
   const [fileUrl, setFileURL]: SetStateType<string> = useState('');
   const [palette, setPalette]: SetStateType<ColorPalette<ColorMatchType>> = useState(null);
+  const [selectedPallete, setSelected]: SetStateType<string> = useState('');
   const [showSnackbar, setShowSnackbar]: SetStateType<boolean> = useState(false);
   const {classes} = props;
 
@@ -39,6 +42,8 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
     }
   }, [fileUrl]);
 
+  useEffect(() => setSelected(''), [palette]);
+
   const handleEvent = (event: SyntheticEvent<HTMLInputElement>) => {
     if (event.target.files.length > 0) {
       const fileUrl = URL.createObjectURL(event.target.files[0]);
@@ -55,8 +60,8 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   };
 
   return <React.Fragment>
-    <Grid container direction="column" wrap="nowrap">
-      <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} justify="center">
+    <Grid container direction="row" wrap="nowrap" className="full-height">
+      <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} alignContent="center">
         <div className="relative full-width">
         <div className={`center-img square ${classes.imgPreview}`}
               style={fileUrl ? {backgroundImage: `url(${fileUrl})`} : {}}/>
@@ -76,22 +81,28 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
           </Button>
         </label>
         <p>JPG, PNG, GIF, WEBM</p>
+        {palette && <ColorFormatsDisplay color={palette[selectedPallete || 'Vibrant'].value}/>}
       </Grid>
 
       <Grid
-        className="grow"
+        className="grow full-screen-border"
         container
-        direction="row"
-        justify="center"
-        alignItems="center"
+        direction="column"
+        wrap="nowrap"
       >
         {
           palette ?
             Object.keys(palette).map((swatchKey: string) => {
-              // const readableKey = titleFromCamelCase(swatchKey);
-              // const {color, number, value} = palette[swatchKey];
-              return <div/>
-            }) : null
+              const readableKey = titleFromCamelCase(swatchKey);
+              const match = swatchKey === selectedPallete || (!selectedPallete && swatchKey ===  'Vibrant');
+              const {value} = palette[swatchKey];
+              // TODO: These are placeholders - the style doesn't work at all. Needs more breathing room, so we'll display
+              // The palette name on top in a larger font then the color name in the smaller size below. We'll figure it out
+              // TODO: Rename the `Color` and `ColorList` components, since they're not really generic enough style wise to handle that
+              // OR make them generic enough by passing the `Color` component with the props being consistent between the two - I like this better
+              return <Color key={swatchKey} displayUnselected color={value} className={classes.colorPad} colorName={readableKey}
+                            select={() => setSelected(swatchKey)} isSelected={match}/>
+            }) : <p>Your swatches will appear here once an image is given</p>
         }
       </Grid>
     </Grid>

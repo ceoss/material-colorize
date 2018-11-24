@@ -7,12 +7,20 @@ export default () => ({
   },
   imgPreview: {
     borderRadius: 'var(--borderRadiusSize)',
-    background: '#E5E5E5'
+    backgroundColor: '#E5E5E5'
   },
   mountIcon: {
     width: iconSize,
     height: iconSize,
     left: `calc(50% - (${iconSize} / 2))`,
     top: `calc(50% - (${iconSize} / 2))`
+  },
+  colorPad: {
+    '&:not(:first-of-type)': {
+      marginTop: '10px'
+    },
+    '&:not(:last-of-type)': {
+      marginBottom: '10px'
+    }
   }
 })
