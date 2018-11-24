@@ -1,6 +1,6 @@
 // @flow
 
-import React, {ReactChild, useState} from 'react';
+import React, {ReactChild} from 'react';
 import {withStyles} from "@material-ui/core";
 import style from "./style";
 import {Link, withRouter} from "react-router-dom";

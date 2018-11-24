@@ -4,11 +4,11 @@ import React, {useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import type {ColorPalette} from "../../shared/image";
 import {getImagePalette} from "../../shared/image";
-import Color from "../../components/Color";
 import type {ColorMatchType} from "../../shared/colors";
 import type {SetStateType} from "../../shared/generic";
-import {titleFromCamelCase} from "../../shared/generic";
+// import {titleFromCamelCase} from "../../shared/generic";
 import IconButton from "@material-ui/core/IconButton/IconButton";
+import MountainIcon from "@material-ui/icons/FilterHdrOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar/Snackbar";
 import Grid from "@material-ui/core/Grid/Grid";
@@ -16,7 +16,6 @@ import style from "./style";
 import {withStyles} from "@material-ui/core";
 
 type ImageExtractViewPropType = {
-  format?: string,
   classes?: typeof style
 }
 
@@ -24,7 +23,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   const [fileUrl, setFileURL]: SetStateType<string> = useState('');
   const [palette, setPalette]: SetStateType<ColorPalette<ColorMatchType>> = useState(null);
   const [showSnackbar, setShowSnackbar]: SetStateType<boolean> = useState(false);
-  const {format = 'hex'} = props;
+  const {classes} = props;
 
   useEffect(() => {
     if (fileUrl) {
@@ -56,38 +55,46 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   };
 
   return <React.Fragment>
-    {fileUrl ?
-      <div className="center-img square" style={{backgroundImage: `url(${fileUrl})`}}/>
-      : null}
-    <input
-      accept="image/*"
-      hidden
-      onChange={handleEvent}
-      id="upload-file-button"
-      type="file"
-    />
-    <label htmlFor="upload-file-button">
-      <Button variant="contained" component="span" color="primary" className="full-width" style={{marginTop: '15px'}}>
-        Select File
-      </Button>
-    </label>
-    <p>JPG, PNG, GIF, WEBM</p>
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-    >
-      {
-        palette ?
-          Object.keys(palette).map((swatchKey: string) => {
-            const readableKey = titleFromCamelCase(swatchKey);
-            const {color, number, value} = palette[swatchKey];
-            return <div/>
-          }) : null
-      }
-    </Grid>
+    <Grid container direction="column" wrap="nowrap">
+      <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} justify="center">
+        <div className="relative full-width">
+        <div className={`center-img square ${classes.imgPreview}`}
+              style={fileUrl ? {backgroundImage: `url(${fileUrl})`} : {}}/>
+          {!fileUrl && <MountainIcon className={`absolute ${classes.mountIcon}`}/>}
+        </div>
+        <input
+          accept="image/*"
+          hidden
+          onChange={handleEvent}
+          id="upload-file-button"
+          type="file"
+        />
+        <label htmlFor="upload-file-button">
+          <Button variant="contained" component="span" color="primary" className="full-width"
+                  style={{marginTop: '15px'}}>
+            Select File
+          </Button>
+        </label>
+        <p>JPG, PNG, GIF, WEBM</p>
+      </Grid>
 
+      <Grid
+        className="grow"
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        {
+          palette ?
+            Object.keys(palette).map((swatchKey: string) => {
+              // const readableKey = titleFromCamelCase(swatchKey);
+              // const {color, number, value} = palette[swatchKey];
+              return <div/>
+            }) : null
+        }
+      </Grid>
+    </Grid>
     <Snackbar
       anchorOrigin={{
         vertical: 'bottom',

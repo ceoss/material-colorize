@@ -1,3 +1,8 @@
+:root {
+  --borderStyling: 1px solid #E5E5E5;
+  --borderRadiusSize: 10px;
+}
+
 body {
   margin: 0;
   overflow: hidden;
@@ -24,6 +29,10 @@ body {
 }
 .leftZero {
   left: 0;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .bold {
@@ -74,4 +83,15 @@ body {
 
 a[href^="/"] {
   text-decoration: none;
+}
+
+.full-screen-border {
+  --padding: 10px;
+  border-radius: var(--borderRadiusSize) var(--borderRadiusSize) 0 0;
+  padding-top: var(--padding);
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  border-top: var(--borderStyling);
+  border-left: var(--borderStyling);
+  border-right: var(--borderStyling);
 }

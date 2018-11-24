@@ -45,7 +45,7 @@ function Color(props: ColorPropType) {
       tabIndex={0}
       role="button"
       aria-label={`${properlySpacedName} ${number || ''}`}
-      aria-pressed={`${!!isSelected}`}
+      aria-pressed={!!isSelected}
       style={{
         background: strColor,
         color: readableColor.toHexString()

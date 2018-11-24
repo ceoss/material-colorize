@@ -4,6 +4,7 @@ import tinycolor from 'tinycolor2';
 import {convert} from "./convert";
 import type {ColorMatchType} from "./colors";
 
+// eslint-disable-next-line
 type Swatch = {
   b: number,
   g: number,

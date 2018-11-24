@@ -45,7 +45,7 @@ function PaletteListView(props: PaletteListViewPropType) {
         <ColorFormatsDisplay color={colors[selectedColor.colorName][selectedColor.colorNumber]}/>
       </div>
       <Grid
-        className={`grow ${classes.borderedList}`}
+        className="grow full-height full-screen-border"
         container
         direction="column"
         wrap="nowrap"

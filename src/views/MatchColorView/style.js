@@ -1,10 +1,8 @@
-import {borderStyle} from "../../shared/shared-style";
-
 export default () => ({
   color: {
     marginBottom: '30px',
-    border: borderStyle,
-    borderRadius: '15px'
+    border: 'var(--borderStyling)',
+    borderRadius: 'var(--borderRadiusSize)'
   },
   colorDiv: {
     padding: '0 20px'

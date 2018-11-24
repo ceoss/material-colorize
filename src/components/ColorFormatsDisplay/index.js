@@ -6,7 +6,6 @@ import GenericFormatDisplay from "../GenericFormatDisplay";
 import {withStyles} from "@material-ui/core";
 import style from "./style";
 import {formats} from "../../shared/colors";
-import type {TinyColor} from 'tinycolor2';
 import tinycolor from 'tinycolor2';
 import {getFormatString, getFormatValue} from "../../shared/convert";
 import CopyIcon from "../CopyIcon";

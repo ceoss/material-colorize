@@ -45,12 +45,13 @@ export function getFormatString(color: TinyColor, format: $Values<formats>): str
   }
 }
 
+// eslint-disable-next-line
 declare function getFormatValue(color: TinyColor, format: 'hex'): { data: $Call<TinyColor.toHex>, formatted: $Call<TinyColor.toHex> }
-
+// eslint-disable-next-line
 declare function getFormatValue(color: TinyColor, format: 'rgb'): { data: $Call<TinyColor.toRgb>, formatted: $Call<TinyColor.toRgb>, orderOfKeys: ($Keys<$Call<TinyColor.toRgb>>)[] }
-
+// eslint-disable-next-line
 declare function getFormatValue(color: TinyColor, format: 'hsl'): { data: $Call<TinyColor.toHsl>, formatted: $Call<TinyColor.toHsl>, orderOfKeys: ($Keys<$Call<TinyColor.toHsl>>)[] }
-
+// eslint-disable-next-line
 export function getFormatValue(color: TinyColor, format: $Values<formats>) {
   switch (format) {
     case 'hex': {

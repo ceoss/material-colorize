@@ -1,8 +1,6 @@
 // @flow
 
-import {borderStyle} from "../../shared/shared-style";
-
-export default (theme: any) => ({
+export default () => ({
   formatName: {
     marginRight: 'auto'
   },
@@ -11,8 +9,8 @@ export default (theme: any) => ({
       marginTop: '12px',
     },
     height: '65px',
-    border: borderStyle,
-    borderRadius: '5px',
+    border: 'var(--borderStyling)',
+    borderRadius: 'var(--borderRadiusSize)',
     padding: '18px 20px 18px 12px'
   },
   copyIcon: {
