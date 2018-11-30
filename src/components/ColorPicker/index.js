@@ -9,7 +9,7 @@ import style from './style';
 import type {SetStateType} from "../../shared/generic";
 import {Portal} from "@material-ui/core";
 import ColorizeIcon from '@material-ui/icons/ColorizeOutlined';
-import IconButton from "@material-ui/core/IconButton/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 
 type ColorPickerPropType = {
   classes?: typeof style,

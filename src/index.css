@@ -1,6 +1,7 @@
 :root {
   --borderStyling: 1px solid #E5E5E5;
   --borderRadiusSize: 10px;
+  --fullScreenBorderPadding: 10px;
 }
 
 body {
@@ -86,12 +87,12 @@ a[href^="/"] {
 }
 
 .full-screen-border {
-  --padding: 10px;
   border-radius: var(--borderRadiusSize) var(--borderRadiusSize) 0 0;
-  padding-top: var(--padding);
-  padding-left: var(--padding);
-  padding-right: var(--padding);
+  padding-top: var(--fullScreenBorderPadding);
+  padding-left: var(--fullScreenBorderPadding);
+  padding-right: var(--fullScreenBorderPadding);
   border-top: var(--borderStyling);
   border-left: var(--borderStyling);
   border-right: var(--borderStyling);
+  overflow: hidden;
 }

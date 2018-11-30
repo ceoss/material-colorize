@@ -8,13 +8,13 @@ import {useReadableColor} from "../../shared/colors";
 import type {SetStateType} from "../../shared/generic";
 import {titleFromCamelCase} from "../../shared/generic";
 import {convert} from "../../shared/convert";
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@material-ui/core/Grid";
 import ColorFormatsDisplay from '../../components/ColorFormatsDisplay';
 import type {TinyColor} from 'tinycolor2';
 import tinycolor from 'tinycolor2';
 import style from "./style";
 import {withStyles} from "@material-ui/core";
-import Typography from "@material-ui/core/es/Typography/Typography";
+import Typography from "@material-ui/core/Typography";
 
 type ConvertColorViewPropType = {
   format?: string,

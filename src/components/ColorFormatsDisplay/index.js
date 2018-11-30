@@ -1,7 +1,7 @@
 // @flow
 
 import React from "react";
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@material-ui/core/Grid";
 import GenericFormatDisplay from "../GenericFormatDisplay";
 import {withStyles} from "@material-ui/core";
 import style from "./style";
@@ -23,7 +23,7 @@ function ColorFormatsDisplay(props: ColorFormatDisplayPropType) {
   const {color, classes, className = '', allowCopy = false, appendIcon, allowedIconIndexes} = props,
     tinyColorColor = tinycolor(color);
   return (
-    <Grid container direction="column" className={className}>
+    <Grid container direction="column" className={className} wrap="nowrap">
       {
         formats.map((format, i) => {
           const formatVal = getFormatValue(tinyColorColor, format);

@@ -7,11 +7,11 @@ import {getImagePalette} from "../../shared/image";
 import type {ColorMatchType} from "../../shared/colors";
 import type {SetStateType} from "../../shared/generic";
 import {titleFromCamelCase} from "../../shared/generic";
-import IconButton from "@material-ui/core/IconButton/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import MountainIcon from "@material-ui/icons/FilterHdrOutlined";
 import CloseIcon from "@material-ui/icons/Close";
-import Snackbar from "@material-ui/core/Snackbar/Snackbar";
-import Grid from "@material-ui/core/Grid/Grid";
+import Snackbar from "@material-ui/core/Snackbar";
+import Grid from "@material-ui/core/Grid";
 import style from "./style";
 import {withStyles} from "@material-ui/core";
 import Color from "../../components/Color";
@@ -61,7 +61,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
 
   return <React.Fragment>
     <Grid container direction="row" wrap="nowrap" className="full-height">
-      <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} alignContent="center">
+      <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} wrap="nowrap" alignContent="center">
         <div className="relative full-width">
         <div className={`center-img square ${classes.imgPreview}`}
               style={fileUrl ? {backgroundImage: `url(${fileUrl})`} : {}}/>

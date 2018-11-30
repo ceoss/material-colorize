@@ -1,7 +1,7 @@
 // @flow
 
 import React, {useRef, useState} from 'react';
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@material-ui/core/Grid";
 import ColorList from '../../components/ColorList';
 import type {SelectedColor} from "../../shared/colors";
 import {colorNames, colorNumbers, colors, mainColorNumber} from '../../shared/colors';
@@ -10,14 +10,18 @@ import {immutableToggleArray} from "../../shared/generic";
 import ColorFormatsDisplay from "../../components/ColorFormatsDisplay";
 import style from "./style";
 import {withStyles} from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton/IconButton";
+import ButtonBase from '@material-ui/core/ButtonBase';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import {useElementSize} from "../../shared/generic-hooks";
 import Color from "../../components/Color";
 import TransitionHeightAuto from "../../components/TransitionHeightAuto";
+import Typography from "@material-ui/core/Typography";
+import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
+import withWidth from "@material-ui/core/withWidth";
 
 type PaletteListViewPropType = {
-  classes?: typeof style
+  classes?: typeof style,
+  width: Breakpoint
 }
 
 function PaletteListView(props: PaletteListViewPropType) {
@@ -50,19 +54,19 @@ function PaletteListView(props: PaletteListViewPropType) {
         direction="column"
         wrap="nowrap"
       >
-        <div>
-          <Grid
-            className="full-height"
-            container
-            direction="row"
-            justify="flex-end"
-          >
-            <IconButton className={classes.filterButton} style={showFilter ? {transform: 'rotate(180deg)'} : {}}
-                        onClick={() => setShowFilter(!showFilter)}>
-              <ArrowDropDown/>
-            </IconButton>
-          </Grid>
-        </div>
+          <ButtonBase className={classes.dropdownButton} focusRipple
+                      onClick={() => setShowFilter(!showFilter)}>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Typography className="bold">Filters</Typography>
+              <ArrowDropDown className={classes.dropdownArrow}
+                             style={showFilter ? {transform: 'rotate(180deg)'} : {}}/>
+            </Grid>
+          </ButtonBase>
         <div className="grow relative" ref={contentEl}>
           <TransitionHeightAuto show={showFilter} position="top" size={contentSize}>
             <Grid className="full-height"
@@ -105,4 +109,4 @@ function PaletteListView(props: PaletteListViewPropType) {
   );
 }
 
-export default withStyles(style)(PaletteListView);
+export default withStyles(style)(withWidth()(PaletteListView));

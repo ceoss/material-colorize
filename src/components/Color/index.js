@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Grid from "@material-ui/core/Grid/Grid";
+import Grid from "@material-ui/core/Grid";
 import Check from '@material-ui/icons/Check';
 import type {TinyColor} from "tinycolor2";
 import tinycolor from 'tinycolor2';
