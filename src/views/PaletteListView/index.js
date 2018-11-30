@@ -34,7 +34,7 @@ function PaletteListView(props: PaletteListViewPropType) {
   });
   const contentEl = useRef();
   const contentSize = useElementSize(contentEl);
-  const {classes} = props;
+  const {classes, width} = props;
 
   return (
     <Grid
@@ -43,7 +43,7 @@ function PaletteListView(props: PaletteListViewPropType) {
       direction="row"
       justify="center"
       alignItems="flex-start"
-      wrap="nowrap"
+      wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
     >
       <div>
         <ColorFormatsDisplay color={colors[selectedColor.colorName][selectedColor.colorNumber]}/>

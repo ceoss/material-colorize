@@ -16,9 +16,13 @@ import style from "./style";
 import {withStyles} from "@material-ui/core";
 import Color from "../../components/Color";
 import ColorFormatsDisplay from "../../components/ColorFormatsDisplay";
+import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
+import withWidth from "@material-ui/core/withWidth";
+
 
 type ImageExtractViewPropType = {
-  classes?: typeof style
+  classes?: typeof style,
+  width: Breakpoint
 }
 
 export function ImageExtractView(props: ImageExtractViewPropType) {
@@ -26,7 +30,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   const [palette, setPalette]: SetStateType<ColorPalette<ColorMatchType>> = useState(null);
   const [selectedPallete, setSelected]: SetStateType<string> = useState('');
   const [showSnackbar, setShowSnackbar]: SetStateType<boolean> = useState(false);
-  const {classes} = props;
+  const {classes, width} = props;
 
   useEffect(() => {
     if (fileUrl) {
@@ -60,7 +64,10 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   };
 
   return <React.Fragment>
-    <Grid container direction="row" wrap="nowrap" className="full-height">
+    <Grid container
+          direction="row"
+          wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
+          className="full-height">
       <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} wrap="nowrap" alignContent="center">
         <div className="relative full-width">
         <div className={`center-img square ${classes.imgPreview}`}
@@ -132,4 +139,4 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   </React.Fragment>
 }
 
-export default withStyles(style)(ImageExtractView);
+export default withStyles(style)(withWidth()(ImageExtractView));

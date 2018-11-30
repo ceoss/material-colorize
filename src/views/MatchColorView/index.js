@@ -15,14 +15,16 @@ import tinycolor from 'tinycolor2';
 import style from "./style";
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import withWidth from "@material-ui/core/withWidth";
+import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
 
 type ConvertColorViewPropType = {
-  format?: string,
-  classes?: typeof style
+  classes?: typeof style,
+  width: Breakpoint
 };
 
 function ConvertColorView(props: ConvertColorViewPropType) {
-  const {classes} = props;
+  const {classes, width} = props;
   const [convertedColor, setConvertedColor]: SetStateType<ColorMatchType | null> = useState(null);
   const [color, setColor]: SetStateType<string> = useState('#FFFFFF');
   const readableColor: TinyColor = useReadableColor(color);
@@ -32,7 +34,7 @@ function ConvertColorView(props: ConvertColorViewPropType) {
     <Grid
       container
       direction="row"
-      wrap="nowrap"
+      wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
       justify="space-around">
       <Grid
         className={classes.colorDiv}
@@ -77,4 +79,4 @@ function ConvertColorView(props: ConvertColorViewPropType) {
   );
 }
 
-export default withStyles(style)(ConvertColorView);
+export default withStyles(style)(withWidth()(ConvertColorView));
