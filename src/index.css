@@ -1,5 +1,7 @@
 :root {
-  --borderStyling: 1px solid #E5E5E5;
+  --borderColor: #E5E5E5;
+  --borderSize: 1px;
+  --borderStyling: var(--borderSize) solid var(--borderColor);
   --borderRadiusSize: 10px;
   --fullScreenBorderPadding: 10px;
 }

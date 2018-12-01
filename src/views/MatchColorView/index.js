@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import ColorPicker from "../../components/ColorPicker";
 import type {ColorResult} from 'react-color';
 import type {ColorMatchType} from "../../shared/colors";
-import {useReadableColor} from "../../shared/colors";
+import {useReadableColor, whiteColorMatch} from "../../shared/colors";
 import type {SetStateType} from "../../shared/generic";
 import {titleFromCamelCase} from "../../shared/generic";
 import {convert} from "../../shared/convert";
@@ -25,16 +25,17 @@ type ConvertColorViewPropType = {
 
 function ConvertColorView(props: ConvertColorViewPropType) {
   const {classes, width} = props;
-  const [convertedColor, setConvertedColor]: SetStateType<ColorMatchType | null> = useState(null);
+  const [convertedColor, setConvertedColor]: SetStateType<ColorMatchType | null> = useState(whiteColorMatch);
   const [color, setColor]: SetStateType<string> = useState('#FFFFFF');
   const readableColor: TinyColor = useReadableColor(color);
   const readableConvertedColor: TinyColor = useReadableColor(convertedColor && convertedColor.value);
+  const isSmall = width === 'sm' || width === 'xs';
 
   return (
     <Grid
       container
       direction="row"
-      wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
+      wrap={isSmall ? 'wrap' : 'nowrap'}
       justify="space-around">
       <Grid
         className={classes.colorDiv}
@@ -59,20 +60,15 @@ function ConvertColorView(props: ConvertColorViewPropType) {
         justify="flex-start"
         alignItems="center"
       >
-        {
-          convertedColor &&
-          <React.Fragment>
-            <div className={`square relative ${classes.color}`} style={{background: convertedColor.value}}>
-              <Typography variant="h4" className={`text-caps ${classes.colorTitle}`}
-                          style={{color: readableConvertedColor}}>
-                {titleFromCamelCase(convertedColor.color)} {convertedColor.number}
-              </Typography>
-            </div>
-            <ColorFormatsDisplay className="full-width"
-                                 color={tinycolor(convertedColor.value)}
-                                 allowCopy={true}/>
-          </React.Fragment>
-        }
+        <div className={`square relative ${classes.color}`} style={{background: convertedColor.value}}>
+          <Typography variant="h4" className={`text-caps ${classes.colorTitle}`}
+                      style={{color: readableConvertedColor}}>
+            {titleFromCamelCase(convertedColor.color)} {convertedColor.number}
+          </Typography>
+        </div>
+        <ColorFormatsDisplay className="full-width"
+                             color={tinycolor(convertedColor.value)}
+                             allowCopy={true}/>
       </Grid>
 
     </Grid>

@@ -1,9 +1,9 @@
-import {smallSize, tabBorder, tabBorderColor, tabBorderSize} from '../style';
+import {tabBorder} from '../style';
 
 const inactiveTabMargin = '12px';
 const iconSize = '50px';
 
-export default () => ({
+export default theme => ({
   tab: {
     textAlign: 'center',
     '-webkit-appearance': 'none',
@@ -19,7 +19,7 @@ export default () => ({
     '&::after': {
       position: 'absolute',
       content: '" "',
-      background: tabBorderColor,
+      background: 'var(--borderColor)',
     },
     '&:active, &:hover, &:focus': {
       outline: 'none'
@@ -28,15 +28,14 @@ export default () => ({
       background: '#eceff1'
     }
   },
-  [`@media only screen and (min-width: ${smallSize})`]: {
+  [theme.breakpoints.up('sm')]: {
     tab: {
       borderRight: tabBorder,
       '&::after': {
-        height: tabBorderSize,
+        height: 'var(--borderSize)',
         bottom: '-1px',
         left: inactiveTabMargin,
-        width: `calc(100% - (${inactiveTabMargin} * 2))`,
-
+        width: `calc(100% - (${inactiveTabMargin} * 2))`
       }
     },
     tabDivActive: {
@@ -49,11 +48,11 @@ export default () => ({
       }
     }
   },
-  [`@media only screen and (max-width: ${smallSize})`]: {
+  [theme.breakpoints.down('sm')]: {
     tab: {
       borderTop: tabBorder,
       '&::after': {
-        width: tabBorderSize,
+        width: 'var(--borderSize)',
         right: '-1px',
         top: inactiveTabMargin,
         height: `calc(100% - (${inactiveTabMargin} * 2))`,

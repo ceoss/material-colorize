@@ -5,7 +5,9 @@ export default () => ({
     borderRadius: 'var(--borderRadiusSize)'
   },
   colorDiv: {
-    padding: '0 20px'
+    padding: '0 20px',
+    marginBottom: '30px',
+    maxWidth: '600px'
   },
   colorTitle: {
     position: 'absolute',

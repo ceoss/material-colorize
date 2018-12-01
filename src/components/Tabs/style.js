@@ -1,9 +1,6 @@
-export const tabBorderSize = '1px';
-export const tabBorderColor = '#e5e5e5';
-export const tabBorder = `${tabBorderSize} ${tabBorderColor} solid !important`;
-export const smallSize = '600px';
+export const tabBorder = 'var(--borderStyling) !important';
 const paddingScreenSize = '25px';
-export default () => ({
+export default theme => ({
   tabsDiv: {
     height: '100vh',
     display: 'grid',
@@ -28,7 +25,7 @@ export default () => ({
     paddingRight: paddingScreenSize,
     paddingTop: paddingScreenSize
   },
-  [`@media only screen and (min-width: ${smallSize})`]: {
+  [theme.breakpoints.up('sm')]: {
     tabs: {
       flexDirection: 'column'
     },
@@ -36,7 +33,7 @@ export default () => ({
       borderRight: tabBorder,
     },
   },
-  [`@media only screen and (max-width: ${smallSize})`]: {
+  [theme.breakpoints.down('sm')]: {
     tabsDiv: {
       gridTemplateColumns: '1fr'
     },

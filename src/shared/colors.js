@@ -81,6 +81,12 @@ export type ColorMatchType = {
   value: string
 };
 
+export const whiteColorMatch: ColorMatchType = {
+  color: 'white',
+  number: mainColorNumber,
+  value: white
+};
+
 export const colorArray: ColorMatchType[] = [
   ...Object.keys(colors).reduce((prev: ColorMatchType[], colorName: string): ColorMatchType[] =>
     [
@@ -97,11 +103,7 @@ export const colorArray: ColorMatchType[] = [
     number: mainColorNumber,
     value: black
   },
-  {
-    color: 'white',
-    number: mainColorNumber,
-    value: white
-  }
+  whiteColorMatch
 ];
 
 export function useReadableColor(color: string) {
@@ -120,4 +122,4 @@ export function useReadableColor(color: string) {
   return readableColor;
 }
 
-export type SelectedColor = {colorName: string, colorName: string};
+export type SelectedColor = { colorName: string, colorName: string };
