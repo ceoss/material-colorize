@@ -21,7 +21,8 @@ type ColorListPropType = {
 function ColorList(props: ColorListPropType) {
   const {colorNumbers, colorNames, classes, selected, select} = props;
   return (
-    colorNames
+    <div className="full-height full-width" role="menu">
+    {colorNames
       .map(colorName =>
         <React.Fragment key={colorName}>
           {
@@ -46,7 +47,8 @@ function ColorList(props: ColorListPropType) {
                        number={number}/>)
           }
         </React.Fragment>
-      )
+      )}
+    </div>
   );
 }
 

@@ -43,16 +43,16 @@ function Color(props: ColorPropType) {
   return (
     <Paper
       tabIndex={0}
-      role="button"
+      role="option"
       aria-label={`${properlySpacedName} ${number || ''}`}
-      aria-pressed={!!isSelected}
+      aria-selected={!!isSelected}
       style={{
         background: strColor,
         color: readableColor.toHexString()
       }}
       onClick={selectFunc}
       onKeyPress={selectFunc}
-      className={`${className} ${classes.colorDiv}`}
+      className={`${className} ${classes.colorDiv} pointer`}
       elevation={isSelected && !unraiseSelected ? 3 : 0}>
       {(isSelected || displayUnselected) && <Grid
         className="full-height"

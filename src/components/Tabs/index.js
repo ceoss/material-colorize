@@ -7,8 +7,6 @@ import Tab from './Tab';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 type TabsPropType = {
-  title: string,
-  tabIndex: 0,
   classes: typeof style
 }
 

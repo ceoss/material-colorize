@@ -45,16 +45,16 @@ function PaletteListView(props: PaletteListViewPropType) {
       alignItems="flex-start"
       wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
     >
-      <div>
+      <div className={classes.colorFormatDisplay}>
         <ColorFormatsDisplay color={colors[selectedColor.colorName][selectedColor.colorNumber]}/>
       </div>
       <Grid
-        className="grow full-height full-screen-border"
+        className="grow full-height full-screen-border no-padding"
         container
         direction="column"
         wrap="nowrap"
       >
-          <ButtonBase className={classes.dropdownButton} focusRipple
+          <ButtonBase className={`${classes.dropdownButton} full-width`} focusRipple
                       onClick={() => setShowFilter(!showFilter)}>
             <Grid
               container
@@ -71,7 +71,7 @@ function PaletteListView(props: PaletteListViewPropType) {
           <TransitionHeightAuto show={showFilter} position="top" size={contentSize}>
             <Grid className="full-height"
                   container direction="row" wrap="nowrap">
-              <div className="overflowAuto full-height grow">
+              <div className="overflowAuto full-height grow" role="menu">
                 {
                   colorNames.map(colorName => <div key={colorName}>
                     <Color isSelected={stateColors.includes(colorName)}
@@ -81,7 +81,7 @@ function PaletteListView(props: PaletteListViewPropType) {
                   </div>)
                 }
               </div>
-              <div className="overflowAuto full-height" style={{width: '120px'}}>
+              <div className={`overflowAuto full-height ${classes.numbersList}`} role="menu">
                 {
                   colorNumbers.map(colorNumber => <div key={colorNumber}>
                     <Color isSelected={stateNumbers.includes(colorNumber)}
@@ -95,7 +95,7 @@ function PaletteListView(props: PaletteListViewPropType) {
             </Grid>
           </TransitionHeightAuto>
           <TransitionHeightAuto show={!showFilter} position="bottom" size={contentSize}>
-            <div className="overflowAuto full-height">
+            <div className={`overflowAuto full-height ${classes.colorListDiv}`}>
               <ColorList
                 select={setColor}
                 selected={selectedColor}

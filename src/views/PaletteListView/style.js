@@ -1,18 +1,30 @@
-const dropdownButtonPadding = '20px'
+const dropdownButtonPadding = '20px';
 
-export default () => ({
+export default theme => ({
   dropdownButton: {
-    width: 'calc(100% + (var(--fullScreenBorderPadding) * 2))',
-    paddingTop: dropdownButtonPadding ,
+    paddingTop: dropdownButtonPadding,
     paddingBottom: dropdownButtonPadding,
-    paddingLeft: 'var(--fullScreenBorderPadding)',
-    paddingRight: 'var(--fullScreenBorderPadding)',
-    marginLeft: 'calc(0px - var(--fullScreenBorderPadding))',
-    marginRight: 'calc(0px - var(--fullScreenBorderPadding))',
-    marginTop: 'calc(0px - var(--fullScreenBorderPadding))',
+    paddingLeft: 'calc(var(--fullScreenBorderPadding) * 2)',
+    paddingRight: 'calc(var(--fullScreenBorderPadding) * 2)',
     borderRadius: '0 0 var(--borderRadiusSize) var(--borderRadiusSize)'
   },
   dropdownArrow: {
     transition: 'transform 200ms ease-in-out'
+  },
+  colorFormatDisplay: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: '30px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      marginBottom: '30px'
+    }
+  },
+  numbersList: {
+    width: '120px'
+  },
+  colorListDiv: {
+    paddingLeft: 'var(--fullScreenBorderPadding)',
+    paddingRight: 'var(--fullScreenBorderPadding)'
   }
 })

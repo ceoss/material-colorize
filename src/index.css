@@ -88,6 +88,10 @@ a[href^="/"] {
   text-decoration: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .full-screen-border {
   border-radius: var(--borderRadiusSize) var(--borderRadiusSize) 0 0;
   padding-top: var(--fullScreenBorderPadding);
@@ -97,4 +101,8 @@ a[href^="/"] {
   border-left: var(--borderStyling);
   border-right: var(--borderStyling);
   overflow: hidden;
+}
+
+.full-screen-border.no-padding, .no-padding {
+  padding: 0;
 }
