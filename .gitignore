@@ -2,7 +2,10 @@
 
 # dependencies
 /node_modules
-.idea
+/.idea
+/.vscode
+
+TODO.md
 
 # testing
 /coverage
