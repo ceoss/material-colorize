@@ -122,4 +122,4 @@ export function useReadableColor(color: string) {
   return readableColor;
 }
 
-export type SelectedColor = { colorName: string, colorName: string };
+export type SelectedColor = { colorNumber: string, colorName: string };

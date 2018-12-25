@@ -24,7 +24,7 @@ export type ColorPalette<T = Swatch> = {
 }
 
 export async function getImagePalette(fileUrl): ColorPalette<ColorMatchType> {
-  const palette: ColorPalette = await Vibrant.from(fileUrl)
+  const palette: ColorPalette = await new Vibrant(fileUrl)
     .getPalette();
   return ObjectMap(palette, val => {
     const {r, g, b} = val;

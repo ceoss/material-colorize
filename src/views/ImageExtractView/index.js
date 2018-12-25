@@ -88,7 +88,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
           </Button>
         </label>
         <p>JPG, PNG, GIF, WEBM</p>
-        {palette && <ColorFormatsDisplay color={palette[selectedPallete || 'Vibrant'].value}/>}
+        {palette && <ColorFormatsDisplay color={palette[selectedPallete || 'Vibrant'].value} allowCopy={true}/>}
       </Grid>
 
       <Grid
