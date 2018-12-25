@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
 import GenericFormatDisplay from "../GenericFormatDisplay";
 import {withStyles} from "@material-ui/core";
@@ -9,6 +9,10 @@ import {formats} from "../../shared/colors";
 import tinycolor from 'tinycolor2';
 import {getFormatString, getFormatValue} from "../../shared/convert";
 import CopyIcon from "../CopyIcon";
+import withWidth from "@material-ui/core/withWidth";
+import ButtonBase from '@material-ui/core/ButtonBase';
+import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 
 type ColorFormatDisplayPropType = {
   classes?: typeof style,
@@ -16,16 +20,30 @@ type ColorFormatDisplayPropType = {
   className?: string,
   allowCopy?: boolean,
   appendIcon?: React.ComponentType<any>,
-  allowedIconIndexes?: number[]
+  allowedIconIndexes?: number[],
+  width: Breakpoint
 }
 
 function ColorFormatsDisplay(props: ColorFormatDisplayPropType) {
-  const {color, classes, className = '', allowCopy = false, appendIcon, allowedIconIndexes} = props,
+  const {color, classes, className = '', allowCopy = false, appendIcon, allowedIconIndexes, width} = props,
     tinyColorColor = tinycolor(color);
+  const [showAll, setShowAll] = useState(false);
+  const [shownFormats, setShownFormats] = useState(formats);
+
+  const isSmall = width === 'sm' || width === 'xs';
+
+  useEffect(() => {
+    setShowAll(false);
+  }, [isSmall]);
+
+  useEffect(() => {
+    setShownFormats(!isSmall || (isSmall && showAll) ? formats : [formats[0]]);
+  }, [isSmall, showAll]);
+
   return (
     <Grid container direction="column" className={className} wrap="nowrap">
       {
-        formats.map((format, i) => {
+        shownFormats.map((format, i) => {
           const formatVal = getFormatValue(tinyColorColor, format);
           const copyVal = getFormatString(tinyColorColor, format);
           const displayVal = typeof formatVal.data === 'string' ? [formatVal.formatted] : formatVal.orderOfKeys.map(key => formatVal.formatted[key]);
@@ -40,8 +58,23 @@ function ColorFormatsDisplay(props: ColorFormatDisplayPropType) {
             }/>
         })
       }
+      {
+        isSmall &&
+        <ButtonBase className={`${classes.dropdownButton} full-width total-border`} focusRipple
+                    onClick={() => setShowAll(!showAll)}>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+          >
+            <ArrowDropDown className={classes.dropdownArrow}
+                           style={showAll ? {transform: 'rotate(180deg)'} : {}}/>
+          </Grid>
+        </ButtonBase>
+        }
     </Grid>
   )
 }
 
-export default withStyles(style)(ColorFormatsDisplay);
+export default withStyles(style)(withWidth()(ColorFormatsDisplay));

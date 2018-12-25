@@ -46,7 +46,7 @@ function PaletteListView(props: PaletteListViewPropType) {
       wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
     >
       <div className={classes.colorFormatDisplay}>
-        <ColorFormatsDisplay color={colors[selectedColor.colorName][selectedColor.colorNumber]}/>
+        <ColorFormatsDisplay color={colors[selectedColor.colorName][selectedColor.colorNumber]} allowCopy={true}/>
       </div>
       <Grid
         className="grow full-height full-screen-border no-padding"
@@ -54,7 +54,7 @@ function PaletteListView(props: PaletteListViewPropType) {
         direction="column"
         wrap="nowrap"
       >
-          <ButtonBase className={`${classes.dropdownButton} full-width`} focusRipple
+          <ButtonBase className={`${classes.dropdownButton} dropdown-button full-width`} focusRipple
                       onClick={() => setShowFilter(!showFilter)}>
             <Grid
               container

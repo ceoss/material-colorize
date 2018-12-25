@@ -103,6 +103,11 @@ a[href^="/"] {
   overflow: hidden;
 }
 
+.total-border {
+  border: var(--borderStyling) !important;
+  border-radius: var(--borderRadiusSize) !important;
+}
+
 .full-screen-border.show-bottom {
   border-radius: var(--borderRadiusSize);
   padding-bottom: var(--fullScreenBorderPadding);

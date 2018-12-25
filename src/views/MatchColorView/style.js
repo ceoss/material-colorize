@@ -1,12 +1,12 @@
 export default () => ({
   color: {
-    marginBottom: '30px',
+    marginBottom: '10px',
     border: 'var(--borderStyling)',
     borderRadius: 'var(--borderRadiusSize)'
   },
   colorDiv: {
     padding: '0 20px',
-    marginBottom: '30px',
+    marginBottom: '10px',
     maxWidth: '600px'
   },
   colorTitle: {
