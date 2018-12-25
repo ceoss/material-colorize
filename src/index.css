@@ -1,0 +1,119 @@
+:root {
+  --borderColor: #E5E5E5;
+  --borderSize: 1px;
+  --borderStyling: var(--borderSize) solid var(--borderColor);
+  --borderRadiusSize: 10px;
+  --fullScreenBorderPadding: 10px;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.bottomZero {
+  bottom: 0;
+}
+.topZero {
+  top: 0;
+}
+.leftZero {
+  left: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.overflowScroll {
+  overflow: scroll;
+}
+
+.overflowAuto {
+  overflow: auto;
+}
+
+.text-caps {
+  text-transform: capitalize;
+}
+
+.hideOverflow {
+  overflow: hidden;
+}
+
+.no-height {
+  height: 0;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.center-img {
+  background-size: cover;
+  background-position: center center;
+}
+
+.square {
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+a[href^="/"] {
+  text-decoration: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.full-screen-border {
+  border-radius: var(--borderRadiusSize) var(--borderRadiusSize) 0 0;
+  padding-top: var(--fullScreenBorderPadding);
+  padding-left: var(--fullScreenBorderPadding);
+  padding-right: var(--fullScreenBorderPadding);
+  border-top: var(--borderStyling);
+  border-left: var(--borderStyling);
+  border-right: var(--borderStyling);
+  overflow: hidden;
+}
+
+.total-border {
+  border: var(--borderStyling) !important;
+  border-radius: var(--borderRadiusSize) !important;
+}
+
+.full-screen-border.show-bottom {
+  border-radius: var(--borderRadiusSize);
+  padding-bottom: var(--fullScreenBorderPadding);
+  border-bottom: var(--borderStyling);
+}
+
+.full-screen-border.no-padding, .no-padding {
+  padding: 0;
+}
