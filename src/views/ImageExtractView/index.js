@@ -31,7 +31,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   const [selectedPallete, setSelected]: SetStateType<string> = useState('');
   const [showSnackbar, setShowSnackbar]: SetStateType<boolean> = useState(false);
   const {classes, width} = props;
-
+  const isSmall = width === 'sm' || width === 'xs';
   useEffect(() => {
     if (fileUrl) {
       getImagePalette(fileUrl)
@@ -66,7 +66,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   return <React.Fragment>
     <Grid container
           wrap="nowrap"
-          direction={width === 'sm' || width === 'xs' ? 'column' : 'row'}
+          direction={isSmall ? 'column' : 'row'}
           className="full-height">
       <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} wrap="nowrap" alignContent="center">
         <div className="relative full-width">
@@ -94,7 +94,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
       </Grid>
 
       <Grid
-        className={`grow full-screen-border ${classes.paletteList}`}
+        className={`grow full-screen-border ${classes.paletteList} ${isSmall ? 'show-bottom' : ''}`}
         container
         direction="column"
         wrap="nowrap"

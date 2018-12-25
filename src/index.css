@@ -103,6 +103,12 @@ a[href^="/"] {
   overflow: hidden;
 }
 
+.full-screen-border.show-bottom {
+  border-radius: var(--borderRadiusSize);
+  padding-bottom: var(--fullScreenBorderPadding);
+  border-bottom: var(--borderStyling);
+}
+
 .full-screen-border.no-padding, .no-padding {
   padding: 0;
 }

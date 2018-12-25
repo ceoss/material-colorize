@@ -17,7 +17,9 @@ export default theme => ({
       flexShrink: 0
     },
     paletteList: {
-      flexShrink: 0
+      flexShrink: 0,
+      marginBottom: '10px',
+      marginTop: '10px'
     }
   },
   imgPreview: {
