@@ -10,7 +10,7 @@ import Palette from '@material-ui/icons/PaletteOutlined';
 export default function App() {
   return (
     <Tabs>
-      <ImageExtractView tabLabel="Extract" path="/" tabIcon={<Palette/>}/>
+      <ImageExtractView tabLabel="Extract" path="/" tabIcon={<Palette/>} showOverflow={true}/>
       <PaletteListView  tabLabel="Palette" path="/palette" tabIcon={<Colorize/>}/>
       <MatchColorView tabLabel="Match" path="/match" tabIcon={<CompareArrows/>} showOverflow={true}/>
     </Tabs>

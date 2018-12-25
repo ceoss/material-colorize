@@ -65,14 +65,16 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
 
   return <React.Fragment>
     <Grid container
-          direction="row"
-          wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
+          wrap="nowrap"
+          direction={width === 'sm' || width === 'xs' ? 'column' : 'row'}
           className="full-height">
       <Grid container direction="column" className={`text-center ${classes.imgPreviewDiv}`} wrap="nowrap" alignContent="center">
         <div className="relative full-width">
+            <div className={classes.centerImgParent}>
         <div className={`center-img square ${classes.imgPreview}`}
               style={fileUrl ? {backgroundImage: `url(${fileUrl})`} : {}}/>
           {!fileUrl && <MountainIcon className={`absolute ${classes.mountIcon}`}/>}
+        </div>
         </div>
         <input
           accept="image/*"
@@ -92,7 +94,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
       </Grid>
 
       <Grid
-        className="grow full-screen-border"
+        className={`grow full-screen-border ${classes.paletteList}`}
         container
         direction="column"
         wrap="nowrap"

@@ -28,7 +28,7 @@ export default theme => ({
       background: '#eceff1'
     }
   },
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('md')]: {
     tab: {
       borderRight: tabBorder,
       '&::after': {

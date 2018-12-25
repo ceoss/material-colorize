@@ -1,9 +1,24 @@
 const iconSize = '120px';
+const maxWidthSize = '300px';
 
-export default () => ({
-  imgPreviewDiv: {
-    maxWidth: '300px',
-    margin: '0 20px'
+export default theme => ({
+  [theme.breakpoints.up('md')]: {
+    imgPreviewDiv: {
+      maxWidth: maxWidthSize,
+      margin: '0 20px'
+    }
+  },
+  [theme.breakpoints.down('sm')]: {
+    centerImgParent: {
+      maxWidth: maxWidthSize,
+      margin: '0 auto'
+    },
+    imgPreviewDiv: {
+      flexShrink: 0
+    },
+    paletteList: {
+      flexShrink: 0
+    }
   },
   imgPreview: {
     borderRadius: 'var(--borderRadiusSize)',

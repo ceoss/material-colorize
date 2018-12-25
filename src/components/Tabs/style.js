@@ -25,7 +25,7 @@ export default theme => ({
     paddingRight: paddingScreenSize,
     paddingTop: paddingScreenSize
   },
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('md')]: {
     tabs: {
       flexDirection: 'column'
     },

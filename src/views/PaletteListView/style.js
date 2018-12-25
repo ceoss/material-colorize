@@ -12,7 +12,7 @@ export default theme => ({
     transition: 'transform 200ms ease-in-out'
   },
   colorFormatDisplay: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginRight: '30px'
     },
     [theme.breakpoints.down('sm')]: {

@@ -35,13 +35,16 @@ function ConvertColorView(props: ConvertColorViewPropType) {
     <Grid
       container
       direction="row"
+      className="full-height"
       wrap={isSmall ? 'wrap' : 'nowrap'}
       justify="space-around">
       <Grid
         className={classes.colorDiv}
         container
         direction="column"
-        alignItems="center">
+        alignItems="center"
+        wrap="nowrap"
+      >
         <div className={`square relative ${classes.color}`} style={{background: color}}>
           <ColorPicker color={color}
                        style={{color: readableColor.toHexString()}}
@@ -59,6 +62,7 @@ function ConvertColorView(props: ConvertColorViewPropType) {
         direction="column"
         justify="flex-start"
         alignItems="center"
+        wrap="nowrap"
       >
         <div className={`square relative ${classes.color}`} style={{background: convertedColor.value}}>
           <Typography variant="h4" className={`text-caps ${classes.colorTitle}`}
