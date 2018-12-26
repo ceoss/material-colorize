@@ -32,17 +32,35 @@ export default theme => ({
     tabSideBorder: {
       borderRight: tabBorder,
     },
+    tabPlaceholder: {
+      display: 'none'
+    }
   },
   [theme.breakpoints.down('sm')]: {
     tabsDiv: {
       gridTemplateColumns: '1fr'
     },
     tabs: {
-      order: 1,
-      flexDirection: 'row'
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      flexDirection: 'row',
+      background: 'white',
+      width: '100%',
+      zIndex: 3
+    },
+    tabPlaceholder: {
+      height: '107.11px',
+      order: 1
     },
     tabSideBorder: {
       borderTop: tabBorder,
     },
+  },
+  [theme.breakpoints.down('xs')]: {
+    tabPlaceholder: {
+      // TODO: Hardcoding these values are UGLY. Let's fix that up soon. This exists to edgecase for Chrome mobile
+      height: '62.11px'
+    },
   }
-});
+  });

@@ -19,6 +19,7 @@ function Tabs(props: TabsPropType) {
   return (
     <Router>
       <div className={classes.tabsDiv}>
+        <div className={classes.tabPlaceholder}/>
         <div className={classes.tabs}>
           {
             children.map(child => <Tab key={child.props.tabLabel} child={child}/>)
