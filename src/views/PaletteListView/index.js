@@ -12,7 +12,7 @@ import style from "./style";
 import {withStyles} from "@material-ui/core";
 import ButtonBase from '@material-ui/core/ButtonBase';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
-import {useElementSize} from "../../shared/generic-hooks";
+import {useElementSize, useIsSmall} from "../../shared/generic-hooks";
 import Color from "../../components/Color";
 import TransitionHeightAuto from "../../components/TransitionHeightAuto";
 import Typography from "@material-ui/core/Typography";
@@ -33,29 +33,29 @@ function PaletteListView(props: PaletteListViewPropType) {
     colorNumber: '500'
   });
   const contentEl = useRef();
-  const contentSize = useElementSize(contentEl);
+  const filterEl = useRef();
   const {classes, width} = props;
-
+  const isSmall = useIsSmall(width);
+  const contentSize = useElementSize(contentEl, width);
   return (
     <Grid
       className="full-height"
       container
-      direction="row"
+      direction={isSmall ? 'column' : 'row'}
       justify="center"
       alignItems="flex-start"
-      wrap={width === 'sm' || width === 'xs' ? 'wrap' : 'nowrap'}
+      wrap="nowrap"
     >
       <div className={classes.colorFormatDisplay}>
         <ColorFormatsDisplay color={colors[selectedColor.colorName][selectedColor.colorNumber]} allowCopy={true}/>
       </div>
       <Grid
-        className="grow full-height full-screen-border no-padding"
+        className={`grow ${isSmall ? '' : 'full-height'} full-screen-border no-padding`}
         container
         direction="column"
-        wrap="nowrap"
-      >
+        wrap="nowrap">
           <ButtonBase className={`${classes.dropdownButton} dropdown-button full-width`} focusRipple
-                      onClick={() => setShowFilter(!showFilter)}>
+                      onClick={() => setShowFilter(!showFilter)} innerRef={filterEl}>
             <Grid
               container
               direction="row"
@@ -76,6 +76,7 @@ function PaletteListView(props: PaletteListViewPropType) {
                   colorNames.map(colorName => <div key={colorName}>
                     <Color isSelected={stateColors.includes(colorName)}
                            color={colors[colorName][mainColorNumber]}
+                           className="color-list-padding mh-10"
                            select={({colorName}) => setColors(immutableToggleArray(stateColors, colorName))}
                            colorName={colorName}/>
                   </div>)

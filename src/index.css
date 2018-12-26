@@ -117,3 +117,16 @@ a[href^="/"] {
 .full-screen-border.no-padding, .no-padding {
   padding: 0;
 }
+
+.color-list-padding {
+  margin-bottom: 10px;
+}
+
+.color-list-padding:not(:first-of-type) {
+  margin-top: 10px;
+}
+
+.mh-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}

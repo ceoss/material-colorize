@@ -17,6 +17,7 @@ import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import withWidth from "@material-ui/core/withWidth";
 import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
+import {useIsSmall} from "../../shared/generic-hooks";
 
 type ConvertColorViewPropType = {
   classes?: typeof style,
@@ -29,7 +30,7 @@ function ConvertColorView(props: ConvertColorViewPropType) {
   const [color, setColor]: SetStateType<string> = useState('#FFFFFF');
   const readableColor: TinyColor = useReadableColor(color);
   const readableConvertedColor: TinyColor = useReadableColor(convertedColor && convertedColor.value);
-  const isSmall = width === 'sm' || width === 'xs';
+  const isSmall = useIsSmall(width);
 
   return (
     <Grid

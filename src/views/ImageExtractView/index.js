@@ -18,6 +18,7 @@ import Color from "../../components/Color";
 import ColorFormatsDisplay from "../../components/ColorFormatsDisplay";
 import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
 import withWidth from "@material-ui/core/withWidth";
+import {useIsSmall} from "../../shared/generic-hooks";
 
 
 type ImageExtractViewPropType = {
@@ -31,7 +32,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
   const [selectedPallete, setSelected]: SetStateType<string> = useState('');
   const [showSnackbar, setShowSnackbar]: SetStateType<boolean> = useState(false);
   const {classes, width} = props;
-  const isSmall = width === 'sm' || width === 'xs';
+  const isSmall = useIsSmall(width);
   useEffect(() => {
     if (fileUrl) {
       getImagePalette(fileUrl)

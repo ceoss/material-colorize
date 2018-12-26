@@ -13,6 +13,7 @@ import withWidth from "@material-ui/core/withWidth";
 import ButtonBase from '@material-ui/core/ButtonBase';
 import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
+import {useIsSmall} from "../../shared/generic-hooks";
 
 type ColorFormatDisplayPropType = {
   classes?: typeof style,
@@ -29,8 +30,7 @@ function ColorFormatsDisplay(props: ColorFormatDisplayPropType) {
     tinyColorColor = tinycolor(color);
   const [showAll, setShowAll] = useState(false);
   const [shownFormats, setShownFormats] = useState(formats);
-
-  const isSmall = width === 'sm' || width === 'xs';
+  const isSmall = useIsSmall(width);
 
   useEffect(() => {
     setShowAll(false);

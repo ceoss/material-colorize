@@ -1,8 +1,8 @@
 import {tabBorder} from "../style";
 
 const inactiveTabMargin = "12px";
-const iconSize = "50px";
-const xsIconSize = "25px";
+const iconSize = "50px !important";
+const xsIconSize = "25px !important";
 
 export default theme => ({
   tab: {
