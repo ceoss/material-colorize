@@ -19,7 +19,7 @@ import ColorFormatsDisplay from "../../components/ColorFormatsDisplay";
 import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
 import withWidth from "@material-ui/core/withWidth";
 import {useIsSmall} from "../../shared/generic-hooks";
-
+import Typography from '@material-ui/core/Typography';
 
 type ImageExtractViewPropType = {
   classes?: typeof style,
@@ -90,7 +90,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
             Select File
           </Button>
         </label>
-        <p>JPG, PNG, GIF, WEBM</p>
+        <Typography variant="body1" className={classes.margin16}>JPG, PNG, GIF, WEBM</Typography>
         {palette && <ColorFormatsDisplay color={palette[selectedPallete || 'Vibrant'].value} allowCopy={true}/>}
       </Grid>
 
@@ -112,7 +112,7 @@ export function ImageExtractView(props: ImageExtractViewPropType) {
               // OR make them generic enough by passing the `Color` component with the props being consistent between the two - I like this better
               return <Color key={swatchKey} displayUnselected color={value} className={classes.colorPad} colorName={readableKey}
                             select={() => setSelected(swatchKey)} isSelected={match}/>
-            }) : <p>Your swatches will appear here once an image is given</p>
+            }) : <Typography variant="body1" className={`${classes.margin16} ${isSmall ? 'text-center' : ''}`}>Your swatches will appear here once an image is given</Typography>
         }
       </Grid>
     </Grid>

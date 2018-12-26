@@ -22,6 +22,10 @@ export default theme => ({
       marginTop: '10px'
     }
   },
+  margin16: {
+    marginTop: '16px',
+    marginBottom: '16px'
+  },
   imgPreview: {
     borderRadius: 'var(--borderRadiusSize)',
     backgroundColor: '#E5E5E5'
