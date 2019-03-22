@@ -3,32 +3,22 @@
 import type {ColorMatchType} from "./colors";
 import {colorArray, formats} from './colors';
 import type {TinyColor} from 'tinycolor2';
-import tinycolor from 'tinycolor2';
 import {ObjectMap} from "./generic";
+import {hexDiff} from "node-vibrant/lib/util";
 
-function diffColors(from: string, to: string): number {
-  const materialRgb = tinycolor(from).toRgb();
-  const colorRgb = tinycolor(to).toRgb();
-  const diffColor = (key) => Math.abs(materialRgb[key] - colorRgb[key]);
-  return diffColor('r') + diffColor('g') + diffColor('b');
-}
+export function convert(hex: string): ColorMatchType {
+  // Create map with pairs of `diffOfColors: paletteColorObject`
+  // - In the case of two colors being exactly (decimal) the same difference,
+  //   the `Map` will prefer the last one entered into the constructor
+  const colorDiffMap: Map<number, ColorMatchType> = new Map(
+    colorArray.map((colorObject) => [hexDiff(hex, colorObject.value), colorObject])
+  );
 
-export function convert(color: string): ColorMatchType {
-  const colorMatch = colorArray.reduce((match: { diffVal: number, color: ColorMatchType }, colorItem: ColorMatchType) => {
-    const diffVal = diffColors(color, colorItem.value);
-    if (diffVal < match.diffVal) {
-      return {
-        diffVal,
-        color: colorItem
-      }
-    } else {
-      return match;
-    }
-  }, {
-    diffVal: Infinity,
-    color: ({}: any)
-  });
-  return colorMatch.color;
+  // Get the difference value to the closest color
+  const closestColorDiff = Math.min(...colorDiffMap.keys());
+
+  // Return the color object
+  return colorDiffMap.get(closestColorDiff);
 }
 
 // TODO: Both of these functions should share some logic of some kind like a lookup table for the allowed formats
