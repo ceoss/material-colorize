@@ -15,8 +15,8 @@ type UpcaseRgbType = {
   B: number
 };
 const hexToUpcaseRgb = function (hex: string): UpcaseRgbType {
-  const rgbColor = tinycolor(hex).toRgb();
-  return {R: rgbColor.r, G: rgbColor.g, B: rgbColor.b};
+  const {r: R, g: G, b: B} = tinycolor(hex).toRgb();
+  return {R, G, B};
 };
 
 // Hoist upcase RGB objects so they're only created once (on first use)
@@ -27,12 +27,12 @@ export function convert(fromHex: string): ColorMatchType {
   // Convert input color to upcase RGB object
   const fromRgb = hexToUpcaseRgb(fromHex);
 
-  if (!colorMapRgb) {
-    // Create `Map` with pairs of `upcaseRgb: paletteColorObject`
+  if (!colorMapRgb || !palette) {
+    // Create `Map` with pairs of `upcaseRgbObject: paletteColorObject`
     colorMapRgb = new Map(
       colorArray.map((colorObject) => [hexToUpcaseRgb(colorObject.value), colorObject])
     );
-    // Create palette from `Map` keys
+    // Create palette from `Map` keys (upcaseRgbObjects)
     palette = Array.from(colorMapRgb.keys());
   }
 
