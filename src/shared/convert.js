@@ -1,35 +1,49 @@
 // @flow
 
-import type {ColorMatchType} from "./colors";
+import type {ColorMatchType} from './colors';
 import {colorArray, formats} from './colors';
 import type {TinyColor} from 'tinycolor2';
 import tinycolor from 'tinycolor2';
-import {ObjectMap} from "./generic";
+import {ObjectMap} from './generic';
+import diff from 'color-diff';
 
-function diffColors(from: string, to: string): number {
-  const materialRgb = tinycolor(from).toRgb();
-  const colorRgb = tinycolor(to).toRgb();
-  const diffColor = (key) => Math.abs(materialRgb[key] - colorRgb[key]);
-  return diffColor('r') + diffColor('g') + diffColor('b');
-}
+// `color-diff` only allows uppercase {R,G,B}
+// TODO: remove upcasing after submitting a PR for downcase
+type UpcaseRgbType = {
+  R: number,
+  G: number,
+  B: number
+};
+const hexToUpcaseRgb = function (hex: string): UpcaseRgbType {
+  const {r: R, g: G, b: B} = tinycolor(hex).toRgb();
+  return {R, G, B};
+};
 
-export function convert(color: string): ColorMatchType {
-  const colorMatch = colorArray.reduce((match: { diffVal: number, color: ColorMatchType }, colorItem: ColorMatchType) => {
-    const diffVal = diffColors(color, colorItem.value);
-    if (diffVal < match.diffVal) {
-      return {
-        diffVal,
-        color: colorItem
-      }
-    } else {
-      return match;
-    }
-  }, {
-    diffVal: Infinity,
-    color: ({}: any)
-  });
-  return colorMatch.color;
-}
+// Hoist upcase RGB objects so they're only created once (on first use)
+let colorMapRgb: Map<UpcaseRgbType, ColorMatchType>;
+let palette: Array<UpcaseRgbType>;
+
+export function convert(fromHex: string): ColorMatchType {
+  // Convert input color to upcase RGB object
+  const fromRgb = hexToUpcaseRgb(fromHex);
+
+  if (!colorMapRgb || !palette) {
+    // Create `Map` with pairs of `upcaseRgbObject: paletteColorObject`
+    colorMapRgb = new Map(
+      colorArray.map((colorObject) => [hexToUpcaseRgb(colorObject.value), colorObject])
+    );
+    // Create palette from `Map` keys (upcaseRgbObjects)
+    palette = Array.from(colorMapRgb.keys());
+  }
+
+  // Get the closest RGB object to the from color
+  // - `color-diff` uses CIEDE2000 which is better for this scenario than adding
+  //   the difference, euclidean distance, or the older Delta E's (see issue #6)
+  const closestRgb: UpcaseRgbType = diff.closest(fromRgb, palette);
+
+  // Return the color object from the colorMap that corresponds with it
+  return colorMapRgb.get(closestRgb);
+};
 
 // TODO: Both of these functions should share some logic of some kind like a lookup table for the allowed formats
 export function getFormatString(color: TinyColor, format: $Values<formats>): string {
