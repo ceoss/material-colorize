@@ -3,8 +3,8 @@
 import * as colorItems from '@material-ui/core/colors';
 import {useEffect, useState} from 'react';
 import type {TinyColor} from 'tinycolor2';
-import tinycolor, {mostReadable} from "tinycolor2";
-import type {SetStateType} from "./generic";
+import tinycolor, {mostReadable} from 'tinycolor2';
+import type {SetStateType} from './generic';
 
 export const formats = [
   'hex',
@@ -36,7 +36,7 @@ export type ColorKeysType = $Keys<ColorType>;
 
 export const black = '#000000';
 
-export const white = '#FFFFFF';
+export const white = '#ffffff';
 
 export const mainColorNumber: ColorKeysType = '500';
 
