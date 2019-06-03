@@ -9,6 +9,4 @@ Material Colorize is a web and app development toolkit for colors, particularly 
  - [ ] Finalize and cleanup Flow typings for external libraries
 
 ## Roadmap
-- [ ] Add PWA functionality (offline, namely)
 - [ ] Handle a custom color palette. Discussion needed
-
