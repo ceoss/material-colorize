@@ -24,7 +24,7 @@ type PaletteListViewPropType = {
   width: Breakpoint
 }
 
-function PaletteListView(props: PaletteListViewPropType) {
+export function PaletteListView(props: PaletteListViewPropType) {
   const [stateColors, setColors]: SetStateType<string[]> = useState([]);
   const [stateNumbers, setNumbers]: SetStateType<string[]> = useState([]);
   const [showFilter, setShowFilter]: SetStateType<boolean> = useState(false);

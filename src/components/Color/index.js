@@ -25,11 +25,12 @@ type ColorPropType = {
   isSelected?: boolean,
   displayUnselected?: boolean,
   unraiseSelected?: boolean,
-  select: (val: SelectedColor) => void
+  select: (val: SelectedColor) => void,
+  testid?: string
 }
 
 function Color(props: ColorPropType) {
-  const {number, color, colorName = '', className, classes, isSelected, select, displayUnselected, unraiseSelected} = props,
+  const {number, color, colorName = '', testid, className, classes, isSelected, select, displayUnselected, unraiseSelected} = props,
     actualColor: string = (number && (color[(number: any)]: any)) || (color: any),
     tinyActualColor = tinycolor(actualColor),
     strColor = tinyActualColor.toHexString();
@@ -44,6 +45,7 @@ function Color(props: ColorPropType) {
     <Paper
       tabIndex={0}
       role="option"
+      data-testid={testid}
       aria-label={`${properlySpacedName} ${number || ''}`}
       aria-selected={!!isSelected}
       style={{
