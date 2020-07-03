@@ -7,39 +7,28 @@ import tinycolor from 'tinycolor2';
 import {ObjectMap} from './generic';
 import diff from 'color-diff';
 
-// `color-diff` only allows uppercase {R,G,B}
-// TODO: remove upcasing after submitting a PR for downcase
-type UpcaseRgbType = {
-  R: number,
-  G: number,
-  B: number
-};
-const hexToUpcaseRgb = function (hex: string): UpcaseRgbType {
-  const {r: R, g: G, b: B} = tinycolor(hex).toRgb();
-  return {R, G, B};
-};
 
 // Hoist upcase RGB objects so they're only created once (on first use)
-let colorMapRgb: Map<UpcaseRgbType, ColorMatchType>;
-let palette: Array<UpcaseRgbType>;
+let colorMapRgb: Map<diff.RGBColor, ColorMatchType>;
+let palette: Array<diff.RGBColor>;
 
 export function convert(fromHex: string): ColorMatchType {
   // Convert input color to upcase RGB object
-  const fromRgb = hexToUpcaseRgb(fromHex);
+  const fromRgb = tinycolor(fromHex).toRgb();
 
   if (!colorMapRgb || !palette) {
     // Create `Map` with pairs of `upcaseRgbObject: paletteColorObject`
     colorMapRgb = new Map(
-      colorArray.map((colorObject) => [hexToUpcaseRgb(colorObject.value), colorObject])
+      colorArray.map((colorObject) => [tinycolor(colorObject.value).toRgb(), colorObject])
     );
-    // Create palette from `Map` keys (upcaseRgbObjects)
+    // Create palette from `Map` keys
     palette = Array.from(colorMapRgb.keys());
   }
 
   // Get the closest RGB object to the from color
   // - `color-diff` uses CIEDE2000 which is better for this scenario than adding
   //   the difference, euclidean distance, or the older Delta E's (see issue #6)
-  const closestRgb: UpcaseRgbType = diff.closest(fromRgb, palette);
+  const closestRgb = diff.closest(fromRgb, palette);
 
   // Return the color object from the colorMap that corresponds with it
   return colorMapRgb.get(closestRgb);
@@ -49,11 +38,11 @@ export function convert(fromHex: string): ColorMatchType {
 export function getFormatString(color: TinyColor, format: $Values<formats>): string {
   switch (format) {
     case 'hex':
-      return color['toHexString']();
+      return color.toHexString();
     case 'rgb':
-      return color['toRgbString']();
+      return color.toRgbString();
     case 'hsl':
-      return color['toHslString']();
+      return color.toHslString();
     default:
       throw new Error('The format you mentioned was unknown');
   }
